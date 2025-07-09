@@ -77,6 +77,27 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Countdown Banner */}
+      {isExpired ? (
+        <div className="bg-destructive/10 border-b-2 border-destructive/30 py-4">
+          <div className="container mx-auto px-4 text-center">
+            <div className="text-destructive font-semibold flex items-center justify-center gap-2">
+              <Clock className="w-4 h-4" />
+              Special Offer Has Ended
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-orange-50 border-b-2 border-orange-300 py-4">
+          <div className="container mx-auto px-4 text-center">
+            <div className="text-orange-700 font-semibold flex items-center justify-center gap-2">
+              <Clock className="w-4 h-4" />
+              Early Bird Special Ends Soon: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 lg:py-24">
         <div className="text-center max-w-4xl mx-auto">
@@ -92,7 +113,7 @@ const Index = () => {
             The End-of-Lyfe Toolkit provides your loved ones with an immediate action plan and emotional support in the chaotic days right after your death — so they aren't overwhelmed, confused, or forced to guess what to do.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex justify-center mb-12">
             <Button 
               size="lg" 
               className="text-lg px-8 py-6 h-auto"
@@ -100,17 +121,6 @@ const Index = () => {
             >
               Get The Toolkit Now - $67
             </Button>
-            {isExpired ? (
-              <div className="bg-destructive/10 border-2 border-destructive/30 rounded-lg px-6 py-3 text-destructive font-semibold flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                Special Offer Has Ended
-              </div>
-            ) : (
-              <div className="bg-orange-50 border-2 border-orange-300 rounded-lg px-6 py-3 text-orange-700 font-semibold flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                Early Bird Special Ends Soon: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-              </div>
-            )}
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
