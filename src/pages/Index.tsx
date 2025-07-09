@@ -231,7 +231,7 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  Grief hits everyone differently. The toolkit includes coping strategies, support group resources, and guidance for helping children process loss.
+                  Losing someone you love is one of life's most difficult experiences. This toolkit can't take away the pain of grief, but it can provide organization, guidance, and heartfelt messages to help your family navigate this challenging time with a little less stress and confusion.
                 </CardDescription>
               </CardContent>
             </Card>
