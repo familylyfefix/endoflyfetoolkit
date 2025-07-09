@@ -107,9 +107,40 @@ const Index = () => {
             — So They're Never Overwhelmed or Confused
           </h1>
           
-          <p className="text-xl lg:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto">
+          <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto">
             The complete step-by-step Notion template that transforms scary end-of-life discussions into meaningful family moments
           </p>
+          
+          {/* What it delivers */}
+          <div className="bg-muted/30 rounded-lg p-8 mb-12 max-w-4xl mx-auto">
+            <h3 className="text-xl font-semibold mb-6 text-center">🔍 Here's what it delivers in the moment your family needs it most:</h3>
+            <div className="grid lg:grid-cols-2 gap-4 text-left">
+              <div className="flex items-start gap-3">
+                <span className="text-lg">✅</span>
+                <span>A first-week checklist so they know what to do within 24 hours, 72 hours, and the first month after your passing</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-lg">🕊</span>
+                <span>Your final wishes — burial/cremation, services, music, donations, dress code</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-lg">💌</span>
+                <span>A personal message from you — your words of comfort, encouragement, or goodbye</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-lg">📇</span>
+                <span>A clear "who to contact" list — friends, family, financial contacts, accounts to cancel</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-lg">🔐</span>
+                <span>Passwords, accounts, and tech info — so nothing gets lost or locked forever</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-lg">📂</span>
+                <span>A clean, printable format that feels more like a hug than a binder of stress</span>
+              </div>
+            </div>
+          </div>
           
           {/* Feature Highlights */}
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-12 max-w-4xl mx-auto">
