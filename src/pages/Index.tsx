@@ -7,29 +7,51 @@ import { CheckCircle, Clock, Heart, Shield, Users, Star, ChevronDown } from "luc
 
 const Index = () => {
   const [timeLeft, setTimeLeft] = useState({
-    hours: 72,
+    days: 0,
+    hours: 0,
     minutes: 0,
     seconds: 0
   });
-
+  const [isExpired, setIsExpired] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        const totalSeconds = prev.hours * 3600 + prev.minutes * 60 + prev.seconds - 1;
-        
-        if (totalSeconds <= 0) {
-          return { hours: 0, minutes: 0, seconds: 0 };
-        }
-        
-        return {
-          hours: Math.floor(totalSeconds / 3600),
-          minutes: Math.floor((totalSeconds % 3600) / 60),
-          seconds: totalSeconds % 60
-        };
-      });
-    }, 1000);
+    // Get or set the countdown start time for this visitor
+    const getCountdownStartTime = () => {
+      const stored = localStorage.getItem('countdownStartTime');
+      if (stored) {
+        return parseInt(stored);
+      } else {
+        const startTime = Date.now();
+        localStorage.setItem('countdownStartTime', startTime.toString());
+        return startTime;
+      }
+    };
+
+    const startTime = getCountdownStartTime();
+    const duration = 72 * 60 * 60 * 1000; // 72 hours in milliseconds
+
+    const updateTimer = () => {
+      const now = Date.now();
+      const elapsed = now - startTime;
+      const remaining = duration - elapsed;
+
+      if (remaining <= 0) {
+        setIsExpired(true);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(remaining / (24 * 60 * 60 * 1000));
+      const hours = Math.floor((remaining % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+      const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
+      const seconds = Math.floor((remaining % (60 * 1000)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateTimer();
+    const timer = setInterval(updateTimer, 1000);
 
     return () => clearInterval(timer);
   }, []);
@@ -78,9 +100,17 @@ const Index = () => {
             >
               Get The Toolkit Now - $67
             </Button>
-            <p className="text-sm text-muted-foreground">
-              ⏰ Price increases to $87 in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-            </p>
+            {isExpired ? (
+              <div className="bg-destructive/10 border-2 border-destructive/30 rounded-lg px-6 py-3 text-destructive font-semibold flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                Special Offer Has Ended
+              </div>
+            ) : (
+              <div className="bg-orange-50 border-2 border-orange-300 rounded-lg px-6 py-3 text-orange-700 font-semibold flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                Early Bird Special Ends Soon: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+              </div>
+            )}
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
@@ -264,25 +294,22 @@ const Index = () => {
               </CardHeader>
               
               <CardContent className="space-y-6">
-                <div className="bg-destructive/10 p-4 rounded-lg border border-destructive/20 text-center">
-                  <p className="font-semibold text-destructive mb-2">⏰ Price increases in:</p>
-                  <div className="flex justify-center gap-4 text-2xl font-bold">
-                    <div className="flex flex-col">
-                      <span>{timeLeft.hours.toString().padStart(2, '0')}</span>
-                      <span className="text-xs font-normal">HOURS</span>
+                {isExpired ? (
+                  <div className="bg-destructive/10 border-2 border-destructive/30 rounded-lg p-4 text-destructive font-semibold text-center flex items-center justify-center gap-2">
+                    <Clock className="w-5 h-5" />
+                    Special Offer Has Ended
+                  </div>
+                ) : (
+                  <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-4 text-orange-700 font-semibold text-center">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <Clock className="w-5 h-5" />
+                      Early Bird Special Ends Soon:
                     </div>
-                    <span>:</span>
-                    <div className="flex flex-col">
-                      <span>{timeLeft.minutes.toString().padStart(2, '0')}</span>
-                      <span className="text-xs font-normal">MIN</span>
-                    </div>
-                    <span>:</span>
-                    <div className="flex flex-col">
-                      <span>{timeLeft.seconds.toString().padStart(2, '0')}</span>
-                      <span className="text-xs font-normal">SEC</span>
+                    <div className="text-2xl font-bold">
+                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                     </div>
                   </div>
-                </div>
+                )}
                 
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
@@ -366,16 +393,40 @@ const Index = () => {
             </p>
             
             <div className="bg-primary/10 p-8 rounded-lg border border-primary/20 mb-8">
-              <p className="text-lg font-semibold mb-4">
-                Remember: This pricing expires in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-              </p>
-              <Button 
-                size="lg" 
-                className="text-lg px-8 py-6 h-auto"
-                onClick={handleCTA}
-              >
-                Secure Your Family's Future - $67
-              </Button>
+              {isExpired ? (
+                <div className="text-center">
+                  <div className="bg-destructive/10 border-2 border-destructive/30 rounded-lg p-4 text-destructive font-semibold mb-4 flex items-center justify-center gap-2">
+                    <Clock className="w-5 h-5" />
+                    Special Offer Has Ended
+                  </div>
+                  <Button 
+                    size="lg" 
+                    className="text-lg px-8 py-6 h-auto"
+                    onClick={handleCTA}
+                  >
+                    Get The Toolkit - $87
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-4 text-orange-700 font-semibold text-center mb-4">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <Clock className="w-5 h-5" />
+                      Early Bird Special Ends Soon:
+                    </div>
+                    <div className="text-xl font-bold">
+                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                    </div>
+                  </div>
+                  <Button 
+                    size="lg" 
+                    className="text-lg px-8 py-6 h-auto"
+                    onClick={handleCTA}
+                  >
+                    Secure Your Family's Future - $67
+                  </Button>
+                </>
+              )}
             </div>
             
             <p className="text-sm text-muted-foreground">
