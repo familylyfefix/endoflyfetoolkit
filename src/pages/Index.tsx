@@ -108,7 +108,7 @@ const Index = () => {
           </h1>
           
           <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto">
-            The complete step-by-step Notion template that transforms scary end-of-life discussions into meaningful family moments
+            This complete Notion-based toolkit turns overwhelming "what now?" moments into calm, confident steps your family can follow — even on the hardest day.
           </p>
           
           {/* What it delivers */}
