@@ -142,44 +142,6 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Feature Highlights */}
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-12 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                <Download className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-muted-foreground">Instant Access</span>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                <Settings className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-muted-foreground">Complete System</span>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                <FileText className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-muted-foreground">Word-for-Word Scripts</span>
-            </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                <UsersRound className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-muted-foreground">Family Coordination Tools</span>
-            </div>
-            
-            <div className="flex flex-col items-center text-center lg:col-span-1 col-span-2 lg:mx-0 mx-auto">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
-                <Target className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-muted-foreground">Step-by-Step Framework</span>
-            </div>
-          </div>
-          
           <div className="flex justify-center">
             <Button 
               size="lg" 
