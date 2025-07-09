@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CheckCircle, Clock, Heart, Shield, Users, Star, ChevronDown } from "lucide-react";
+import { CheckCircle, Clock, Heart, Shield, Users, Star, ChevronDown, Download, Settings, FileText, UsersRound, Target } from "lucide-react";
 
 const Index = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -100,42 +100,63 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 lg:py-24">
-        <div className="text-center max-w-4xl mx-auto">
-          <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
-            Limited Time: $67 (Reg. $87)
-          </Badge>
-          
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-            Give Your Family Peace of Mind When They Need It Most
+        <div className="text-center max-w-5xl mx-auto">          
+          <h1 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
+            Get Your Family's Most Important Conversations{" "}
+            <span className="text-primary">Done Right</span>{" "}
+            — With Zero Awkwardness
           </h1>
           
-          <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            The End-of-Lyfe Toolkit provides your loved ones with an immediate action plan and emotional support in the chaotic days right after your death — so they aren't overwhelmed, confused, or forced to guess what to do.
+          <p className="text-xl lg:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto">
+            The complete step-by-step Notion template that transforms scary end-of-life discussions into meaningful family moments
           </p>
           
-          <div className="flex justify-center mb-12">
+          {/* Feature Highlights */}
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-12 max-w-4xl mx-auto">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                <Download className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-muted-foreground">Instant Access</span>
+            </div>
+            
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                <Settings className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-muted-foreground">Complete System</span>
+            </div>
+            
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                <FileText className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-muted-foreground">Word-for-Word Scripts</span>
+            </div>
+            
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                <UsersRound className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-muted-foreground">Family Coordination Tools</span>
+            </div>
+            
+            <div className="flex flex-col items-center text-center lg:col-span-1 col-span-2 lg:mx-0 mx-auto">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                <Target className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-muted-foreground">Step-by-Step Framework</span>
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
             <Button 
               size="lg" 
               className="text-lg px-8 py-6 h-auto"
               onClick={handleCTA}
             >
-              Get The Toolkit Now - $67
+              Get The Complete System Now - $67
             </Button>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-primary" />
-              Instant Download
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-primary" />
-              Works with Notion (Free)
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-primary" />
-              Lifetime Updates
-            </div>
           </div>
         </div>
       </section>
