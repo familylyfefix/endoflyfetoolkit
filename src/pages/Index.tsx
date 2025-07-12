@@ -269,7 +269,7 @@ const Index = () => {
                 <p className="mb-4 italic">
                   "When Mom passed suddenly, we were completely lost. This toolkit gave us the roadmap we desperately needed. It literally saved our family from falling apart."
                 </p>
-                <p className="font-semibold">— Jennifer K., Used toolkit for mother's passing</p>
+                <p className="font-semibold">— Jennifer K.</p>
               </CardContent>
             </Card>
             
@@ -283,7 +283,7 @@ const Index = () => {
                 <p className="mb-4 italic">
                   "I bought this for my own peace of mind. Knowing my kids will have clear guidance when I'm gone has lifted a huge weight off my shoulders."
                 </p>
-                <p className="font-semibold">— Robert T., Prepared toolkit for his family</p>
+                <p className="font-semibold">— Robert T.</p>
               </CardContent>
             </Card>
           </div>
