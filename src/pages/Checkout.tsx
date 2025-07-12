@@ -110,10 +110,6 @@ const Checkout = () => {
                     <span>Instant digital access</span>
                     <span>Included</span>
                   </div>
-                  <div className="flex justify-between items-center text-muted-foreground">
-                    <span>Lifetime updates</span>
-                    <span>Included</span>
-                  </div>
                   <div className="border-t border-border pt-3 flex justify-between items-center font-bold text-lg">
                     <span>Total</span>
                     <span>$47</span>
