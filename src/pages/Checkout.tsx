@@ -12,15 +12,25 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border">
+      {/* Header with Logo */}
+      <header className="py-6 border-b border-border/20">
+        <div className="container mx-auto px-4 text-center">
+          <img 
+            src="/lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
+            alt="Family Lyfe Fix Logo"
+            className="h-16 mx-auto"
+          />
+        </div>
+      </header>
+      {/* Navigation */}
+      <div className="border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="h-4 w-4" />
             Back to Home
           </Link>
         </div>
-      </header>
+      </div>
 
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8">

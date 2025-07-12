@@ -77,6 +77,16 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header with Logo */}
+      <header className="py-6 border-b border-border/20">
+        <div className="container mx-auto px-4 text-center">
+          <img 
+            src="/lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
+            alt="Family Lyfe Fix Logo"
+            className="h-16 mx-auto"
+          />
+        </div>
+      </header>
       {/* Countdown Banner */}
       {isExpired ? (
         <div className="bg-destructive/10 border-b-2 border-destructive/30 py-4">
