@@ -79,13 +79,6 @@ const Checkout = () => {
                 <div className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-medium">Emotional Support Resources</p>
-                    <p className="text-sm text-muted-foreground">Coping strategies and healing guidance</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
                     <p className="font-medium">Long-term Recovery Framework</p>
                     <p className="text-sm text-muted-foreground">6-month healing roadmap and milestones</p>
                   </div>
