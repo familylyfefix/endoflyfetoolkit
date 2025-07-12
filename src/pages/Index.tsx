@@ -451,9 +451,6 @@ const Index = () => {
               )}
             </div>
             
-            <p className="text-sm text-muted-foreground">
-              Protected by our 30-day money-back guarantee. If this toolkit doesn't provide the peace of mind you're looking for, we'll refund every penny.
-            </p>
           </div>
         </div>
       </section>
