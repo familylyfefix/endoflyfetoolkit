@@ -145,7 +145,7 @@ const Index = () => {
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-lg">📂</span>
-                <span>A clean, printable format that feels more like a hug than a binder of stress</span>
+                <span>A clean, digital Notion template that feels more like a hug than a binder of stress</span>
               </div>
             </div>
           </div>
