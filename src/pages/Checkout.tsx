@@ -134,10 +134,6 @@ const Checkout = () => {
                       <Clock className="h-4 w-4" />
                       <span>Instant digital delivery</span>
                     </div>
-                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                      <Heart className="h-4 w-4" />
-                      <span>30-day money-back guarantee</span>
-                    </div>
                   </div>
                 </div>
 
