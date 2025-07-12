@@ -342,10 +342,6 @@ const Index = () => {
                     <CheckCircle className="w-5 h-5 text-primary" />
                     <span>Step-by-step implementation guide</span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span>Lifetime updates and improvements</span>
-                  </div>
                 </div>
                 
                 <Button 
