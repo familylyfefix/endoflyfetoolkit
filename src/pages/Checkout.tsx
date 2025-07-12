@@ -165,8 +165,7 @@ const Checkout = () => {
                 <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold mb-2">Our Promise to You</h3>
                 <p className="text-sm text-muted-foreground">
-                  If this toolkit doesn't bring clarity and peace to your family during this difficult time, 
-                  we'll refund your purchase within 30 days, no questions asked.
+                  This toolkit eliminates the guesswork and provides clear, actionable steps your loved ones can follow. Everything is organized, accessible, and ready when they need it most.
                 </p>
               </CardContent>
             </Card>
