@@ -96,7 +96,7 @@ const Checkout = () => {
               <CardContent className="space-y-6">
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span>Complete Family Grief Toolkit</span>
+                    <span>Complete End-of-Lyfe Toolkit</span>
                     <span className="font-medium">$47</span>
                   </div>
                   <div className="flex justify-between items-center text-muted-foreground">
