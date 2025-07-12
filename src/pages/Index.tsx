@@ -102,9 +102,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-16 lg:py-24">
         <div className="text-center max-w-5xl mx-auto">          
           <h1 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
-            Give Your Loved Ones an{" "}
-            <span className="text-primary">Immediate Action Plan</span>{" "}
-            — So They're Never Overwhelmed or Confused
+            <span className="text-primary">Death Doesn't Wait for Perfect Timing</span>
           </h1>
           
           <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto">
