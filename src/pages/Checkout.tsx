@@ -39,7 +39,7 @@ const Checkout = () => {
             <div className="text-center md:text-left">
               <Badge variant="secondary" className="mb-4">Limited Time Offer</Badge>
               <h1 className="text-3xl font-bold text-foreground mb-4">
-                Complete Family Grief Toolkit
+                End-of-Lyfe Toolkit
               </h1>
               <p className="text-lg text-muted-foreground mb-6">
                 This complete Notion-based toolkit turns overwhelming "what now?" moments into calm, confident steps your family can follow — even on the hardest day.
