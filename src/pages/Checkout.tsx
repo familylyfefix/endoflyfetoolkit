@@ -84,7 +84,7 @@ const Checkout = () => {
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Users className="h-5 w-5 text-primary" />
-                  <span className="font-medium">Join 2,847 families who found peace</span>
+                  <span className="font-medium">Join 50+ families who found peace</span>
                 </div>
                 <blockquote className="text-sm text-muted-foreground italic">
                   "This toolkit was a lifeline during the most difficult time in our lives. Having everything organized and knowing what steps to take next gave us the clarity we desperately needed."
