@@ -342,6 +342,18 @@ const Index = () => {
                     <CheckCircle className="w-5 h-5 text-primary" />
                     <span>Step-by-step implementation guide</span>
                   </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <span>Digital password manager template</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <span>Final wishes & personal message templates</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <span>Emergency contact lists & document tracker</span>
+                  </div>
                 </div>
                 
                 <Button 
