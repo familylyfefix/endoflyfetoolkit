@@ -152,9 +152,6 @@ const Checkout = () => {
                   <p className="text-xs text-muted-foreground text-center">
                     ✓ Secure checkout • ✓ Instant access • ✓ No subscription
                   </p>
-                  <p className="text-xs text-muted-foreground text-center">
-                    Created with compassion by grief counselors and legal experts
-                  </p>
                 </div>
               </CardContent>
             </Card>
