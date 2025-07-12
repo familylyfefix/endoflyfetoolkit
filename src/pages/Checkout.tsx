@@ -147,7 +147,7 @@ const Checkout = () => {
                     Special Launch Price
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Regular price $97 • Save $50 today only
+                    Regular price $87 • Save $20 today only
                   </p>
                 </div>
 
