@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -5,6 +6,55 @@ import { Check, Clock, Users, FileText, Heart, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+  const [isExpired, setIsExpired] = useState(false);
+
+  useEffect(() => {
+    // Get or set the countdown start time for this visitor
+    const getCountdownStartTime = () => {
+      const stored = localStorage.getItem('countdownStartTime');
+      if (stored) {
+        return parseInt(stored);
+      } else {
+        const startTime = Date.now();
+        localStorage.setItem('countdownStartTime', startTime.toString());
+        return startTime;
+      }
+    };
+
+    const startTime = getCountdownStartTime();
+    const duration = 72 * 60 * 60 * 1000; // 72 hours in milliseconds
+
+    const updateTimer = () => {
+      const now = Date.now();
+      const elapsed = now - startTime;
+      const remaining = duration - elapsed;
+
+      if (remaining <= 0) {
+        setIsExpired(true);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(remaining / (24 * 60 * 60 * 1000));
+      const hours = Math.floor((remaining % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+      const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
+      const seconds = Math.floor((remaining % (60 * 1000)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateTimer();
+    const timer = setInterval(updateTimer, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const handlePurchase = () => {
     // This would integrate with your payment processor
     console.log("Purchase initiated");
@@ -118,7 +168,7 @@ const Checkout = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span>Complete End-of-Lyfe Toolkit</span>
-                    <span className="font-medium">$47</span>
+                    <span className="font-medium">${isExpired ? '87' : '67'}</span>
                   </div>
                   <div className="flex justify-between items-center text-muted-foreground">
                     <span>Instant digital access</span>
@@ -126,7 +176,7 @@ const Checkout = () => {
                   </div>
                   <div className="border-t border-border pt-3 flex justify-between items-center font-bold text-lg">
                     <span>Total</span>
-                    <span>$47</span>
+                    <span>${isExpired ? '87' : '67'}</span>
                   </div>
                 </div>
 
@@ -154,10 +204,10 @@ const Checkout = () => {
                 {/* Urgency */}
                 <div className="bg-accent/30 rounded-lg p-4 text-center">
                   <p className="text-sm font-medium text-foreground mb-1">
-                    Special Launch Price
+                    {isExpired ? 'Regular Price' : 'Special Launch Price'}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Regular price $87 • Save $20 today only
+                    {isExpired ? 'No discount available' : 'Regular price $87 • Save $20 today only'}
                   </p>
                 </div>
 
