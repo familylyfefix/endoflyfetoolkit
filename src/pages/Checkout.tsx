@@ -69,6 +69,27 @@ const Checkout = () => {
                     <p className="text-sm text-muted-foreground">Comprehensive service and celebration planning</p>
                   </div>
                 </div>
+                <div className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium">Digital Assets & Password Guide</p>
+                    <p className="text-sm text-muted-foreground">Secure access instructions for all online accounts, devices, and digital life</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium">Contact Directory Template</p>
+                    <p className="text-sm text-muted-foreground">Complete list of who to notify, from family to financial institutions</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium">Personal Message Templates</p>
+                    <p className="text-sm text-muted-foreground">Space to leave heartfelt words and final wishes for your loved ones</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
