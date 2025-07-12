@@ -144,6 +144,9 @@ const Checkout = () => {
                       <Clock className="h-4 w-4" />
                       <span>Instant digital delivery</span>
                     </div>
+                    <p className="text-sm text-muted-foreground">
+                      Duplicate to your Notion workspace - Ready to customize immediately
+                    </p>
                   </div>
                 </div>
 
