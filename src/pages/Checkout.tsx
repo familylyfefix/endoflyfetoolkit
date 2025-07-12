@@ -66,7 +66,7 @@ const Checkout = () => {
                   <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-medium">Legal & Financial Organizer</p>
-                    <p className="text-sm text-muted-foreground">Document templates and tracking systems</p>
+                    
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
