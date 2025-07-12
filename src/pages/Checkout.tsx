@@ -141,12 +141,12 @@ const Checkout = () => {
                   
                   <div className="text-center space-y-2">
                     <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="h-4 w-4" />
+                      <Clock className="h-4 w-4 flex-shrink-0" />
                       <span>Instant digital delivery</span>
                     </div>
                     <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="h-4 w-4" />
-                      <span>Duplicate to your Notion workspace - Ready to customize immediately</span>
+                      <Clock className="h-4 w-4 flex-shrink-0" />
+                      <span>Ready to customize immediately</span>
                     </div>
                   </div>
                 </div>
