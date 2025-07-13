@@ -163,7 +163,7 @@ const PaymentSuccess = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-lg">Download and review your complete toolkit</h3>
-                <p className="text-muted-foreground">Get familiar with all the included templates and guides</p>
+                <p className="text-muted-foreground">Get familiar with all the included sections and checklists</p>
               </div>
             </div>
             
