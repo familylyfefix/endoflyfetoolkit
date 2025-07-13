@@ -270,7 +270,7 @@ const Checkout = () => {
                   <blockquote className="text-sm italic">
                     "This toolkit was a lifeline during the most difficult time in our lives. Having everything organized gave us the clarity we desperately needed."
                   </blockquote>
-                  <p className="text-sm font-medium">— Sarah M., verified purchase</p>
+                  <p className="text-sm font-medium">— Alexis W.</p>
                 </div>
                 <div className="border-t pt-4 space-y-3">
                   <div className="flex items-center gap-1">
