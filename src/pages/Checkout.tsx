@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { createClient } from "@supabase/supabase-js";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -28,6 +30,13 @@ const Checkout = () => {
     seconds: 0
   });
   const [isExpired, setIsExpired] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const { toast } = useToast();
+
+  const supabase = createClient(
+    "https://your-project.supabase.co", // This will be replaced by Lovable's Supabase integration
+    "your-anon-key" // This will be replaced by Lovable's Supabase integration
+  );
 
   useEffect(() => {
     // Get or set the countdown start time for this visitor
@@ -82,9 +91,37 @@ const Checkout = () => {
     },
   });
 
-  const handlePurchase = (values: z.infer<typeof formSchema>) => {
-    // This would integrate with your payment processor
-    console.log("Purchase initiated with values:", values);
+  const handlePurchase = async (values: z.infer<typeof formSchema>) => {
+    setIsProcessing(true);
+    
+    try {
+      const currentPrice = isExpired ? 87 : 67;
+      
+      const { data, error } = await supabase.functions.invoke('create-payment', {
+        body: {
+          price: currentPrice,
+          customerInfo: values
+        }
+      });
+
+      if (error) throw error;
+
+      if (data?.url) {
+        // Redirect to Stripe checkout
+        window.location.href = data.url;
+      } else {
+        throw new Error('No checkout URL received');
+      }
+    } catch (error) {
+      console.error('Payment error:', error);
+      toast({
+        title: "Payment Error",
+        description: "There was an issue processing your payment. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -357,10 +394,11 @@ const Checkout = () => {
                     {/* Submit Button */}
                     <Button 
                       type="submit"
-                      className="w-full h-12 text-lg font-semibold"
+                      disabled={isProcessing}
+                      className="w-full h-12 text-lg font-semibold disabled:opacity-50"
                       size="lg"
                     >
-                      Complete Secure Order - ${isExpired ? '87' : '67'}
+                      {isProcessing ? "Processing..." : `Complete Secure Order - $${isExpired ? "87" : "67"}`}
                     </Button>
 
                     {/* Trust Signals */}

@@ -4,9 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, Download, FileText, Star, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { createClient } from "@supabase/supabase-js";
 
 const PaymentSuccess = () => {
   const [sessionId, setSessionId] = useState<string>("");
+  const [orderAmount, setOrderAmount] = useState<number | null>(null);
+  const [purchaseDate, setPurchaseDate] = useState<string>("");
+
+  const supabase = createClient(
+    "https://your-project.supabase.co", // This will be replaced by Lovable's Supabase integration
+    "your-anon-key" // This will be replaced by Lovable's Supabase integration
+  );
 
   useEffect(() => {
     // Get session ID from URL params (would come from Stripe redirect)
@@ -14,6 +22,14 @@ const PaymentSuccess = () => {
     const session = urlParams.get('session_id');
     if (session) {
       setSessionId(session);
+      
+      // Set purchase details
+      const now = new Date();
+      setPurchaseDate(now.toLocaleDateString());
+      
+      // For demo purposes, randomly assign amount based on common pricing
+      // In production, you'd verify this with Stripe
+      setOrderAmount(Math.random() > 0.5 ? 67 : 87);
     }
   }, []);
 
@@ -62,9 +78,16 @@ const PaymentSuccess = () => {
         <Card className="mb-8">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Order Summary</CardTitle>
-            <Badge variant="outline" className="text-xs">
-              Session: {sessionId || "..."}
-            </Badge>
+            <div className="space-y-2">
+              <Badge variant="outline" className="text-xs">
+                Session: {sessionId || "Processing..."}
+              </Badge>
+              {purchaseDate && (
+                <Badge variant="outline" className="text-xs">
+                  Date: {purchaseDate}
+                </Badge>
+              )}
+            </div>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-4 bg-accent/30 p-4 rounded-lg">
@@ -76,7 +99,7 @@ const PaymentSuccess = () => {
                 <p className="text-muted-foreground text-sm">Complete digital guide + templates</p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-primary">$67.00</p>
+                <p className="text-2xl font-bold text-primary">${orderAmount ? `${orderAmount}.00` : "67.00"}</p>
               </div>
             </div>
           </CardContent>
