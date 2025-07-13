@@ -281,7 +281,7 @@ const Checkout = () => {
                   <blockquote className="text-sm italic">
                     "Worth every penny. The peace of mind knowing everything is organized is priceless."
                   </blockquote>
-                  <p className="text-sm font-medium">— Michael R., verified purchase</p>
+                  <p className="text-sm font-medium">— Aaron R.</p>
                 </div>
               </CardContent>
             </Card>
