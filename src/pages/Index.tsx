@@ -202,7 +202,7 @@ const Index = () => {
                   <p className="font-semibold text-primary mb-2">
                     "I wish we had this when my father passed. It would have saved us so much stress and confusion."
                   </p>
-                  <p className="text-sm text-muted-foreground">— Sarah M., Early Tester</p>
+                  <p className="text-sm text-muted-foreground">— Erica M.</p>
                 </div>
               </div>
             </div>
