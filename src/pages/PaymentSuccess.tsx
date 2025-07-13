@@ -56,7 +56,7 @@ const PaymentSuccess = () => {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
+      <div className="container mx-auto px-4 py-12 max-w-3xl">
         {/* Success Message */}
         <div className="text-center mb-12">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -76,9 +76,9 @@ const PaymentSuccess = () => {
 
         {/* Order Summary */}
         <Card className="mb-8">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Order Summary</CardTitle>
-            <div className="space-y-2">
+          <CardHeader>
+            <CardTitle className="text-center">Order Summary</CardTitle>
+            <div className="flex flex-wrap justify-center gap-2">
               <Badge variant="outline" className="text-xs">
                 Session: {sessionId || "Processing..."}
               </Badge>
@@ -90,15 +90,15 @@ const PaymentSuccess = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-4 bg-accent/30 p-4 rounded-lg">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                 <FileText className="h-8 w-8 text-primary" />
               </div>
-              <div className="flex-1">
+              <div>
                 <h3 className="font-semibold text-lg">End-of-Lyfe Toolkit</h3>
                 <p className="text-muted-foreground text-sm">Complete digital guide + templates</p>
               </div>
-              <div className="text-right">
+              <div>
                 <p className="text-2xl font-bold text-primary">${orderAmount ? `${orderAmount}.00` : "67.00"}</p>
               </div>
             </div>
@@ -121,10 +121,10 @@ const PaymentSuccess = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-md mx-auto">
               <Button 
                 onClick={handleDownload}
-                className="w-full max-w-md h-12 text-lg font-semibold"
+                className="w-full h-12 text-lg font-semibold"
                 size="lg"
               >
                 <Download className="h-5 w-5 mr-2" />
@@ -136,7 +136,7 @@ const PaymentSuccess = () => {
                 <Button 
                   variant="outline" 
                   onClick={handleOpenPDF}
-                  className="text-primary hover:text-primary"
+                  className="text-primary hover:text-primary max-w-xs mx-auto"
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
                   Open PDF in New Tab
@@ -195,7 +195,7 @@ const PaymentSuccess = () => {
             <h3 className="text-xl font-semibold mb-4">
               Need help or have questions about your purchase?
             </h3>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="max-w-xs mx-auto">
               Contact Support
             </Button>
           </CardContent>
@@ -217,7 +217,7 @@ const PaymentSuccess = () => {
         {/* Back to Home */}
         <div className="text-center mt-12">
           <Link to="/">
-            <Button variant="outline">
+            <Button variant="outline" className="max-w-xs mx-auto">
               Back to Home
             </Button>
           </Link>
