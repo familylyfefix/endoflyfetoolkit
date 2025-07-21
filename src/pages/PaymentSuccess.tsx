@@ -86,7 +86,7 @@ const PaymentSuccess = () => {
             <div className="flex items-center gap-6">
               <div className="flex-shrink-0">
                 <img 
-                  src="/lovable-uploads/9beba965-f166-4271-9e74-f6142db7f4cc.png"
+                  src="/lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
                   alt="End-of-Life Toolkit"
                   className="w-20 h-20 object-cover rounded-lg"
                 />
