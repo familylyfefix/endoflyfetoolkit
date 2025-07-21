@@ -489,9 +489,8 @@ const Checkout = () => {
                                       </div>
 
                                       <div className="border-t pt-4 text-center">
-                                        <p className="text-muted-foreground">
-                                          By purchasing and using this toolkit, you acknowledge that you have read, 
-                                          understood, and agree to be bound by these terms and conditions.
+                                        <p className="font-medium">
+                                          By checking the box and completing your purchase, you confirm that you have read, understood, and agree to these terms.
                                         </p>
                                       </div>
                                     </div>
