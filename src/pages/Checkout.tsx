@@ -4,7 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Check, Clock, Users, FileText, Heart, ArrowLeft, Shield, Lock, Star, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -20,6 +22,9 @@ const formSchema = z.object({
   address: z.string().min(5, "Please enter a complete address"),
   city: z.string().min(2, "Please enter a valid city"),
   zipCode: z.string().min(5, "Please enter a valid ZIP code"),
+  agreeToTerms: z.boolean().refine(val => val === true, {
+    message: "You must agree to the terms of service and privacy policy"
+  }),
 });
 
 const Checkout = () => {
@@ -31,6 +36,7 @@ const Checkout = () => {
   });
   const [isExpired, setIsExpired] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [termsModalOpen, setTermsModalOpen] = useState(false);
   const { toast } = useToast();
 
   const supabase = createClient(
@@ -88,6 +94,7 @@ const Checkout = () => {
       address: "",
       city: "",
       zipCode: "",
+      agreeToTerms: false,
     },
   });
 
@@ -389,6 +396,113 @@ const Checkout = () => {
                           )}
                         />
                       </div>
+                    </div>
+
+                    {/* Terms and Conditions Checkbox */}
+                    <div className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="agreeToTerms"
+                        render={({ field }) => (
+                          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                              />
+                            </FormControl>
+                            <div className="space-y-1 leading-none">
+                              <div className="text-sm">
+                                I agree to the{" "}
+                                <Dialog open={termsModalOpen} onOpenChange={setTermsModalOpen}>
+                                  <DialogTrigger asChild>
+                                    <button
+                                      type="button"
+                                      className="text-primary hover:underline focus:underline"
+                                    >
+                                      terms of service and privacy policy
+                                    </button>
+                                  </DialogTrigger>
+                                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                                    <DialogHeader>
+                                      <DialogTitle className="text-xl font-bold text-center">
+                                        Family Lyfe Fix – Terms of Service & Privacy Policy
+                                      </DialogTitle>
+                                    </DialogHeader>
+                                    <div className="space-y-6 text-sm">
+                                      <div>
+                                        <h3 className="font-bold text-base mb-2">Informational Use Only</h3>
+                                        <p>
+                                          The Family Lyfe Fix toolkit is provided for educational and organizational purposes. 
+                                          It is not professional legal, financial, or medical advice. Users should consult 
+                                          qualified professionals for specific situations and requirements in their jurisdiction.
+                                        </p>
+                                      </div>
+
+                                      <div>
+                                        <h3 className="font-bold text-base mb-2">Digital Products – All Sales Final</h3>
+                                        <p>
+                                          All purchases are digital products delivered electronically. Due to the immediate 
+                                          nature of digital delivery, all sales are final. No refunds, exchanges, or returns 
+                                          are available once the product has been delivered and accessed.
+                                        </p>
+                                      </div>
+
+                                      <div>
+                                        <h3 className="font-bold text-base mb-2">Personal Use License</h3>
+                                        <p>
+                                          This toolkit is licensed for personal use by the purchaser only. Sharing, 
+                                          redistribution, resale, or commercial use of any materials is strictly prohibited. 
+                                          Each user must purchase their own license.
+                                        </p>
+                                      </div>
+
+                                      <div>
+                                        <h3 className="font-bold text-base mb-2">No Guaranteed Results</h3>
+                                        <p>
+                                          While our toolkit is designed to help organize end-of-life planning, we make no 
+                                          guarantees about specific outcomes or results. Individual circumstances vary, 
+                                          and users are responsible for adapting materials to their specific needs and 
+                                          local requirements.
+                                        </p>
+                                      </div>
+
+                                      <div>
+                                        <h3 className="font-bold text-base mb-2">Data Security Responsibility</h3>
+                                        <p>
+                                          Users are responsible for securely storing and protecting any sensitive information 
+                                          entered into the toolkit materials. We recommend using secure, encrypted storage 
+                                          and following best practices for digital security when handling personal and 
+                                          financial information.
+                                        </p>
+                                      </div>
+
+                                      <div>
+                                        <h3 className="font-bold text-base mb-2">Privacy & Payment Security</h3>
+                                        <p>
+                                          We use industry-standard security measures to protect your payment information. 
+                                          Payment processing is handled by Stripe, a PCI-compliant payment processor. 
+                                          We do not store credit card information on our servers. Your personal information 
+                                          is used solely for order fulfillment and customer service and is never shared 
+                                          with third parties for marketing purposes.
+                                        </p>
+                                      </div>
+
+                                      <div className="border-t pt-4 text-center">
+                                        <p className="text-muted-foreground">
+                                          By purchasing and using this toolkit, you acknowledge that you have read, 
+                                          understood, and agree to be bound by these terms and conditions.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </DialogContent>
+                                </Dialog>
+                              </div>
+                              <FormMessage />
+                            </div>
+                          </FormItem>
+                        )}
+                      />
                     </div>
 
                     {/* Submit Button */}
