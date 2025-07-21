@@ -76,30 +76,27 @@ const PaymentSuccess = () => {
 
         {/* Order Summary */}
         <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="text-center">Order Summary</CardTitle>
-            <div className="flex flex-wrap justify-center gap-2">
-              <Badge variant="outline" className="text-xs">
-                Session: {sessionId || "Processing..."}
-              </Badge>
-              {purchaseDate && (
-                <Badge variant="outline" className="text-xs">
-                  Date: {purchaseDate}
-                </Badge>
-              )}
+          <CardHeader className="flex-row items-center justify-between space-y-0 pb-4">
+            <CardTitle className="text-lg">Order Summary</CardTitle>
+            <div className="text-sm text-muted-foreground">
+              Session: {sessionId || "Processing..."}
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                <FileText className="h-8 w-8 text-primary" />
+            <div className="flex items-center gap-6">
+              <div className="flex-shrink-0">
+                <img 
+                  src="/lovable-uploads/9beba965-f166-4271-9e74-f6142db7f4cc.png"
+                  alt="End-of-Life Toolkit"
+                  className="w-20 h-20 object-cover rounded-lg"
+                />
               </div>
-              <div>
-                <h3 className="font-semibold text-lg">End-of-Lyfe Toolkit</h3>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg">End-of-Life Conversation Playbook</h3>
                 <p className="text-muted-foreground text-sm">Complete digital guide + templates</p>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-primary">${orderAmount ? `${orderAmount}.00` : "67.00"}</p>
+              <div className="flex-shrink-0">
+                <p className="text-2xl font-bold text-orange-500">$47.00</p>
               </div>
             </div>
           </CardContent>
