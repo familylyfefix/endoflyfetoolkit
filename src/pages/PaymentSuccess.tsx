@@ -92,7 +92,7 @@ const PaymentSuccess = () => {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-lg">End-of-Lyfe Conversation Playbook</h3>
+                <h3 className="font-semibold text-lg">End-of-Lyfe Toolkit</h3>
                 <p className="text-muted-foreground text-sm">Complete digital guide + templates</p>
               </div>
               <div className="flex-shrink-0">
