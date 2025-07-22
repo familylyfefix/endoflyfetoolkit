@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Check, Clock, Users, FileText, Heart, ArrowLeft, Shield, Lock, Star, CreditCard } from "lucide-react";
+import toolkitImage from "@/assets/toolkit-product.jpg";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -191,8 +192,12 @@ const Checkout = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FileText className="h-8 w-8 text-primary" />
+                  <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                    <img 
+                      src={toolkitImage} 
+                      alt="End-of-Lyfe Toolkit" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-lg">End-of-Lyfe Toolkit</h3>
