@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,9 +28,15 @@ const PaymentSuccess = () => {
       const now = new Date();
       setPurchaseDate(now.toLocaleDateString());
       
-      // For demo purposes, randomly assign amount based on common pricing
-      // In production, you'd verify this with Stripe
-      setOrderAmount(Math.random() > 0.5 ? 67 : 87);
+      // Determine price based on launch date (early bird pricing)
+      // Early bird: $67 for first 7 days, then $87
+      const launchDate = new Date("2025-07-15T00:00:00Z"); // Launch date
+      const currentDate = new Date();
+      const diffTime = currentDate.getTime() - launchDate.getTime();
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      // If within 7 days of launch, early bird price ($67), otherwise regular price ($87)
+      setOrderAmount(diffDays <= 7 ? 67 : 87);
     }
   }, []);
 
@@ -96,7 +103,7 @@ const PaymentSuccess = () => {
                 <p className="text-muted-foreground text-sm">Complete digital guide + templates</p>
               </div>
               <div className="flex-shrink-0">
-                <p className="text-2xl font-bold text-orange-500">$47.00</p>
+                <p className="text-2xl font-bold text-orange-500">${orderAmount ? orderAmount.toFixed(2) : '0.00'}</p>
               </div>
             </div>
           </CardContent>
