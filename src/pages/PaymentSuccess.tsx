@@ -169,7 +169,7 @@ const PaymentSuccess = () => {
                 2
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Use the preparation checklist to get ready</h3>
+                <h3 className="font-semibold text-lg">Gather your important documents</h3>
                 <p className="text-muted-foreground">Start organizing your information using our structured approach</p>
               </div>
             </div>
@@ -179,7 +179,7 @@ const PaymentSuccess = () => {
                 3
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Schedule your first family conversation</h3>
+                <h3 className="font-semibold text-lg">Begin organizing your personal information</h3>
                 <p className="text-muted-foreground">Use our conversation templates to start the important discussions</p>
               </div>
             </div>
