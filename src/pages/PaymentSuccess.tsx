@@ -56,7 +56,7 @@ const PaymentSuccess = () => {
       <header className="py-6 border-b border-border/20">
         <div className="container mx-auto px-4 text-center">
           <img 
-            src="/lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
+            src="./lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
             alt="Family Lyfe Fix Logo"
             className="h-16 mx-auto"
           />
@@ -93,7 +93,7 @@ const PaymentSuccess = () => {
             <div className="flex items-center gap-6">
               <div className="flex-shrink-0">
                 <img 
-                  src="/lovable-uploads/3505be58-1c51-40e9-a585-b632bfdac907.png"
+                  src="./lovable-uploads/3505be58-1c51-40e9-a585-b632bfdac907.png"
                   alt="End-of-Life Toolkit"
                   className="w-20 h-20 object-cover rounded-lg"
                 />
