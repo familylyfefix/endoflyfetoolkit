@@ -15,7 +15,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/end-of-lyfe-toolkit">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/checkout" element={<Checkout />} />
