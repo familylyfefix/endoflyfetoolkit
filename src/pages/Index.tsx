@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { CheckCircle, Clock, Heart, Shield, Users, Star, ChevronDown, Download, Settings, FileText, UsersRound, Target } from "lucide-react";
+import logoImage from "@/assets/logo.png";
 
 const Index = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -81,7 +82,7 @@ const Index = () => {
       <header className="py-6 border-b border-border/20">
         <div className="container mx-auto px-4 text-center">
           <img 
-            src="./lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
+            src={logoImage}
             alt="Family Lyfe Fix Logo"
             className="h-16 mx-auto"
           />

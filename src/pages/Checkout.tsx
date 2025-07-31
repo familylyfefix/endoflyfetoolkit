@@ -14,6 +14,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { createClient } from "@supabase/supabase-js";
 import { useToast } from "@/hooks/use-toast";
+import logoImage from "@/assets/logo.png";
+import toolkitPreviewImage from "@/assets/toolkit-preview.png";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -137,7 +139,7 @@ const Checkout = () => {
       <header className="py-6 border-b border-border/20">
         <div className="container mx-auto px-4 text-center">
           <img 
-            src="./lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
+            src={logoImage}
             alt="Family Lyfe Fix Logo"
             className="h-16 mx-auto"
           />
@@ -193,7 +195,7 @@ const Checkout = () => {
                 <div className="flex gap-4">
                   <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
                      <img 
-                       src="./lovable-uploads/8e1cf599-0190-4240-8a81-2509d0352f51.png"
+                       src={toolkitPreviewImage}
                       alt="End-of-Lyfe Toolkit" 
                       className="w-full h-full object-cover"
                     />
