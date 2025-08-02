@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/end-of-lyfe-toolkit",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
