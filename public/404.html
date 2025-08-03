@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script>
-    // Redirect to main app with the current path preserved
-    const currentPath = window.location.pathname;
-    const newUrl = window.location.origin + '/' + (currentPath === '/end-of-lyfe-toolkit' ? '#/end-of-lyfe-toolkit' : '');
-    window.location.replace(newUrl);
+    // Simple redirect to root for HashRouter to handle
+    window.location.replace(window.location.origin + '/');
   </script>
 </head>
 <body>

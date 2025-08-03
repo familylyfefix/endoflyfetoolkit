@@ -19,13 +19,6 @@
 
   <body>
     <div id="root"></div>
-    <script>
-      // Handle direct access to /end-of-lyfe-toolkit before React loads
-      if (window.location.pathname === '/end-of-lyfe-toolkit') {
-        // Store the intended route for React Router to handle
-        sessionStorage.setItem('initialRoute', '/end-of-lyfe-toolkit');
-      }
-    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
