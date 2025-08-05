@@ -42,7 +42,7 @@ const FamilyLyfeFix = () => {
           <Card className="overflow-hidden">
             <CardContent className="p-0">
               <img 
-                src="/lovable-uploads/820d0aa7-429e-407e-8453-4ba0be3cb2be.png"
+                src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png"
                 alt="Family Lyfe Fix - Plan for Tomorrow Live Today"
                 className="w-full h-[400px] object-cover"
               />
