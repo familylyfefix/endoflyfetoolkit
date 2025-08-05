@@ -167,7 +167,7 @@ const FamilyLyfeFix = () => {
                       Organize all important family contacts in one place
                     </p>
                     <Button variant="outline" className="w-full" asChild>
-                      <a href="#" target="_blank" rel="noopener noreferrer">
+                      <a href="https://familylyfefix.store/guide" target="_blank" rel="noopener noreferrer">
                         Download Free
                       </a>
                     </Button>
