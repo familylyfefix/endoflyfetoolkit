@@ -74,7 +74,7 @@ const FamilyLyfeFix = () => {
             {/* Quiz Tab */}
             <TabsContent value="quiz" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 break-words">Ready For The Talk?</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 break-words">What If Your Family Had to Make Medical Decisions for You Tomorrow?</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
                   Discover how prepared your family is and get personalized recommendations
                 </p>
