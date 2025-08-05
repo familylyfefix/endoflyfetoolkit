@@ -14,7 +14,7 @@ const FamilyLyfeFix = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/820d0aa7-429e-407e-8453-4ba0be3cb2be.png"
+              src="/lovable-uploads/9cb42045-e209-4551-b4e3-f954ef3737cc.png"
               alt="Family Lyfe Fix - Plan for Tomorrow Live Today" 
               className="h-16 w-auto"
             />
