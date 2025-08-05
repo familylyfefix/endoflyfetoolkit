@@ -356,8 +356,10 @@ const FamilyLyfeFix = () => {
               </Card>
 
               <div className="text-center">
-                <Button size="lg" className="px-8">
-                  Access the Toolkit
+                <Button size="lg" className="px-8" asChild>
+                  <a href="https://familylyfefix.com/toolkit" target="_blank" rel="noopener noreferrer">
+                    Access the Toolkit
+                  </a>
                 </Button>
               </div>
             </TabsContent>
