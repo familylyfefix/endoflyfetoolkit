@@ -138,26 +138,7 @@ const FamilyLyfeFix = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Download className="h-5 w-5 text-primary" />
-                      Ready for the Talk?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      End-Of-Life Planning Quiz
-                    </p>
-                    <Button variant="outline" className="w-full" asChild>
-                      <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                        Let's Begin!
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-
+              <div className="grid md:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
