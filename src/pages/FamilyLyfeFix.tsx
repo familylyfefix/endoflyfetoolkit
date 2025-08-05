@@ -150,7 +150,7 @@ const FamilyLyfeFix = () => {
                     </p>
                     <Button variant="outline" className="w-full" asChild>
                       <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                        Download Free
+                        Let's Begin!
                       </a>
                     </Button>
                   </CardContent>
