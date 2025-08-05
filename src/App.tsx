@@ -22,9 +22,8 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<FamilyLyfeFix />} />
             <Route path="/toolkit" element={<Index />} />
-            <Route path="/familylyfefix" element={<FamilyLyfeFix />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="*" element={<NotFound />} />
