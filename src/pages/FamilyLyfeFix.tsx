@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -147,7 +146,7 @@ const FamilyLyfeFix = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Essential items and information every family should have ready
+                      End-Of-Life Planning Quiz
                     </p>
                     <Button variant="outline" className="w-full">
                       Download Free
