@@ -148,8 +148,10 @@ const FamilyLyfeFix = () => {
                     <p className="text-sm text-muted-foreground mb-4">
                       End-Of-Life Planning Quiz
                     </p>
-                    <Button variant="outline" className="w-full">
-                      Download Free
+                    <Button variant="outline" className="w-full" asChild>
+                      <a href="https://familylyfefix.store/quiz" target="_blank" rel="noopener noreferrer">
+                        Download Free
+                      </a>
                     </Button>
                   </CardContent>
                 </Card>
