@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { CheckCircle, Clock, Heart, Shield, Users, Star, ChevronDown, Download, Settings, FileText, UsersRound, Target } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -62,7 +64,7 @@ const Index = () => {
   }, []);
 
   const handleCTA = () => {
-    window.open('https://buy.loveable.so/familylyfefix/toolkit', '_blank');
+    navigate('/checkout');
   };
 
   const faqs = [
