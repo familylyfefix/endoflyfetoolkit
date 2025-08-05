@@ -203,14 +203,12 @@ const FamilyLyfeFix = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex gap-4">
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email" 
-                      className="flex-1 px-3 py-2 border rounded-md"
-                    />
-                    <Button>Subscribe</Button>
-                  </div>
+                  <input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    className="flex-1 px-3 py-2 border rounded-md"
+                  />
+                  <Button>Subscribe</Button>
                 </CardContent>
               </Card>
             </TabsContent>
