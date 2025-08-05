@@ -37,13 +37,13 @@ const FamilyLyfeFix = () => {
           </p>
         </div>
 
-        {/* Family Image */}
+        {/* Family Lyfe Fix Logo */}
         <div className="max-w-4xl mx-auto mb-12">
           <Card className="overflow-hidden">
             <CardContent className="p-0">
               <img 
-                src="/lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
-                alt="Happy family together"
+                src="/lovable-uploads/820d0aa7-429e-407e-8453-4ba0be3cb2be.png"
+                alt="Family Lyfe Fix - Plan for Tomorrow Live Today"
                 className="w-full h-[400px] object-cover"
               />
             </CardContent>
