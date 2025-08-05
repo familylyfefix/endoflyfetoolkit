@@ -275,6 +275,23 @@ const Index = () => {
             </h2>
           </div>
           
+          {/* Loom Video */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <Card className="overflow-hidden">
+              <CardContent className="p-6">
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src="https://www.loom.com/embed/7e46af5cc4334876b5c78f417a67bc38?sid=d6309edc-f4c0-449f-8ac4-89f6481554cd"
+                    frameBorder="0"
+                    allowFullScreen
+                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                    title="Family Stories - Loom Video"
+                  ></iframe>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
           <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card>
               <CardContent className="p-6">
