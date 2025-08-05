@@ -195,22 +195,6 @@ const FamilyLyfeFix = () => {
                 </Card>
               </div>
 
-              <Card className="max-w-2xl mx-auto">
-                <CardHeader>
-                  <CardTitle>Join Our Community</CardTitle>
-                  <CardDescription>
-                    Get exclusive access to family organization tips and resources
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="flex-1 px-3 py-2 border rounded-md"
-                  />
-                  <Button>Subscribe</Button>
-                </CardContent>
-              </Card>
             </TabsContent>
 
             {/* Playbook Tab */}
