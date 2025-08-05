@@ -166,8 +166,10 @@ const FamilyLyfeFix = () => {
                     <p className="text-sm text-muted-foreground mb-4">
                       Organize all important family contacts in one place
                     </p>
-                    <Button variant="outline" className="w-full">
-                      Download Free
+                    <Button variant="outline" className="w-full" asChild>
+                      <a href="#" target="_blank" rel="noopener noreferrer">
+                        Download Free
+                      </a>
                     </Button>
                   </CardContent>
                 </Card>
