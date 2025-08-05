@@ -183,8 +183,10 @@ const FamilyLyfeFix = () => {
                     <p className="text-sm text-muted-foreground mb-4">
                       Weekly tips and strategies for family organization
                     </p>
-                    <Button variant="outline" className="w-full">
-                      Subscribe Free
+                    <Button variant="outline" className="w-full" asChild>
+                      <a href="https://familylifefix.substack.com/" target="_blank" rel="noopener noreferrer">
+                        Subscribe Free
+                      </a>
                     </Button>
                   </CardContent>
                 </Card>
