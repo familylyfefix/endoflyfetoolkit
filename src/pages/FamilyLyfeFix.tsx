@@ -272,8 +272,10 @@ const FamilyLyfeFix = () => {
               </Card>
 
               <div className="text-center">
-                <Button size="lg" className="px-8">
-                  Get the Complete Playbook
+                <Button size="lg" className="px-8" asChild>
+                  <a href="https://familylyfefix.store/playbook" target="_blank" rel="noopener noreferrer">
+                    Get the Complete Playbook
+                  </a>
                 </Button>
               </div>
             </TabsContent>
