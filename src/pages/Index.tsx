@@ -15,6 +15,11 @@ const Index = () => {
   const [isExpired, setIsExpired] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  // Debug: Log when Index component loads
+  useEffect(() => {
+    console.log('Index component loaded - current URL:', window.location.pathname);
+  }, []);
+
   useEffect(() => {
     // Get or set the countdown start time for this visitor
     const getCountdownStartTime = () => {
