@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -141,7 +142,7 @@ const FamilyLyfeFix = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Download className="h-5 w-5 text-primary" />
-                      Emergency Checklist
+                      Ready for the Talk?
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
