@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -164,7 +163,7 @@ const FamilyLyfeFix = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Organize all important family contacts in one place
+                      A guide to help families have important conversations about end-of-life wishes and planning
                     </p>
                     <Button variant="outline" className="w-full" asChild>
                       <a href="https://familylyfefix.store/guide" target="_blank" rel="noopener noreferrer">
