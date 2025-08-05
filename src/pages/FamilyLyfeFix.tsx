@@ -182,7 +182,7 @@ const FamilyLyfeFix = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Weekly tips and strategies for family organization
+                      Weekly tips and strategies for end of life planning
                     </p>
                     <Button variant="outline" className="w-full" asChild>
                       <a href="https://familylifefix.substack.com/" target="_blank" rel="noopener noreferrer">
