@@ -1,9 +1,4 @@
 [[redirects]]
-  from = "/end-of-lyfe-toolkit"
-  to = "/toolkit"
-  status = 301
-
-[[redirects]]
   from = "/toolkit"
   to = "/index.html"
   status = 200

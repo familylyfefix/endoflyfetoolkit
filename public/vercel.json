@@ -1,11 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/end-of-lyfe-toolkit",
-      "destination": "/toolkit",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/toolkit",
