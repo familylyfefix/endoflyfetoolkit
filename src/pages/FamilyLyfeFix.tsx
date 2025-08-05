@@ -149,7 +149,7 @@ const FamilyLyfeFix = () => {
                       End-Of-Life Planning Quiz
                     </p>
                     <Button variant="outline" className="w-full" asChild>
-                      <a href="https://familylyfefix.store/quiz" target="_blank" rel="noopener noreferrer">
+                      <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
                         Download Free
                       </a>
                     </Button>
