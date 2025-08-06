@@ -36,7 +36,7 @@ const FamilyLyfeFix = () => {
             Don't Leave Your Family Guessing. Leave Them Guided.
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            The complete system to organize, protect, and empower your family for any situation
+            When life takes unexpected turns, your family needs a plan — not panic. Family Lyfe Fix ensures everyone knows exactly what to do.
           </p>
         </div>
 
