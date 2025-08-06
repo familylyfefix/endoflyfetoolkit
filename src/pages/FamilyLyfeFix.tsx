@@ -370,6 +370,15 @@ const FamilyLyfeFix = () => {
           </Tabs>
         </div>
       </section>
+      
+      {/* Footer */}
+      <footer className="border-t border-border bg-background/50">
+        <div className="container mx-auto px-4 py-6 text-center">
+          <p className="text-sm text-muted-foreground">
+            © 2025 Family Lyfe Fix, LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
