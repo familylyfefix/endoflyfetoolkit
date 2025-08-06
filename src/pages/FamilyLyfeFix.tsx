@@ -1,9 +1,11 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Heart, Shield, Target, CheckCircle, Star, Download, Book, Wrench } from "lucide-react";
+import ContactDialog from "@/components/ContactDialog";
 
 const FamilyLyfeFix = () => {
   return (
@@ -18,7 +20,9 @@ const FamilyLyfeFix = () => {
               className="h-16 w-auto"
             />
           </div>
-          <Button variant="outline">Contact</Button>
+          <ContactDialog>
+            <Button variant="outline">Contact</Button>
+          </ContactDialog>
         </div>
       </header>
 
