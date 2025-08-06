@@ -53,6 +53,13 @@ const FamilyLyfeFix = () => {
           </Card>
         </div>
 
+        {/* About Section */}
+        <div className="max-w-4xl mx-auto mb-12 text-center">
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Every family crisis starts the same way: no one knows what to do. The arguments begin. The guessing starts. The stress multiplies. Family Lyfe Fix was born from this simple truth — one honest conversation today saves your family from chaos tomorrow.
+          </p>
+        </div>
+
         {/* Tabs Section */}
         <div className="max-w-6xl mx-auto">
           <Tabs defaultValue="quiz" className="w-full">
