@@ -63,21 +63,33 @@ const FamilyLyfeFix = () => {
         {/* Tabs Section */}
         <div className="max-w-6xl mx-auto">
           <Tabs defaultValue="quiz" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="quiz" className="flex items-center gap-2">
-                <Target className="h-4 w-4" />
+            <TabsList className="grid w-full grid-cols-4 mb-8 h-14 bg-secondary/50 border-2 border-border/50 rounded-xl p-2 shadow-lg">
+              <TabsTrigger 
+                value="quiz" 
+                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
+              >
+                <Target className="h-5 w-5" />
                 Quiz
               </TabsTrigger>
-              <TabsTrigger value="free" className="flex items-center gap-2">
-                <Download className="h-4 w-4" />
+              <TabsTrigger 
+                value="free" 
+                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
+              >
+                <Download className="h-5 w-5" />
                 FREE
               </TabsTrigger>
-              <TabsTrigger value="playbook" className="flex items-center gap-2">
-                <Book className="h-4 w-4" />
+              <TabsTrigger 
+                value="playbook" 
+                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
+              >
+                <Book className="h-5 w-5" />
                 Playbook
               </TabsTrigger>
-              <TabsTrigger value="toolkit" className="flex items-center gap-2">
-                <Wrench className="h-4 w-4" />
+              <TabsTrigger 
+                value="toolkit" 
+                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
+              >
+                <Wrench className="h-5 w-5" />
                 Toolkit
               </TabsTrigger>
             </TabsList>
