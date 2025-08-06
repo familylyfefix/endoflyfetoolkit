@@ -33,7 +33,7 @@ const FamilyLyfeFix = () => {
             Family Organization System
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Transform Your Family's Future
+            Family Lyfe, Simplified
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             The complete system to organize, protect, and empower your family for any situation
