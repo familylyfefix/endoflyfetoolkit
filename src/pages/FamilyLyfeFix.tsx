@@ -206,7 +206,7 @@ const FamilyLyfeFix = () => {
             {/* Playbook Tab */}
             <TabsContent value="playbook" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">Complete Family Playbook</h2>
+                <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Conversation Playbooktat</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
                   The comprehensive system to organize and protect your family's future
                 </p>
