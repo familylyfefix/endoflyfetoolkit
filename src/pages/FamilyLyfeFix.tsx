@@ -310,7 +310,7 @@ const FamilyLyfeFix = () => {
             {/* Toolkit Tab */}
             <TabsContent value="toolkit" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">Family Organization Toolkit</h2>
+                <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Toolkit</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
                   Everything you need to implement and maintain your family organization system
                 </p>
