@@ -24,7 +24,7 @@ const FamilyLyfeFix = () => {
       <section className="container mx-auto px-4 py-12">
         <div className="text-center mb-8">
           <Badge variant="secondary" className="mb-4">
-            Family Organization System
+            Plan for Tomorrow, Live Today
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             Don't Leave Your Family Guessing. Leave Them Guided.
