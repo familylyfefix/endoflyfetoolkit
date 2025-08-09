@@ -265,29 +265,33 @@ const FamilyLyfeFix = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Complete organization templates</span>
+                        <span className="text-sm">Preparation checklists</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Emergency planning guides</span>
+                        <span className="text-sm">Script library</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Document management system</span>
+                        <span className="text-sm">Topic cards</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Family meeting templates</span>
                       </div>
                     </div>
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Contact organization tools</span>
+                        <span className="text-sm">Follow-up tracker</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Financial planning worksheets</span>
+                        <span className="text-sm">Document organization & conversation summaries</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Lifetime updates and support</span>
+                        <span className="text-sm">Lifetime access + updates</span>
                       </div>
                     </div>
                   </div>
