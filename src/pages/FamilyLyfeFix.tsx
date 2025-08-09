@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Heart, Shield, Target, CheckCircle, Star, Download, Book, Wrench } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
+
 const FamilyLyfeFix = () => {
   return <div className="min-h-screen bg-gradient-to-br from-background to-muted">
       {/* Header */}
@@ -185,7 +186,7 @@ const FamilyLyfeFix = () => {
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Conversation Playbook</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  The comprehensive system to organize and protect your family's future
+                  Finally—know how to start "the talk" and actually follow through. This Notion-based playbook gives you the tools to confidently guide your family through conversations most people avoid — from healthcare wishes to digital accounts and final arrangements. No confusion. No guesswork. No chaos when it matters most.
                 </p>
               </div>
 
@@ -377,4 +378,5 @@ const FamilyLyfeFix = () => {
       </footer>
     </div>;
 };
+
 export default FamilyLyfeFix;
