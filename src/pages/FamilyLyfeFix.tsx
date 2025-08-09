@@ -343,29 +343,37 @@ const FamilyLyfeFix = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Centralized Notion dashboard</span>
+                        <span className="text-sm">Centralized family dashboard (Notion)</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Secure info vault templates</span>
+                        <span className="text-sm">Emergency plan + grab-and-go binder</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Emergency action plan & binder</span>
+                        <span className="text-sm">Roles, contacts, and responsibilities hub</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Medical, insurance, and care details</span>
                       </div>
                     </div>
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Shared roles & contact hub</span>
+                        <span className="text-sm">Legal documents checklist & tracker</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Accounts, passwords, and assets tracker</span>
+                        <span className="text-sm">Accounts, bills, and subscriptions organizer</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Lifetime updates</span>
+                        <span className="text-sm">Passwords and digital assets inventory</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Maintenance checklist with update reminders</span>
                       </div>
                     </div>
                   </div>
