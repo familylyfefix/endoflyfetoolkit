@@ -217,12 +217,12 @@ const FamilyLyfeFix = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 1: Assessment
+                      Step 1: Prepare
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Evaluate your current family organization and identify gaps
+                      Clarify your values, gather key documents, and get emotionally ready to start the conversation.
                     </p>
                   </CardContent>
                 </Card>
@@ -231,12 +231,12 @@ const FamilyLyfeFix = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 2: Organization
+                      Step 2: Talk It Out
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Implement systems for documents, contacts, and important information
+                      Use proven scripts and prompts to lead calm, clear conversations about your wishes — no more avoiding or guessing.
                     </p>
                   </CardContent>
                 </Card>
@@ -245,12 +245,12 @@ const FamilyLyfeFix = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 3: Protection
+                      Step 3: Follow Through
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Secure your family's information and create backup plans
+                      Track every decision, assign tasks, and make sure your family knows what’s been said and what’s still needed.
                     </p>
                   </CardContent>
                 </Card>
