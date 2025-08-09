@@ -290,67 +290,83 @@ const FamilyLyfeFix = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Notion Templates</CardTitle>
-                    <CardDescription>
-                      Pre-built templates for complete family organization
-                    </CardDescription>
+                    <CardTitle className="flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                      Step 1: Setup
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <p className="text-sm">• Emergency contact database</p>
-                      <p className="text-sm">• Document tracker and storage</p>
-                      <p className="text-sm">• Financial planning worksheets</p>
-                      <p className="text-sm">• Family calendar and task management</p>
-                      <p className="text-sm">• Password and account organizer</p>
-                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Install the toolkit and connect your family to a shared Notion workspace
+                    </p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Implementation Guides</CardTitle>
-                    <CardDescription>
-                      Step-by-step instructions for setting up your system
-                    </CardDescription>
+                    <CardTitle className="flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                      Step 2: Organize
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <p className="text-sm">• Quick start setup guide</p>
-                      <p className="text-sm">• Customization instructions</p>
-                      <p className="text-sm">• Maintenance and update procedures</p>
-                      <p className="text-sm">• Family training materials</p>
-                      <p className="text-sm">• Troubleshooting support</p>
-                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Populate templates for contacts, documents, accounts, and responsibilities
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                      Step 3: Protect
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">
+                      Lock down sensitive info and create emergency-ready backups
+                    </p>
                   </CardContent>
                 </Card>
               </div>
 
               <Card className="max-w-4xl mx-auto">
                 <CardHeader>
-                  <CardTitle>Technical Requirements</CardTitle>
+                  <CardTitle className="text-center">What's Included</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div className="text-center">
-                      <h4 className="font-semibold mb-2">Notion Account</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Free or paid Notion account required
-                      </p>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Centralized Notion dashboard</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Secure info vault templates</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Emergency action plan & binder</span>
+                      </div>
                     </div>
-                    <div className="text-center">
-                      <h4 className="font-semibold mb-2">Any Device</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Works on phone, tablet, or computer
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <h4 className="font-semibold mb-2">Internet Access</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Sync across all your devices
-                      </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Shared roles & contact hub</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Accounts, passwords, and assets tracker</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-primary" />
+                        <span className="text-sm">Lifetime updates</span>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
