@@ -286,7 +286,7 @@ const FamilyLyfeFix = () => {
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Toolkit</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Everything you need to implement and maintain your family organization system
+                  The Notion-based system that stores, protects, and keeps your family’s most important information ready for anything.  Built for modern families who want one place to manage chaos, this toolkit gives you the templates, training, and tools to keep everything organized — even when life gets unpredictable.
                 </p>
               </div>
 
