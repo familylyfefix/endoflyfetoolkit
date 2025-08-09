@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,19 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Heart, Shield, Target, CheckCircle, Star, Download, Book, Wrench } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
-
 const FamilyLyfeFix = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+  return <div className="min-h-screen bg-gradient-to-br from-background to-muted">
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/9cb42045-e209-4551-b4e3-f954ef3737cc.png"
-              alt="Family Lyfe Fix - Plan for Tomorrow Live Today" 
-              className="h-16 w-auto"
-            />
+            <img src="/lovable-uploads/9cb42045-e209-4551-b4e3-f954ef3737cc.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="h-16 w-auto" />
           </div>
           <ContactDialog>
             <Button variant="outline">Contact</Button>
@@ -44,11 +37,7 @@ const FamilyLyfeFix = () => {
         <div className="max-w-4xl mx-auto mb-12">
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <img 
-                src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png"
-                alt="Family Lyfe Fix - Plan for Tomorrow Live Today"
-                className="w-full h-[400px] object-cover"
-              />
+              <img src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="w-full h-[400px] object-cover" />
             </CardContent>
           </Card>
         </div>
@@ -64,31 +53,19 @@ const FamilyLyfeFix = () => {
         <div className="max-w-6xl mx-auto">
           <Tabs defaultValue="quiz" className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8 h-14 bg-secondary/50 border-2 border-border/50 rounded-xl p-2 shadow-lg">
-              <TabsTrigger 
-                value="quiz" 
-                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
-              >
+              <TabsTrigger value="quiz" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
                 <Target className="h-5 w-5" />
                 Quiz
               </TabsTrigger>
-              <TabsTrigger 
-                value="free" 
-                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
-              >
+              <TabsTrigger value="free" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
                 <Download className="h-5 w-5" />
                 FREE
               </TabsTrigger>
-              <TabsTrigger 
-                value="playbook" 
-                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
-              >
+              <TabsTrigger value="playbook" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
                 <Book className="h-5 w-5" />
                 Playbook
               </TabsTrigger>
-              <TabsTrigger 
-                value="toolkit" 
-                className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20"
-              >
+              <TabsTrigger value="toolkit" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
                 <Wrench className="h-5 w-5" />
                 Toolkit
               </TabsTrigger>
@@ -206,7 +183,7 @@ const FamilyLyfeFix = () => {
             {/* Playbook Tab */}
             <TabsContent value="playbook" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Conversation Playbooktat</h2>
+                <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Conversation Playbook</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
                   The comprehensive system to organize and protect your family's future
                 </p>
@@ -217,12 +194,12 @@ const FamilyLyfeFix = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 1: Prepare
+                      Step 1: Assessment
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Clarify your values, gather key documents, and get emotionally ready to start the conversation.
+                      Evaluate your current family organization and identify gaps
                     </p>
                   </CardContent>
                 </Card>
@@ -231,12 +208,12 @@ const FamilyLyfeFix = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 2: Talk It Out
+                      Step 2: Organization
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Use proven scripts and prompts to lead calm, clear conversations about your wishes — no more avoiding or guessing.
+                      Implement systems for documents, contacts, and important information
                     </p>
                   </CardContent>
                 </Card>
@@ -245,12 +222,12 @@ const FamilyLyfeFix = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 3: Follow Through
+                      Step 3: Protection
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Track every decision, assign tasks, and make sure your family knows what’s been said and what’s still needed.
+                      Secure your family's information and create backup plans
                     </p>
                   </CardContent>
                 </Card>
@@ -265,33 +242,29 @@ const FamilyLyfeFix = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Preparation checklists</span>
+                        <span className="text-sm">Complete organization templates</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Script library</span>
+                        <span className="text-sm">Emergency planning guides</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Topic cards</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Family meeting templates</span>
+                        <span className="text-sm">Document management system</span>
                       </div>
                     </div>
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Follow-up tracker</span>
+                        <span className="text-sm">Contact organization tools</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Document organization & conversation summaries</span>
+                        <span className="text-sm">Financial planning worksheets</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Lifetime access + updates</span>
+                        <span className="text-sm">Lifetime updates and support</span>
                       </div>
                     </div>
                   </div>
@@ -310,7 +283,7 @@ const FamilyLyfeFix = () => {
             {/* Toolkit Tab */}
             <TabsContent value="toolkit" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Toolkit</h2>
+                <h2 className="text-3xl font-bold mb-4">Family Organization Toolkit</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
                   Everything you need to implement and maintain your family organization system
                 </p>
@@ -402,8 +375,6 @@ const FamilyLyfeFix = () => {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default FamilyLyfeFix;
