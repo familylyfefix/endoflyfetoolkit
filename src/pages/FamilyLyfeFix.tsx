@@ -161,7 +161,7 @@ const FamilyLyfeFix = () => {
               <div className="text-center">
                 <Button size="lg" className="px-8" asChild>
                   <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                    Take the Assessment
+                    Let's Begin!
                   </a>
                 </Button>
               </div>
