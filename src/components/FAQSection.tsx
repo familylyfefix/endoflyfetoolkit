@@ -1,5 +1,5 @@
+
 import React, { useEffect } from "react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
   {
@@ -58,15 +58,16 @@ const FAQSection: React.FC = () => {
         <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-3">Frequently Asked Questions</h2>
         <p className="text-muted-foreground">Quick answers to common questions about getting your family set up for certainty.</p>
       </div>
+
       <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="w-full">
+        <dl className="space-y-6">
           {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`item-${i}`}>
-              <AccordionTrigger>{f.q}</AccordionTrigger>
-              <AccordionContent>{f.a}</AccordionContent>
-            </AccordionItem>
+            <div key={i} className="rounded-lg border border-border bg-card p-4">
+              <dt className="font-medium text-foreground">{f.q}</dt>
+              <dd className="mt-2 text-muted-foreground">{f.a}</dd>
+            </div>
           ))}
-        </Accordion>
+        </dl>
       </div>
     </section>
   );
