@@ -53,7 +53,7 @@ const FamilyLyfeFix = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button size="lg" asChild>
-              <a href="#playbook">Get the Playbook</a>
+              <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
             </Button>
             <Button size="lg" variant="secondary" asChild>
               <a href="/checkout">Get the Toolkit</a>
@@ -323,7 +323,7 @@ const FamilyLyfeFix = () => {
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Toolkit</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  The Notion-based system that stores, protects, and keeps your family’s most important information ready for anything.  Built for modern families who want one place to manage chaos, this toolkit gives you the templates, training, and tools to keep everything organized — even when life gets unpredictable.
+                  The Notion-based system that stores, protects, and keeps your family's most important information ready for anything.  Built for modern families who want one place to manage chaos, this toolkit gives you the templates, training, and tools to keep everything organized — even when life gets unpredictable.
                 </p>
               </div>
 
