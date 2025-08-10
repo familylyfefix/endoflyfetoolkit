@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -16,7 +17,7 @@ const SocialProof: React.FC = () => {
             <Card>
               <CardContent className="pt-6">
                 <p className="text-sm mb-3">“It’s like we finally got our family operations out of our heads and into one calm place. Worth it for the peace of mind alone.”</p>
-                <p className="text-sm text-muted-foreground">— Morgan L., parent of 3</p>
+                <p className="text-sm text-muted-foreground">— Morgan L.</p>
               </CardContent>
             </Card>
           </div>
