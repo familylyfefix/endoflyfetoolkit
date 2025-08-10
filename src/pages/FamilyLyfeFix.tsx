@@ -5,14 +5,19 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Heart, Shield, Target, CheckCircle, Star, Download, Book, Wrench } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
+import StickyCTA from "@/components/StickyCTA";
+import CountdownBanner from "@/components/CountdownBanner";
+import FAQSection from "@/components/FAQSection";
+import SocialProof from "@/components/SocialProof";
 
 const FamilyLyfeFix = () => {
   return <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+      <CountdownBanner />
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img src="/lovable-uploads/9cb42045-e209-4551-b4e3-f954ef3737cc.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="h-16 w-auto" />
+            <img src="/lovable-uploads/9cb42045-e209-4551-b4e3-f954ef3737cc.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="h-16 w-auto" loading="lazy" />
           </div>
           <ContactDialog>
             <Button variant="outline">Contact</Button>
@@ -26,7 +31,7 @@ const FamilyLyfeFix = () => {
           <Badge variant="secondary" className="mb-4">
             Plan for Tomorrow, Live Today
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h1 className="font-playfair text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent animate-fade-in">
             Don't Leave Your Family Guessing. Leave Them Guided.
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
@@ -38,17 +43,29 @@ const FamilyLyfeFix = () => {
         <div className="max-w-4xl mx-auto mb-12">
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <img src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="w-full h-[400px] object-cover" />
+              <img src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="w-full h-[400px] object-cover" loading="lazy" />
             </CardContent>
           </Card>
         </div>
 
         {/* About Section */}
-        <div className="max-w-4xl mx-auto mb-12 text-center">
+        <div className="max-w-4xl mx-auto mb-8 text-center">
           <p className="text-lg text-muted-foreground leading-relaxed">
             Every family crisis starts the same way: no one knows what to do. The arguments begin. The guessing starts. The stress multiplies. Family Lyfe Fix was born from this simple truth — one honest conversation today saves your family from chaos tomorrow.
           </p>
         </div>
+        {/* Guarantee Strip */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="rounded-xl border bg-card text-card-foreground shadow-sm px-4 py-3 flex flex-col md:flex-row items-center justify-center gap-3 text-sm">
+            <span>30-day money-back guarantee</span>
+            <span className="hidden md:inline text-muted-foreground">•</span>
+            <span>Secure checkout</span>
+            <span className="hidden md:inline text-muted-foreground">•</span>
+            <span>Lifetime access</span>
+          </div>
+        </div>
+        {/* Social Proof */}
+        <SocialProof />
 
         {/* Tabs Section */}
         <div className="max-w-6xl mx-auto">
@@ -391,7 +408,10 @@ const FamilyLyfeFix = () => {
           </Tabs>
         </div>
       </section>
-      
+
+      <FAQSection />
+      <StickyCTA />
+
       {/* Footer */}
       <footer className="border-t border-border bg-background/50">
         <div className="container mx-auto px-4 py-6 text-center">
