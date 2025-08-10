@@ -10,7 +10,7 @@ const SocialProof: React.FC = () => {
             <Card>
               <CardContent className="pt-6">
                 <p className="text-sm mb-3">“We had a health scare in our family and realized no one knew where anything was. This made the hardest week of our lives shockingly manageable.”</p>
-                <p className="text-sm text-muted-foreground">— Taylor R., caregiver</p>
+                <p className="text-sm text-muted-foreground">— Taylor R.</p>
               </CardContent>
             </Card>
             <Card>
