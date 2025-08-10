@@ -1,25 +1,12 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Card, CardContent } from "@/components/ui/card";
 
 const SocialProof: React.FC = () => {
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="max-w-5xl mx-auto">
         <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-6">Families who’ve used this system</h2>
-        <div className="grid md:grid-cols-2 gap-6 items-start">
-          <Card className="overflow-hidden">
-            <CardHeader>
-              <CardTitle>How the Toolkit Works</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <AspectRatio ratio={16 / 9}>
-                {/* Replace with your Loom embed when available */}
-              </AspectRatio>
-            </CardContent>
-          </Card>
-
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
             <Card>
               <CardContent className="pt-6">
                 <p className="text-sm mb-3">“We had a health scare in our family and realized no one knew where anything was. This made the hardest week of our lives shockingly manageable.”</p>
@@ -33,7 +20,6 @@ const SocialProof: React.FC = () => {
               </CardContent>
             </Card>
           </div>
-        </div>
       </div>
     </section>
   );
