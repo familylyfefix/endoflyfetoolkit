@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 
@@ -18,7 +19,7 @@ const StickyCTA: React.FC = () => {
               <a href="/checkout">Get the Toolkit</a>
             </Button>
             <Button size="sm" variant="outline" asChild>
-              <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">Take the Assessment</a>
+              <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">Take the Quiz</a>
             </Button>
           </div>
         </div>
