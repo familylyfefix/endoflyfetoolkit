@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -65,7 +64,7 @@ useEffect(() => {
             <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
           </Button>
           <Button size="sm" asChild>
-            <a href="/checkout">Get the Toolkit</a>
+            <a href="/toolkit">Get the Toolkit</a>
           </Button>
           <button
             aria-label="Hide countdown"
@@ -84,4 +83,3 @@ useEffect(() => {
 };
 
 export default CountdownBanner;
-
