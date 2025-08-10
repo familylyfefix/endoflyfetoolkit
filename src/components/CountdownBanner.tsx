@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const STORAGE_KEY = "flf-offer-deadline";
@@ -20,34 +20,44 @@ function formatTime(ms: number) {
   return parts.join(" ");
 }
 
-const CountdownBanner: React.FC = () => {
+const CountdownBanner: React.FC<{ deferred?: boolean; start?: boolean }> = ({ deferred = false, start = false }) => {
   const [hidden, setHidden] = useState<boolean>(() => sessionStorage.getItem(HIDE_KEY) === "1");
   const [now, setNow] = useState<number>(() => Date.now());
-
-  const deadline = useMemo(() => {
+  const [deadline, setDeadline] = useState<number | null>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) return parseInt(stored, 10);
+    if (deferred) return null;
     const d = Date.now() + OFFER_DURATION_MS;
     localStorage.setItem(STORAGE_KEY, String(d));
     return d;
-  }, []);
+  });
 
-  useEffect(() => {
-    if (hidden) return;
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, [hidden]);
+useEffect(() => {
+  if (!deadline && start) {
+    const d = Date.now() + OFFER_DURATION_MS;
+    localStorage.setItem(STORAGE_KEY, String(d));
+    setDeadline(d);
+  }
+}, [start, deadline]);
+
+useEffect(() => {
+  if (hidden || !deadline) return;
+  const id = setInterval(() => setNow(Date.now()), 1000);
+  return () => clearInterval(id);
+}, [hidden, deadline]);
 
   if (hidden) return null;
 
-  const timeLeft = Math.max(0, deadline - now);
+  const timeLeft = deadline ? Math.max(0, deadline - now) : 0;
 
   return (
     <div className="w-full bg-accent/20 border-b border-border backdrop-blur supports-[backdrop-filter]:bg-accent/10">
       <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
         <div className="flex items-center gap-2">
-          <span className="font-medium">Limited-time offer:</span>
-          <span className="text-muted-foreground">Ends in {formatTime(timeLeft)}</span>
+          <span className="font-medium">Limited-time offer</span>
+          {deadline ? (
+            <span className="text-muted-foreground">Ends in {formatTime(timeLeft)}</span>
+          ) : null}
         </div>
         <div className="flex items-center gap-2">
           <Button size="sm" variant="secondary" asChild>

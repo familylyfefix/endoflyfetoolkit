@@ -26,7 +26,7 @@ const FamilyLyfeFix = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted">
-      <CountdownBanner />
+      <CountdownBanner deferred start={tab === "playbook" || tab === "toolkit"} />
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
