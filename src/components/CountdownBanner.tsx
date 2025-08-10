@@ -50,6 +50,9 @@ const CountdownBanner: React.FC = () => {
           <span className="text-muted-foreground">Ends in {formatTime(timeLeft)}</span>
         </div>
         <div className="flex items-center gap-2">
+          <Button size="sm" variant="secondary" asChild>
+            <a href="#playbook">Get the Playbook</a>
+          </Button>
           <Button size="sm" asChild>
             <a href="/checkout">Get the Toolkit</a>
           </Button>

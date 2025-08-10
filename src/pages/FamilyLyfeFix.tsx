@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +11,21 @@ import FAQSection from "@/components/FAQSection";
 import SocialProof from "@/components/SocialProof";
 
 const FamilyLyfeFix = () => {
-  return <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+  const [tab, setTab] = useState<string>(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
+    return hash === "playbook" || hash === "toolkit" || hash === "free" || hash === "quiz" ? hash : "quiz";
+  });
+  useEffect(() => {
+    const onHashChange = () => {
+      const h = window.location.hash.replace("#", "");
+      if (h) setTab(h);
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
       <CountdownBanner />
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
@@ -37,6 +51,14 @@ const FamilyLyfeFix = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             When life takes unexpected turns, your family needs a plan — not panic. Family Lyfe Fix ensures everyone knows exactly what to do.
           </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button size="lg" asChild>
+              <a href="#playbook">Get the Playbook</a>
+            </Button>
+            <Button size="lg" variant="secondary" asChild>
+              <a href="/checkout">Get the Toolkit</a>
+            </Button>
+          </div>
         </div>
 
         {/* Family Lyfe Fix Logo */}
@@ -69,7 +91,7 @@ const FamilyLyfeFix = () => {
 
         {/* Tabs Section */}
         <div className="max-w-6xl mx-auto">
-          <Tabs defaultValue="quiz" className="w-full">
+          <Tabs value={tab} onValueChange={setTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8 h-14 bg-secondary/50 border-2 border-border/50 rounded-xl p-2 shadow-lg">
               <TabsTrigger value="quiz" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
                 <Target className="h-5 w-5" />
@@ -199,7 +221,7 @@ const FamilyLyfeFix = () => {
             </TabsContent>
 
             {/* Playbook Tab */}
-            <TabsContent value="playbook" className="space-y-8">
+            <TabsContent value="playbook" id="playbook" className="space-y-8">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Conversation Playbook</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -299,7 +321,7 @@ const FamilyLyfeFix = () => {
             </TabsContent>
 
             {/* Toolkit Tab */}
-            <TabsContent value="toolkit" className="space-y-8">
+            <TabsContent value="toolkit" id="toolkit" className="space-y-8">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Toolkit</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -420,7 +442,8 @@ const FamilyLyfeFix = () => {
           </p>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
 
 export default FamilyLyfeFix;

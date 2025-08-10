@@ -17,7 +17,7 @@ const SocialProof: React.FC = () => {
                 {/* Replace with your Loom embed when available */}
                 <img
                   src="/lovable-uploads/2c84c08c-6540-4f05-b78f-63646402975a.png"
-                  alt="Family Lyfe Fix walkthrough preview"
+                  alt="Playbook and Toolkit walkthrough preview"
                   loading="lazy"
                   className="w-full h-full object-cover rounded-md"
                 />

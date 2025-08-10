@@ -8,9 +8,12 @@ const StickyCTA: React.FC = () => {
         <div className="rounded-xl border border-border bg-card/90 backdrop-blur shadow-lg p-4 flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">Plan for Tomorrow, Live Today</p>
-            <p className="font-medium">Get the End-Of-Lyfe Toolkit and set your family up for certainty.</p>
+            <p className="font-medium">Get the End-Of-Lyfe Playbook or Toolkit—set your family up for certainty.</p>
           </div>
           <div className="flex items-center gap-2">
+            <Button size="sm" variant="secondary" asChild>
+              <a href="#playbook">Get the Playbook</a>
+            </Button>
             <Button size="sm" asChild>
               <a href="/checkout">Get the Toolkit</a>
             </Button>
