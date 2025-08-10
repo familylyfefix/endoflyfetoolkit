@@ -79,8 +79,6 @@ const FamilyLyfeFix = () => {
         {/* Guarantee Strip */}
         <div className="max-w-4xl mx-auto mb-12">
           <div className="rounded-xl border bg-card text-card-foreground shadow-sm px-4 py-3 flex flex-col md:flex-row items-center justify-center gap-3 text-sm">
-            <span>30-day money-back guarantee</span>
-            <span className="hidden md:inline text-muted-foreground">•</span>
             <span>Secure checkout</span>
             <span className="hidden md:inline text-muted-foreground">•</span>
             <span>Lifetime access</span>
