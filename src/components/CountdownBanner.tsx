@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -61,7 +62,7 @@ useEffect(() => {
         </div>
         <div className="flex items-center gap-2">
           <Button size="sm" variant="secondary" asChild>
-            <a href="#playbook">Get the Playbook</a>
+            <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
           </Button>
           <Button size="sm" asChild>
             <a href="/checkout">Get the Toolkit</a>
@@ -83,3 +84,4 @@ useEffect(() => {
 };
 
 export default CountdownBanner;
+
