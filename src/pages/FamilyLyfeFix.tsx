@@ -56,7 +56,7 @@ const FamilyLyfeFix = () => {
               <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
             </Button>
             <Button size="lg" variant="secondary" asChild>
-              <a href="/checkout">Get the Toolkit</a>
+              <a href="https://familylyfefix.com/toolkit">Get the Toolkit</a>
             </Button>
           </div>
         </div>
