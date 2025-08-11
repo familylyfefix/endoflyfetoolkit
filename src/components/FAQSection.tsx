@@ -23,10 +23,6 @@ const faqs = [
     q: "Is my information secure?",
     a: "Yes—you're in control. We guide you to set up permissions, backups, and read-only access for the right people.",
   },
-  {
-    q: "What if I'm not satisfied?",
-    a: "We offer a 30-day money-back guarantee. If it doesn't help your family, we'll make it right.",
-  },
 ];
 
 const FAQSection: React.FC = () => {
