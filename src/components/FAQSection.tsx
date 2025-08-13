@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const faqs = [
   {
     q: "Who is Family Lyfe Fix?",
-    a: "A practical system and toolkit to organize, protect, and share your family's critical information so everyone knows what to do when life gets unpredictable.",
+    a: "Family Lyfe Fix is the trusted guide and resource for families who want to be prepared for life’s unpredictable moments. We’re here to help you organize, protect, and share critical information so your loved ones have clarity, confidence, and peace of mind—no matter what happens.",
   },
   {
     q: "Who is it for?",
