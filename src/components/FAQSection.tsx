@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    q: "What is Family Lyfe Fix?",
+    q: "Who is Family Lyfe Fix?",
     a: "A practical system and toolkit to organize, protect, and share your family's critical information so everyone knows what to do when life gets unpredictable.",
   },
   {
