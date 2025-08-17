@@ -22,6 +22,7 @@ const formSchema = z.object({
   address: z.string().min(5, "Please enter a complete address"),
   city: z.string().min(2, "Please enter a valid city"),
   zipCode: z.string().min(5, "Please enter a valid ZIP code"),
+  couponCode: z.string().optional(),
   agreeToTerms: z.boolean().refine(val => val === true, {
     message: "You must agree to the terms of service and privacy policy"
   }),
@@ -37,6 +38,8 @@ const Checkout = () => {
   const [isExpired, setIsExpired] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const [couponApplied, setCouponApplied] = useState(false);
+  const [couponError, setCouponError] = useState("");
   const { toast } = useToast();
 
   const supabase = createClient(
@@ -94,6 +97,7 @@ const Checkout = () => {
       address: "",
       city: "",
       zipCode: "",
+      couponCode: "",
       agreeToTerms: false,
     },
   });
@@ -107,7 +111,8 @@ const Checkout = () => {
       const { data, error } = await supabase.functions.invoke('create-payment', {
         body: {
           price: currentPrice,
-          customerInfo: values
+          customerInfo: values,
+          couponCode: values.couponCode
         }
       });
 
@@ -400,9 +405,43 @@ const Checkout = () => {
                           )}
                         />
                       </div>
-                    </div>
+                     </div>
 
-                    {/* Terms and Conditions Checkbox */}
+                     {/* Coupon Code */}
+                     <div className="space-y-4">
+                       <h3 className="font-semibold text-base">Coupon Code (Optional)</h3>
+                       <FormField
+                         control={form.control}
+                         name="couponCode"
+                         render={({ field }) => (
+                           <FormItem>
+                             <FormLabel>Enter Coupon Code</FormLabel>
+                             <FormControl>
+                               <div className="flex gap-2">
+                                 <Input 
+                                   placeholder="Enter coupon code" 
+                                   {...field} 
+                                   onChange={(e) => {
+                                     field.onChange(e);
+                                     setCouponError("");
+                                     setCouponApplied(false);
+                                   }}
+                                 />
+                               </div>
+                             </FormControl>
+                             {couponError && (
+                               <p className="text-sm text-destructive">{couponError}</p>
+                             )}
+                             {couponApplied && (
+                               <p className="text-sm text-primary">✓ Coupon applied successfully!</p>
+                             )}
+                             <FormMessage />
+                           </FormItem>
+                         )}
+                       />
+                     </div>
+
+                     {/* Terms and Conditions Checkbox */}
                     <div className="space-y-4">
                       <FormField
                         control={form.control}

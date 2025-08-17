@@ -13,15 +13,15 @@ serve(async (req) => {
   }
 
   try {
-    const { price, customerInfo } = await req.json();
+    const { price, customerInfo, couponCode } = await req.json();
     
     // Initialize Stripe
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2023-10-16",
     });
 
-    // Create a one-time payment session
-    const session = await stripe.checkout.sessions.create({
+    // Create session options
+    const sessionOptions: any = {
       customer_email: customerInfo.email,
       line_items: [
         {
@@ -43,7 +43,17 @@ serve(async (req) => {
         customerName: `${customerInfo.firstName} ${customerInfo.lastName}`,
         customerAddress: `${customerInfo.address}, ${customerInfo.city}, ${customerInfo.zipCode}`,
       },
-    });
+    };
+
+    // Add coupon if provided
+    if (couponCode && couponCode.trim()) {
+      sessionOptions.discounts = [{
+        coupon: couponCode.trim()
+      }];
+    }
+
+    // Create a one-time payment session
+    const session = await stripe.checkout.sessions.create(sessionOptions);
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
