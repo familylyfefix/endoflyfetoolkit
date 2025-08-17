@@ -3,22 +3,25 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Download, FileText, Star, ExternalLink, Mail } from "lucide-react";
+import { Check, Download, FileText, Star, ExternalLink, Mail, RefreshCw, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 const PaymentSuccess = () => {
   const [sessionId, setSessionId] = useState<string>("");
   const [orderAmount, setOrderAmount] = useState<number | null>(null);
   const [purchaseDate, setPurchaseDate] = useState<string>("");
-
-  const supabase = createClient(
-    "https://your-project.supabase.co", // This will be replaced by Lovable's Supabase integration
-    "your-anon-key" // This will be replaced by Lovable's Supabase integration
-  );
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadInfo, setDownloadInfo] = useState<{
+    remainingDownloads: number;
+    expiresAt: string;
+  } | null>(null);
+  const [isEmailSending, setIsEmailSending] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
-    // Get session ID from URL params (would come from Stripe redirect)
+    // Get session ID from URL params (comes from Stripe redirect)
     const urlParams = new URLSearchParams(window.location.search);
     const session = urlParams.get('session_id');
     if (session) {
@@ -29,25 +32,98 @@ const PaymentSuccess = () => {
       setPurchaseDate(now.toLocaleDateString());
       
       // Determine price based on launch date (early bird pricing)
-      // Early bird: $67 for first 7 days, then $87
-      const launchDate = new Date("2025-07-15T00:00:00Z"); // Launch date
+      const launchDate = new Date("2025-07-15T00:00:00Z");
       const currentDate = new Date();
       const diffTime = currentDate.getTime() - launchDate.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       
-      // If within 7 days of launch, early bird price ($67), otherwise regular price ($87)
       setOrderAmount(diffDays <= 7 ? 67 : 87);
+      
+      // Send welcome email automatically
+      sendWelcomeEmail(session);
     }
   }, []);
 
-  const handleDownload = () => {
-    // This would trigger the actual download
-    console.log("Download initiated");
+  const sendWelcomeEmail = async (sessionId: string) => {
+    try {
+      setIsEmailSending(true);
+      const { data, error } = await supabase.functions.invoke('convertkit-email', {
+        body: {
+          email: 'customer@example.com', // Would get from Stripe session in real implementation
+          name: 'Customer',
+          sessionId: sessionId
+        }
+      });
+
+      if (error) {
+        console.error('Email sending failed:', error);
+      } else {
+        toast({
+          title: "Welcome email sent!",
+          description: "Check your inbox for download instructions and backup access.",
+        });
+      }
+    } catch (error) {
+      console.error('Email sending error:', error);
+    } finally {
+      setIsEmailSending(false);
+    }
   };
 
-  const handleOpenPDF = () => {
-    // This would open the PDF in a new tab
-    window.open('#', '_blank');
+  const handleDownload = async () => {
+    if (!sessionId) {
+      toast({
+        title: "Error",
+        description: "No session ID found. Please check your payment confirmation.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      setIsDownloading(true);
+      
+      const { data, error } = await supabase.functions.invoke('secure-download', {
+        body: { sessionId }
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      // Update download info
+      setDownloadInfo({
+        remainingDownloads: data.remainingDownloads,
+        expiresAt: data.expiresAt
+      });
+
+      // Trigger download
+      window.open(data.downloadUrl, '_blank');
+      
+      toast({
+        title: "Download started!",
+        description: `${data.remainingDownloads} downloads remaining. Access expires ${new Date(data.expiresAt).toLocaleDateString()}.`,
+      });
+
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Download failed";
+      toast({
+        title: "Download Error",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  const handleResendEmail = async () => {
+    if (!sessionId) return;
+    await sendWelcomeEmail(sessionId);
   };
 
   return (
@@ -119,38 +195,75 @@ const PaymentSuccess = () => {
             </p>
             
             <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-              <div className="flex items-center justify-center gap-2 text-green-700">
+              <div className="flex items-center justify-center gap-2 text-green-700 mb-2">
                 <Check className="h-4 w-4" />
-                <span className="font-medium">✅ Download link ready - unlimited access</span>
+                <span className="font-medium">✅ Secure download ready</span>
               </div>
+              {downloadInfo && (
+                <div className="text-sm text-green-600">
+                  <p>{downloadInfo.remainingDownloads} downloads remaining</p>
+                  <p>Access expires: {new Date(downloadInfo.expiresAt).toLocaleDateString()}</p>
+                </div>
+              )}
+              {!downloadInfo && (
+                <div className="text-sm text-green-600">
+                  <p>3 downloads available • 30-day access</p>
+                </div>
+              )}
             </div>
 
             <div className="space-y-4 max-w-md mx-auto">
               <Button 
                 onClick={handleDownload}
+                disabled={isDownloading || !sessionId}
                 className="w-full h-12 text-lg font-semibold"
                 size="lg"
               >
-                <Download className="h-5 w-5 mr-2" />
-                Download Your Toolkit Now
+                {isDownloading ? (
+                  <>
+                    <RefreshCw className="h-5 w-5 mr-2 animate-spin" />
+                    Preparing Download...
+                  </>
+                ) : (
+                  <>
+                    <Download className="h-5 w-5 mr-2" />
+                    Download Your Toolkit Now
+                  </>
+                )}
               </Button>
               
-              <div className="text-center">
-                <p className="text-sm text-muted-foreground mb-2">Or access directly:</p>
+              <div className="text-center space-y-2">
                 <Button 
                   variant="outline" 
-                  onClick={handleOpenPDF}
-                  className="text-primary hover:text-primary max-w-xs mx-auto"
+                  onClick={handleResendEmail}
+                  disabled={isEmailSending}
+                  className="text-primary hover:text-primary"
                 >
-                  <ExternalLink className="h-4 w-4 mr-2" />
-                  Open PDF in New Tab
+                  {isEmailSending ? (
+                    <>
+                      <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                      Sending Email...
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="h-4 w-4 mr-2" />
+                      Resend Welcome Email
+                    </>
+                  )}
                 </Button>
               </div>
 
               <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                <Mail className="h-4 w-4" />
+                <Check className="h-4 w-4 text-green-500" />
                 <span>Secure download - payment verified</span>
               </div>
+              
+              {!sessionId && (
+                <div className="flex items-center justify-center gap-2 text-sm text-amber-600 bg-amber-50 p-2 rounded">
+                  <AlertCircle className="h-4 w-4" />
+                  <span>Waiting for payment confirmation...</span>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>

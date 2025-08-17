@@ -28,8 +28,8 @@ serve(async (req) => {
           price_data: {
             currency: "usd",
             product_data: { 
-              name: "Maison Margiela Replica Jazz Club",
-              description: "Luxury fragrance - Limited time offer"
+              name: "End-Of-Lyfe Toolkit",
+              description: "Complete digital toolkit for end-of-life planning - 3 downloads, 30-day access"
             },
             unit_amount: price * 100, // Convert to cents
           },
