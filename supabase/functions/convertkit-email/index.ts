@@ -30,7 +30,7 @@ serve(async (req) => {
     }
     logStep("ConvertKit API key verified");
 
-    // Add subscriber to ConvertKit
+    // Add subscriber to ConvertKit with specific tag to trigger automation
     const subscriberResponse = await fetch("https://api.convertkit.com/v3/subscribers", {
       method: "POST",
       headers: {
@@ -40,7 +40,7 @@ serve(async (req) => {
         api_key: convertKitApiKey,
         email: email,
         first_name: name || email.split('@')[0],
-        tags: ["end-of-lyfe-toolkit-purchase"],
+        tags: ["end-of-lyfe-toolkit-purchase"], // This tag triggers the welcome sequence
         fields: {
           stripe_session_id: sessionId,
           purchase_date: new Date().toISOString(),
@@ -56,57 +56,10 @@ serve(async (req) => {
     }
 
     const subscriberData = await subscriberResponse.json();
-    logStep("Subscriber added to ConvertKit", { subscriberId: subscriberData.subscriber?.id });
+    logStep("Subscriber added to ConvertKit with welcome tag", { subscriberId: subscriberData.subscriber?.id });
 
-    // Send welcome email with download instructions
-    const emailContent = `
-      <h1>Welcome to Family Lyfe Fix!</h1>
-      <p>Thank you for purchasing the End-Of-Lyfe Toolkit. Your digital download is ready!</p>
-      
-      <h2>Download Instructions:</h2>
-      <ol>
-        <li>You have <strong>3 downloads available</strong> for the next 30 days</li>
-        <li>Return to the success page to download your toolkit</li>
-        <li>Keep your confirmation email for your records</li>
-      </ol>
-      
-      <p><strong>Important:</strong> Your download access will expire 30 days from today. Make sure to save your toolkit to your device.</p>
-      
-      <p>If you have any questions or need support, please don't hesitate to reach out to us.</p>
-      
-      <p>Best regards,<br>
-      The Family Lyfe Fix Team</p>
-      
-      <hr>
-      <p><small>Order Details:<br>
-      Product: End-Of-Lyfe Toolkit<br>
-      Session ID: ${sessionId}<br>
-      Purchase Date: ${new Date().toLocaleDateString()}</small></p>
-    `;
-
-    const broadcastResponse = await fetch(`https://api.convertkit.com/v3/broadcasts`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        api_key: convertKitApiKey,
-        subject: "Your End-Of-Lyfe Toolkit Download is Ready! 📋",
-        content: emailContent,
-        email_address: email,
-        send_at: new Date().toISOString()
-      }),
-    });
-
-    if (!broadcastResponse.ok) {
-      const errorData = await broadcastResponse.text();
-      logStep("ConvertKit email broadcast failed", { status: broadcastResponse.status, error: errorData });
-      // Don't fail completely, as subscriber was added successfully
-      console.error("Email broadcast failed but subscriber was added:", errorData);
-    } else {
-      const broadcastData = await broadcastResponse.json();
-      logStep("Welcome email sent successfully", { broadcastId: broadcastData.broadcast?.id });
-    }
+    // The welcome email will be sent automatically by ConvertKit automation
+    // triggered by the "end-of-lyfe-toolkit-purchase" tag
 
     return new Response(JSON.stringify({ 
       success: true, 
