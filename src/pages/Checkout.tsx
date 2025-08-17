@@ -58,7 +58,7 @@ const Checkout = () => {
     };
 
     const startTime = getCountdownStartTime();
-    const duration = 72 * 60 * 60 * 1000; // 72 hours in milliseconds
+    const duration = 144 * 60 * 60 * 1000; // 144 hours (6 days) in milliseconds
 
     const updateTimer = () => {
       const now = Date.now();

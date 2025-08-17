@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const STORAGE_KEY = "flf-offer-deadline";
 const HIDE_KEY = "flf-offer-hide";
-const OFFER_DURATION_MS = 72 * 60 * 60 * 1000; // 72 hours
+const OFFER_DURATION_MS = 144 * 60 * 60 * 1000; // 144 hours (6 days)
 
 function formatTime(ms: number) {
   const totalSeconds = Math.max(0, Math.floor(ms / 1000));
