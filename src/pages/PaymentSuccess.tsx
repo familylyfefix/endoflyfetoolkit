@@ -18,6 +18,8 @@ const PaymentSuccess = () => {
     expiresAt: string;
   } | null>(null);
   const [isEmailSending, setIsEmailSending] = useState(false);
+  const [customerEmail, setCustomerEmail] = useState<string>("");
+  const [customerName, setCustomerName] = useState<string>("");
   const { toast } = useToast();
 
   useEffect(() => {
@@ -31,26 +33,53 @@ const PaymentSuccess = () => {
       const now = new Date();
       setPurchaseDate(now.toLocaleDateString());
       
-      // Determine price based on launch date (early bird pricing)
+      // Get payment session details from Stripe
+      getPaymentSessionDetails(session);
+    }
+  }, []);
+
+  const getPaymentSessionDetails = async (sessionId: string) => {
+    try {
+      const { data, error } = await supabase.functions.invoke('get-payment-session', {
+        body: { sessionId }
+      });
+
+      if (error) throw error;
+      
+      console.log('Payment session details:', data);
+      setCustomerEmail(data.customerEmail);
+      setCustomerName(data.customerName);
+      setOrderAmount((data.amountTotal || 0) / 100); // Convert from cents
+      
+      // Send welcome email automatically with real customer details
+      sendWelcomeEmail(sessionId, data.customerEmail, data.customerName);
+    } catch (error) {
+      console.error('Error getting payment session details:', error);
+      // Fallback pricing
       const launchDate = new Date("2025-07-15T00:00:00Z");
       const currentDate = new Date();
       const diffTime = currentDate.getTime() - launchDate.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       
       setOrderAmount(diffDays <= 7 ? 67 : 87);
-      
-      // Send welcome email automatically
-      sendWelcomeEmail(session);
     }
-  }, []);
+  };
 
-  const sendWelcomeEmail = async (sessionId: string) => {
+  const sendWelcomeEmail = async (sessionId: string, email?: string, name?: string) => {
     try {
       setIsEmailSending(true);
+      const emailToUse = email || customerEmail;
+      const nameToUse = name || customerName || emailToUse.split('@')[0];
+      
+      if (!emailToUse) {
+        console.error('No email available for sending welcome email');
+        return;
+      }
+
       const { data, error } = await supabase.functions.invoke('convertkit-email', {
         body: {
-          email: 'customer@example.com', // Would get from Stripe session in real implementation
-          name: 'Customer',
+          email: emailToUse,
+          name: nameToUse,
           sessionId: sessionId
         }
       });
@@ -123,7 +152,7 @@ const PaymentSuccess = () => {
 
   const handleResendEmail = async () => {
     if (!sessionId) return;
-    await sendWelcomeEmail(sessionId);
+    await sendWelcomeEmail(sessionId, customerEmail, customerName);
   };
 
   return (
