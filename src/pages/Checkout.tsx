@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Check, Clock, Users, FileText, Heart, ArrowLeft, Shield, Lock, Star, CreditCard } from "lucide-react";
+import { Check, Clock, Users, FileText, Heart, ArrowLeft, Shield, Lock, Star, CreditCard, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -409,13 +409,15 @@ const Checkout = () => {
 
                      {/* Coupon Code */}
                      <div className="space-y-4">
-                       <h3 className="font-semibold text-base">Coupon Code (Optional)</h3>
+                       <div className="flex items-center gap-2">
+                         <Tag className="h-4 w-4 text-muted-foreground" />
+                         <span className="text-sm font-medium">Coupon Code</span>
+                       </div>
                        <FormField
                          control={form.control}
                          name="couponCode"
                          render={({ field }) => (
                            <FormItem>
-                             <FormLabel>Enter Coupon Code</FormLabel>
                              <FormControl>
                                <div className="flex gap-2">
                                  <Input 
@@ -426,9 +428,33 @@ const Checkout = () => {
                                      setCouponError("");
                                      setCouponApplied(false);
                                    }}
+                                   className="flex-1"
                                  />
+                                 <Button 
+                                   type="button" 
+                                   variant="outline" 
+                                   onClick={() => {
+                                     const code = field.value?.trim();
+                                     if (code) {
+                                       setCouponApplied(true);
+                                       setCouponError("");
+                                       toast({
+                                         title: "Coupon Applied",
+                                         description: "Your discount will be applied at checkout.",
+                                       });
+                                     } else {
+                                       setCouponError("Please enter a coupon code");
+                                     }
+                                   }}
+                                   className="shrink-0"
+                                 >
+                                   Apply Coupon
+                                 </Button>
                                </div>
                              </FormControl>
+                             <p className="text-sm text-muted-foreground">
+                               Enter your coupon code to apply a discount to your order.
+                             </p>
                              {couponError && (
                                <p className="text-sm text-destructive">{couponError}</p>
                              )}
