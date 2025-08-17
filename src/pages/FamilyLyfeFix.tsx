@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Users, Heart, Shield, Target, CheckCircle, Star, Download, Book, Wrench } from "lucide-react";
+import { Users, Heart, Shield, Target, CheckCircle, Star, Download, Book, Wrench, Compass, Eye, Lightbulb, Zap, Gift } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import StickyCTA from "@/components/StickyCTA";
 import CountdownBanner from "@/components/CountdownBanner";
@@ -86,6 +86,109 @@ const FamilyLyfeFix = () => {
         </div>
         {/* Social Proof */}
         <SocialProof />
+
+        {/* Mission, Vision & Values Section */}
+        <section className="container mx-auto px-4 py-16">
+          <div className="max-w-6xl mx-auto">
+            {/* Mission */}
+            <div className="text-center mb-16">
+              <div className="flex justify-center mb-6">
+                <div className="p-4 rounded-full bg-primary/10 text-primary">
+                  <Compass className="h-8 w-8" />
+                </div>
+              </div>
+              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
+              <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                Family Lyfe Fix helps families take control of end-of-life planning by removing fear, confusion, and guesswork. Our mission is to provide simple, step-by-step tools—from conversation guides to full organizational systems—that empower families to prepare, protect their loved ones, and create peace of mind before crisis hits.
+              </p>
+            </div>
+
+            {/* Vision */}
+            <div className="text-center mb-16">
+              <div className="flex justify-center mb-6">
+                <div className="p-4 rounded-full bg-primary/10 text-primary">
+                  <Eye className="h-8 w-8" />
+                </div>
+              </div>
+              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-6">Our Vision</h2>
+              <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                To become the go-to resource for families who want to feel secure, organized, and connected—turning one of life's most avoided conversations into a source of clarity, confidence, and unity. We envision a world where no family is left scrambling, arguing, or suffering because of a lack of preparation.
+              </p>
+            </div>
+
+            {/* Core Values */}
+            <div className="text-center mb-8">
+              <div className="flex justify-center mb-6">
+                <div className="p-4 rounded-full bg-primary/10 text-primary">
+                  <Heart className="h-8 w-8" />
+                </div>
+              </div>
+              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12">Our Core Values</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                    <Lightbulb className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="font-playfair text-xl font-semibold mb-3">Clarity Over Chaos</h3>
+                <p className="text-sm text-muted-foreground">
+                  We simplify overwhelming planning into manageable steps families can actually follow.
+                </p>
+              </Card>
+
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                    <Heart className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="font-playfair text-xl font-semibold mb-3">Compassion First</h3>
+                <p className="text-sm text-muted-foreground">
+                  We approach every resource with empathy, recognizing these topics are deeply personal and emotional.
+                </p>
+              </Card>
+
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                    <Zap className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="font-playfair text-xl font-semibold mb-3">Empowerment, Not Fear</h3>
+                <p className="text-sm text-muted-foreground">
+                  We focus on giving families confidence, not guilt, when discussing life's hardest realities.
+                </p>
+              </Card>
+
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                    <Users className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="font-playfair text-xl font-semibold mb-3">Accessibility for All</h3>
+                <p className="text-sm text-muted-foreground">
+                  Our products serve every comfort level—from conversation beginners to families needing complete organizational systems.
+                </p>
+              </Card>
+
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                    <Gift className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="font-playfair text-xl font-semibold mb-3">Legacy Through Action</h3>
+                <p className="text-sm text-muted-foreground">
+                  We believe preparation is one of the greatest gifts you can leave loved ones, and we help families make that gift reality.
+                </p>
+              </Card>
+            </div>
+          </div>
+        </section>
 
         {/* Tabs Section */}
         <div className="max-w-6xl mx-auto">
