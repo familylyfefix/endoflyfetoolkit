@@ -70,22 +70,13 @@ const FamilyLyfeFix = () => {
           </Card>
         </div>
 
+
         {/* About Section */}
-        <div className="max-w-4xl mx-auto mb-8 text-center">
+        <div className="max-w-4xl mx-auto mb-16 text-center">
           <p className="text-lg text-muted-foreground leading-relaxed">
             Every family crisis starts the same way: no one knows what to do. The arguments begin. The guessing starts. The stress multiplies. Family Lyfe Fix was born from this simple truth — one honest conversation today saves your family from chaos tomorrow.
           </p>
         </div>
-        {/* Guarantee Strip */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="rounded-xl border bg-card text-card-foreground shadow-sm px-4 py-3 flex flex-col md:flex-row items-center justify-center gap-3 text-sm">
-            <span>Secure checkout</span>
-            <span className="hidden md:inline text-muted-foreground">•</span>
-            <span>Lifetime access</span>
-          </div>
-        </div>
-        {/* Social Proof */}
-        <SocialProof />
 
         {/* Mission, Vision & Values Section */}
         <section className="container mx-auto px-4 py-16">
@@ -532,6 +523,9 @@ const FamilyLyfeFix = () => {
         </div>
       </section>
 
+      {/* Social Proof */}
+      <SocialProof />
+      
       <FAQSection />
       <StickyCTA />
 
