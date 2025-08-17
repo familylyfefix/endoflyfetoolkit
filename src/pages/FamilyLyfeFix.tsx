@@ -71,12 +71,6 @@ const FamilyLyfeFix = () => {
         </div>
 
 
-        {/* About Section */}
-        <div className="max-w-4xl mx-auto mb-16 text-center">
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Every family crisis starts the same way: no one knows what to do. The arguments begin. The guessing starts. The stress multiplies. Family Lyfe Fix was born from this simple truth — one honest conversation today saves your family from chaos tomorrow.
-          </p>
-        </div>
 
         {/* Mission, Vision & Values Section */}
         <section className="container mx-auto px-4 py-16">
