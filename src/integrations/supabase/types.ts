@@ -7,14 +7,99 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "12.2.12 (cd3cf9e)"
   }
   public: {
     Tables: {
-      [_ in never]: never
+      download_attempts: {
+        Row: {
+          created_at: string
+          download_ip: string | null
+          download_success: boolean | null
+          download_url: string | null
+          file_name: string
+          id: string
+          purchase_session_id: string | null
+          url_expires_at: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          download_ip?: string | null
+          download_success?: boolean | null
+          download_url?: string | null
+          file_name: string
+          id?: string
+          purchase_session_id?: string | null
+          url_expires_at?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          download_ip?: string | null
+          download_success?: boolean | null
+          download_url?: string | null
+          file_name?: string
+          id?: string
+          purchase_session_id?: string | null
+          url_expires_at?: string | null
+          user_agent?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "download_attempts_purchase_session_id_fkey"
+            columns: ["purchase_session_id"]
+            isOneToOne: false
+            referencedRelation: "purchase_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      purchase_sessions: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string | null
+          customer_address: string | null
+          customer_email: string
+          customer_name: string | null
+          expires_at: string
+          id: string
+          status: string
+          stripe_session_id: string
+          updated_at: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency?: string | null
+          customer_address?: string | null
+          customer_email: string
+          customer_name?: string | null
+          expires_at?: string
+          id?: string
+          status?: string
+          stripe_session_id: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string | null
+          customer_address?: string | null
+          customer_email?: string
+          customer_name?: string | null
+          expires_at?: string
+          id?: string
+          status?: string
+          stripe_session_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
