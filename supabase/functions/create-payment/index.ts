@@ -7,18 +7,33 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
+  console.log('create-payment function called');
+  console.log('Request method:', req.method);
+  console.log('Request origin:', req.headers.get("origin"));
+  
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
+    console.log('Handling CORS preflight request');
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { price, customerInfo, couponCode } = await req.json();
+    const requestBody = await req.json();
+    console.log('Request body received:', JSON.stringify(requestBody, null, 2));
+    const { price, customerInfo, couponCode } = requestBody;
     
     // Initialize Stripe
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+    const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
+    console.log('Stripe key exists:', !!stripeKey);
+    
+    if (!stripeKey) {
+      throw new Error("STRIPE_SECRET_KEY is not configured in Edge Function secrets");
+    }
+    
+    const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-10-16",
     });
+    console.log('Stripe client initialized');
 
     // Create session options
     const sessionOptions: any = {
@@ -53,7 +68,10 @@ serve(async (req) => {
     }
 
     // Create a one-time payment session
+    console.log('Creating Stripe checkout session with options:', JSON.stringify(sessionOptions, null, 2));
     const session = await stripe.checkout.sessions.create(sessionOptions);
+    console.log('Stripe session created successfully:', session.id);
+    console.log('Checkout URL:', session.url);
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -61,9 +79,19 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error("Payment creation error:", error);
-    return new Response(JSON.stringify({ error: error.message }), {
+    console.error("Error stack:", error.stack);
+    console.error("Error details:", JSON.stringify(error, null, 2));
+    
+    // Return more detailed error information
+    const errorResponse = {
+      error: error.message,
+      type: error.constructor.name,
+      details: error.raw || error.context || null
+    };
+    
+    return new Response(JSON.stringify(errorResponse), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
-      status: 500,
+      status: error.statusCode || 500,
     });
   }
 });

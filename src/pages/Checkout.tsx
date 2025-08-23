@@ -103,6 +103,10 @@ const Checkout = () => {
     try {
       const currentPrice = isExpired ? 87 : 67;
       
+      // Log the payment details for debugging
+      console.log('Starting payment process for price:', currentPrice);
+      console.log('Customer email:', values.email);
+      
       const { data, error } = await supabase.functions.invoke('create-payment', {
         body: {
           price: currentPrice,
@@ -111,19 +115,53 @@ const Checkout = () => {
         }
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase function error:', error);
+        console.error('Error details:', {
+          message: error.message,
+          context: error.context,
+          status: error.status
+        });
+        
+        // Check if it's a network/DNS error
+        if (error.message?.includes('ERR_NAME_NOT_RESOLVED') || error.message?.includes('your-project')) {
+          toast({
+            title: "Configuration Error",
+            description: "The payment system is not properly configured. Please clear your browser cache and refresh the page.",
+            variant: "destructive",
+          });
+          return;
+        }
+        
+        throw error;
+      }
+
+      console.log('Payment response received:', data);
 
       if (data?.url) {
+        console.log('Redirecting to Stripe checkout:', data.url);
         // Redirect to Stripe checkout
         window.location.href = data.url;
       } else {
-        throw new Error('No checkout URL received');
+        console.error('No checkout URL in response:', data);
+        throw new Error('No checkout URL received from payment processor');
       }
-    } catch (error) {
-      console.error('Payment error:', error);
+    } catch (error: any) {
+      console.error('Payment processing error:', error);
+      console.error('Error stack:', error.stack);
+      
+      // Provide more specific error messages
+      let errorMessage = "There was an issue processing your payment. Please try again.";
+      
+      if (error.message?.includes('Failed to send a request')) {
+        errorMessage = "Unable to connect to payment service. Please check your internet connection and try again.";
+      } else if (error.message?.includes('STRIPE_SECRET_KEY')) {
+        errorMessage = "Payment system configuration error. Please contact support.";
+      }
+      
       toast({
         title: "Payment Error",
-        description: "There was an issue processing your payment. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
