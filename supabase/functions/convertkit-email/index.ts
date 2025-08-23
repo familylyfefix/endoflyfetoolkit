@@ -16,7 +16,7 @@ serve(async (req) => {
   }
 
   try {
-    logStep("Starting ConvertKit email delivery");
+    logStep("Starting ConvertKit email delivery - SIMPLIFIED VERSION");
 
     const { email, name, sessionId } = await req.json();
     if (!email) {
@@ -30,8 +30,44 @@ serve(async (req) => {
     }
     logStep("ConvertKit API key verified");
 
-    // Step 1: First get or create the subscriber
-    const subscriberResponse = await fetch("https://api.convertkit.com/v3/subscribers", {
+    // Step 1: Get all tags to find the ID for our tag
+    const tagsResponse = await fetch(`https://api.convertkit.com/v3/tags?api_key=${convertKitApiKey}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!tagsResponse.ok) {
+      const errorData = await tagsResponse.text();
+      logStep("Failed to fetch tags", { 
+        status: tagsResponse.status, 
+        statusText: tagsResponse.statusText,
+        error: errorData,
+        headers: Object.fromEntries(tagsResponse.headers.entries())
+      });
+      throw new Error(`Failed to fetch ConvertKit tags: ${errorData}`);
+    }
+
+    const tagsData = await tagsResponse.json();
+    logStep("Tags fetched", { totalTags: tagsData.tags?.length });
+    
+    const purchaseTag = tagsData.tags?.find((tag: any) => 
+      tag.name === "end-of-lyfe-toolkit-purchase"
+    );
+
+    if (!purchaseTag) {
+      logStep("Tag not found - listing all available tags", { 
+        availableTags: tagsData.tags?.map((t: any) => ({ id: t.id, name: t.name }))
+      });
+      throw new Error("Tag 'end-of-lyfe-toolkit-purchase' not found in ConvertKit. Please create this tag in ConvertKit first.");
+    }
+
+    logStep("Found tag", { tagId: purchaseTag.id, tagName: purchaseTag.name });
+
+    // Step 2: Subscribe email to tag (this creates subscriber if doesn't exist AND adds tag)
+    // This is the simplified approach - one API call does everything
+    const tagSubscribeResponse = await fetch(`https://api.convertkit.com/v3/tags/${purchaseTag.id}/subscribe`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,63 +84,28 @@ serve(async (req) => {
       }),
     });
 
-    if (!subscriberResponse.ok) {
-      const errorData = await subscriberResponse.text();
-      logStep("ConvertKit subscriber creation failed", { status: subscriberResponse.status, error: errorData });
-      throw new Error(`Failed to add subscriber to ConvertKit: ${errorData}`);
-    }
-
-    const subscriberData = await subscriberResponse.json();
-    const subscriberId = subscriberData.subscription?.subscriber?.id || subscriberData.subscriber?.id;
-    logStep("Subscriber created/updated", { subscriberId, email });
-
-    // Step 2: Get all tags to find the ID for our tag
-    const tagsResponse = await fetch(`https://api.convertkit.com/v3/tags?api_key=${convertKitApiKey}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!tagsResponse.ok) {
-      const errorData = await tagsResponse.text();
-      logStep("Failed to fetch tags", { status: tagsResponse.status, error: errorData });
-      throw new Error(`Failed to fetch ConvertKit tags: ${errorData}`);
-    }
-
-    const tagsData = await tagsResponse.json();
-    const purchaseTag = tagsData.tags?.find((tag: any) => 
-      tag.name === "end-of-lyfe-toolkit-purchase"
-    );
-
-    if (!purchaseTag) {
-      logStep("Tag not found", { availableTags: tagsData.tags?.map((t: any) => t.name) });
-      throw new Error("Tag 'end-of-lyfe-toolkit-purchase' not found in ConvertKit");
-    }
-
-    logStep("Found tag", { tagId: purchaseTag.id, tagName: purchaseTag.name });
-
-    // Step 3: Add the tag to the subscriber to trigger the automation
-    const tagSubscribeResponse = await fetch(`https://api.convertkit.com/v3/tags/${purchaseTag.id}/subscribe`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        api_key: convertKitApiKey,
-        email: email,
-      }),
-    });
-
+    const responseText = await tagSubscribeResponse.text();
+    
     if (!tagSubscribeResponse.ok) {
-      const errorData = await tagSubscribeResponse.text();
-      logStep("Failed to add tag to subscriber", { status: tagSubscribeResponse.status, error: errorData });
-      throw new Error(`Failed to add tag to subscriber: ${errorData}`);
+      logStep("Failed to subscribe to tag", { 
+        status: tagSubscribeResponse.status, 
+        statusText: tagSubscribeResponse.statusText,
+        error: responseText,
+        headers: Object.fromEntries(tagSubscribeResponse.headers.entries())
+      });
+      throw new Error(`Failed to subscribe to tag: ${responseText}`);
     }
 
-    const tagData = await tagSubscribeResponse.json();
-    logStep("Tag added successfully - automation should trigger", { 
-      subscriberId: tagData.subscription?.subscriber?.id,
+    let tagData;
+    try {
+      tagData = JSON.parse(responseText);
+    } catch (e) {
+      logStep("Response is not JSON", { responseText });
+      tagData = { success: true, response: responseText };
+    }
+
+    logStep("Successfully subscribed to tag - automation should trigger", { 
+      response: tagData,
       tagId: purchaseTag.id 
     });
 
@@ -113,8 +114,8 @@ serve(async (req) => {
 
     return new Response(JSON.stringify({ 
       success: true, 
-      subscriberId: subscriberData.subscriber?.id,
-      message: "Welcome email sent successfully" 
+      message: "Subscriber added to tag successfully. ConvertKit automation will send the welcome email.",
+      details: tagData
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
@@ -122,7 +123,10 @@ serve(async (req) => {
 
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
-    logStep("ERROR in convertkit-email", { message: errorMessage });
+    logStep("ERROR in convertkit-email", { 
+      message: errorMessage,
+      stack: error instanceof Error ? error.stack : undefined
+    });
     return new Response(JSON.stringify({ error: errorMessage }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
