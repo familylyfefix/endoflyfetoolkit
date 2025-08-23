@@ -123,6 +123,19 @@ const Checkout = () => {
           status: error.status
         });
         
+        // Check for coupon-related errors
+        if (error.message?.includes('coupon') || error.message?.includes('No such coupon')) {
+          toast({
+            title: "Invalid Coupon Code",
+            description: "The coupon code you entered is not valid. Please check and try again, or proceed without a coupon.",
+            variant: "destructive",
+          });
+          // Clear the invalid coupon
+          form.setValue('couponCode', '');
+          setIsProcessing(false);
+          return;
+        }
+        
         // Check if it's a network/DNS error
         if (error.message?.includes('ERR_NAME_NOT_RESOLVED') || error.message?.includes('your-project')) {
           toast({
@@ -130,6 +143,7 @@ const Checkout = () => {
             description: "The payment system is not properly configured. Please clear your browser cache and refresh the page.",
             variant: "destructive",
           });
+          setIsProcessing(false);
           return;
         }
         
