@@ -101,7 +101,7 @@ const Checkout = () => {
     setIsProcessing(true);
     
     try {
-      const currentPrice = isExpired ? 87 : 67;
+      const currentPrice = 0; // TEMPORARY: Set to $0 for testing - CHANGE BACK TO: isExpired ? 87 : 67
       
       // Log the payment details for debugging
       console.log('Starting payment process for price:', currentPrice);
