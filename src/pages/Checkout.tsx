@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -41,11 +41,6 @@ const Checkout = () => {
   const [couponApplied, setCouponApplied] = useState(false);
   const [couponError, setCouponError] = useState("");
   const { toast } = useToast();
-
-  const supabase = createClient(
-    "https://your-project.supabase.co", // This will be replaced by Lovable's Supabase integration
-    "your-anon-key" // This will be replaced by Lovable's Supabase integration
-  );
 
   useEffect(() => {
     // Get or set the countdown start time for this visitor
