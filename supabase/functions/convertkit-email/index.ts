@@ -30,7 +30,7 @@ serve(async (req) => {
     }
     logStep("ConvertKit API key verified");
 
-    // Add subscriber to ConvertKit with specific tag to trigger automation
+    // Step 1: First get or create the subscriber
     const subscriberResponse = await fetch("https://api.convertkit.com/v3/subscribers", {
       method: "POST",
       headers: {
@@ -40,7 +40,6 @@ serve(async (req) => {
         api_key: convertKitApiKey,
         email: email,
         first_name: name || email.split('@')[0],
-        tags: ["end-of-lyfe-toolkit-purchase"], // This tag triggers the welcome sequence
         fields: {
           stripe_session_id: sessionId,
           purchase_date: new Date().toISOString(),
@@ -56,7 +55,58 @@ serve(async (req) => {
     }
 
     const subscriberData = await subscriberResponse.json();
-    logStep("Subscriber added to ConvertKit with welcome tag", { subscriberId: subscriberData.subscriber?.id });
+    const subscriberId = subscriberData.subscription?.subscriber?.id || subscriberData.subscriber?.id;
+    logStep("Subscriber created/updated", { subscriberId, email });
+
+    // Step 2: Get all tags to find the ID for our tag
+    const tagsResponse = await fetch(`https://api.convertkit.com/v3/tags?api_key=${convertKitApiKey}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!tagsResponse.ok) {
+      const errorData = await tagsResponse.text();
+      logStep("Failed to fetch tags", { status: tagsResponse.status, error: errorData });
+      throw new Error(`Failed to fetch ConvertKit tags: ${errorData}`);
+    }
+
+    const tagsData = await tagsResponse.json();
+    const purchaseTag = tagsData.tags?.find((tag: any) => 
+      tag.name === "end-of-lyfe-toolkit-purchase"
+    );
+
+    if (!purchaseTag) {
+      logStep("Tag not found", { availableTags: tagsData.tags?.map((t: any) => t.name) });
+      throw new Error("Tag 'end-of-lyfe-toolkit-purchase' not found in ConvertKit");
+    }
+
+    logStep("Found tag", { tagId: purchaseTag.id, tagName: purchaseTag.name });
+
+    // Step 3: Add the tag to the subscriber to trigger the automation
+    const tagSubscribeResponse = await fetch(`https://api.convertkit.com/v3/tags/${purchaseTag.id}/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        api_key: convertKitApiKey,
+        email: email,
+      }),
+    });
+
+    if (!tagSubscribeResponse.ok) {
+      const errorData = await tagSubscribeResponse.text();
+      logStep("Failed to add tag to subscriber", { status: tagSubscribeResponse.status, error: errorData });
+      throw new Error(`Failed to add tag to subscriber: ${errorData}`);
+    }
+
+    const tagData = await tagSubscribeResponse.json();
+    logStep("Tag added successfully - automation should trigger", { 
+      subscriberId: tagData.subscription?.subscriber?.id,
+      tagId: purchaseTag.id 
+    });
 
     // The welcome email will be sent automatically by ConvertKit automation
     // triggered by the "end-of-lyfe-toolkit-purchase" tag
