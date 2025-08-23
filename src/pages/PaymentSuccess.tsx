@@ -7,6 +7,7 @@ import { Check, Download, FileText, Star, ExternalLink, Mail, RefreshCw, AlertCi
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import ContactDialog from "@/components/ContactDialog";
 
 const PaymentSuccess = () => {
   const [sessionId, setSessionId] = useState<string>("");
@@ -341,9 +342,11 @@ const PaymentSuccess = () => {
             <h3 className="text-xl font-semibold mb-4">
               Need help or have questions about your purchase?
             </h3>
-            <Button variant="outline" size="lg" className="max-w-xs mx-auto">
-              Contact Support
-            </Button>
+            <ContactDialog>
+              <Button variant="outline" size="lg" className="max-w-xs mx-auto">
+                Contact Support
+              </Button>
+            </ContactDialog>
           </CardContent>
         </Card>
 
