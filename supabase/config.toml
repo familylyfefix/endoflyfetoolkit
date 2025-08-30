@@ -173,6 +173,3 @@ verify_jwt = false
 
 [functions.secure-download]
 verify_jwt = false
-
-[functions.convertkit-email]
-verify_jwt = false

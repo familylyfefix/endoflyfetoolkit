@@ -36,7 +36,7 @@ const Index = () => {
     };
 
     const startTime = getCountdownStartTime();
-    const duration = 144 * 60 * 60 * 1000; // 144 hours (6 days) in milliseconds
+    const duration = 120 * 60 * 60 * 1000; // 120 hours (5 days) in milliseconds
 
     const updateTimer = () => {
       const now = Date.now();
@@ -77,7 +77,7 @@ const Index = () => {
       answer: "The toolkit is designed to handle complex family dynamics with sections for multiple beneficiaries, step-families, and various relationship structures. It's fully customizable to your unique situation."
     },
     {
-      question: `Is this really worth $${isExpired ? '87' : '67'} when I could just write this myself?`,
+      question: `Is this really worth $${isExpired ? '67' : '47'} when I could just write this myself?`,
       answer: "While you could create something yourself, this template saves you 20+ hours of research and organization. It includes legal considerations, emotional support resources, and a proven framework that many families have successfully used."
     }
   ];
@@ -163,7 +163,7 @@ const Index = () => {
               className="text-lg px-8 py-6 h-auto"
               onClick={handleCTA}
             >
-              Get The Complete System Now - ${isExpired ? '87' : '67'}
+              Get The Complete System Now - ${isExpired ? '67' : '47'}
             </Button>
           </div>
         </div>
@@ -337,14 +337,11 @@ const Index = () => {
             </h2>
             
             <Card className="border-primary border-2 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold">
-                SAVE $20
-              </div>
               
               <CardHeader className="text-center pb-4">
                 <div className="space-y-2">
-                  <p className="text-lg text-muted-foreground line-through">Regular Price: $87</p>
-                  <p className="text-4xl font-bold text-primary">${isExpired ? '87' : '67'}</p>
+                  <p className="text-lg text-muted-foreground line-through">Regular Price: $67</p>
+                  <p className="text-4xl font-bold text-primary">${isExpired ? '67' : '47'}</p>
                   <p className="text-muted-foreground">One-time payment • Lifetime access</p>
                 </div>
               </CardHeader>
@@ -359,7 +356,7 @@ const Index = () => {
                   <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-4 text-orange-700 font-semibold text-center">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <Clock className="w-5 h-5" />
-                      Early Bird Special Ends Soon:
+                      5-Day Special Ends Soon:
                     </div>
                     <div className="text-2xl font-bold">
                       {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
@@ -395,7 +392,7 @@ const Index = () => {
                   className="w-full text-lg py-6 h-auto"
                   onClick={handleCTA}
                 >
-                  Get Instant Access - ${isExpired ? '87' : '67'}
+                  Get Instant Access - ${isExpired ? '67' : '47'}
                 </Button>
                 
                 <p className="text-sm text-muted-foreground text-center">
@@ -460,7 +457,7 @@ const Index = () => {
                     className="text-lg px-8 py-6 h-auto"
                     onClick={handleCTA}
                   >
-                    Get The Toolkit - $87
+                    Get The Toolkit - $67
                   </Button>
                 </div>
               ) : (
@@ -468,7 +465,7 @@ const Index = () => {
                   <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-4 text-orange-700 font-semibold text-center mb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <Clock className="w-5 h-5" />
-                      Early Bird Special Ends Soon:
+                      5-Day Special Ends Soon:
                     </div>
                     <div className="text-xl font-bold">
                       {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
@@ -479,7 +476,7 @@ const Index = () => {
                     className="text-lg px-8 py-6 h-auto"
                     onClick={handleCTA}
                   >
-                    Secure Your Family's Future - ${isExpired ? '87' : '67'}
+                    Secure Your Family's Future - ${isExpired ? '67' : '47'}
                   </Button>
                 </>
               )}

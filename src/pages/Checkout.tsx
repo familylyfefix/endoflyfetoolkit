@@ -56,7 +56,7 @@ const Checkout = () => {
     };
 
     const startTime = getCountdownStartTime();
-    const duration = 144 * 60 * 60 * 1000; // 144 hours (6 days) in milliseconds
+    const duration = 120 * 60 * 60 * 1000; // 120 hours (5 days) in milliseconds
 
     const updateTimer = () => {
       const now = Date.now();
@@ -101,7 +101,7 @@ const Checkout = () => {
     setIsProcessing(true);
     
     try {
-      const currentPrice = 0; // TEMPORARY: Set to $0 for testing - CHANGE BACK TO: isExpired ? 87 : 67
+      const currentPrice = isExpired ? 67 : 47;
       
       // Log the payment details for debugging
       console.log('Starting payment process for price:', currentPrice);
@@ -254,8 +254,8 @@ const Checkout = () => {
                     <h3 className="font-semibold text-lg">End-of-Lyfe Toolkit</h3>
                     <p className="text-muted-foreground text-sm">Complete digital system</p>
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="text-lg font-bold">${isExpired ? '87' : '67'}</span>
-                      {!isExpired && <span className="text-sm text-muted-foreground line-through">$87</span>}
+                      <span className="text-lg font-bold">${isExpired ? '67' : '47'}</span>
+                      {!isExpired && <span className="text-sm text-muted-foreground line-through">$67</span>}
                     </div>
                   </div>
                 </div>
@@ -263,7 +263,7 @@ const Checkout = () => {
                 <div className="border-t pt-4 space-y-3">
                   <div className="flex justify-between text-sm">
                     <span>Subtotal:</span>
-                    <span>${isExpired ? '87' : '67'}</span>
+                    <span>${isExpired ? '67' : '47'}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Tax:</span>
@@ -271,7 +271,7 @@ const Checkout = () => {
                   </div>
                   <div className="flex justify-between font-bold text-lg border-t pt-3">
                     <span>Total:</span>
-                    <span>${isExpired ? '87' : '67'}</span>
+                    <span>${isExpired ? '67' : '47'}</span>
                   </div>
                 </div>
               </CardContent>
@@ -627,7 +627,7 @@ const Checkout = () => {
                       className="w-full h-12 text-lg font-semibold disabled:opacity-50"
                       size="lg"
                     >
-                      {isProcessing ? "Processing..." : `Complete Secure Order - $${isExpired ? "87" : "67"}`}
+                      {isProcessing ? "Processing..." : `Complete Secure Order - $${isExpired ? "67" : "47"}`}
                     </Button>
 
                     {/* Trust Signals */}

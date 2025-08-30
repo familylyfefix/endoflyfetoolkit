@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Download, FileText, Star, ExternalLink, Mail, RefreshCw, AlertCircle } from "lucide-react";
+import { Check, Download, FileText, Star, ExternalLink, RefreshCw, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
@@ -18,7 +18,7 @@ const PaymentSuccess = () => {
     remainingDownloads: number;
     expiresAt: string;
   } | null>(null);
-  const [isEmailSending, setIsEmailSending] = useState(false);
+  
   const [customerEmail, setCustomerEmail] = useState<string>("");
   const [customerName, setCustomerName] = useState<string>("");
   const { toast } = useToast();
@@ -52,8 +52,6 @@ const PaymentSuccess = () => {
       setCustomerName(data.customerName);
       setOrderAmount((data.amountTotal || 0) / 100); // Convert from cents
       
-      // Send welcome email automatically with real customer details
-      sendWelcomeEmail(sessionId, data.customerEmail, data.customerName);
     } catch (error) {
       console.error('Error getting payment session details:', error);
       // Fallback pricing
@@ -62,43 +60,10 @@ const PaymentSuccess = () => {
       const diffTime = currentDate.getTime() - launchDate.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       
-      setOrderAmount(diffDays <= 7 ? 67 : 87);
+      setOrderAmount(diffDays <= 5 ? 47 : 67);
     }
   };
 
-  const sendWelcomeEmail = async (sessionId: string, email?: string, name?: string) => {
-    try {
-      setIsEmailSending(true);
-      const emailToUse = email || customerEmail;
-      const nameToUse = name || customerName || emailToUse.split('@')[0];
-      
-      if (!emailToUse) {
-        console.error('No email available for sending welcome email');
-        return;
-      }
-
-      const { data, error } = await supabase.functions.invoke('convertkit-email', {
-        body: {
-          email: emailToUse,
-          name: nameToUse,
-          sessionId: sessionId
-        }
-      });
-
-      if (error) {
-        console.error('Email sending failed:', error);
-      } else {
-        toast({
-          title: "Welcome email sent!",
-          description: "Check your inbox for download instructions and backup access.",
-        });
-      }
-    } catch (error) {
-      console.error('Email sending error:', error);
-    } finally {
-      setIsEmailSending(false);
-    }
-  };
 
   const handleDownload = async () => {
     if (!sessionId) {
@@ -151,10 +116,6 @@ const PaymentSuccess = () => {
     }
   };
 
-  const handleResendEmail = async () => {
-    if (!sessionId) return;
-    await sendWelcomeEmail(sessionId, customerEmail, customerName);
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -261,27 +222,6 @@ const PaymentSuccess = () => {
                   </>
                 )}
               </Button>
-              
-              <div className="text-center space-y-2">
-                <Button 
-                  variant="outline" 
-                  onClick={handleResendEmail}
-                  disabled={isEmailSending}
-                  className="text-primary hover:text-primary"
-                >
-                  {isEmailSending ? (
-                    <>
-                      <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-                      Sending Email...
-                    </>
-                  ) : (
-                    <>
-                      <Mail className="h-4 w-4 mr-2" />
-                      Resend Welcome Email
-                    </>
-                  )}
-                </Button>
-              </div>
 
               <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
                 <Check className="h-4 w-4 text-green-500" />
