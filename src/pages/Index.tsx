@@ -116,7 +116,7 @@ const Index = () => {
           <img 
             src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" 
             alt="Family Lyfe Fix - End of Life Planning" 
-            className="h-12 md:h-16"
+            className="h-16 md:h-24"
           />
         </div>
       </header>
