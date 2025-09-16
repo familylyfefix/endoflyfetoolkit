@@ -431,7 +431,7 @@ const FamilyLyfeFix = () => {
                 <p className="font-bold mb-2">
                   <span className="line-through text-muted-foreground">$67</span> $47
                 </p>
-                <Button size="sm" className="w-full" asChild>
+                <Button variant="outline" size="sm" className="w-full" asChild>
                   <a href="/toolkit">Get Toolkit</a>
                 </Button>
               </CardContent>
