@@ -12,9 +12,14 @@ import {
   Check,
   X,
   ChevronDown,
+  ChevronRight,
   Users,
   Heart,
-  Lock
+  Lock,
+  FileQuestion,
+  FileText,
+  BookOpen,
+  Package
 } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import StickyCTA from "@/components/StickyCTA";
@@ -88,11 +93,33 @@ const FamilyLyfeFix = () => {
               The complete end-of-life planning system that turns "what now?" into calm, confident steps — organized in Notion in just 90 minutes
             </p>
             
-            {/* CTA Button */}
-            <Button size="lg" className="mb-4" onClick={scrollToCTA}>
-              Get Your Family's Emergency Plan
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            {/* Progressive CTA Section */}
+            <div className="space-y-4">
+              <Button size="lg" className="w-full" asChild>
+                <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+                  Start Your Journey - Take the Free Quiz
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+              
+              {/* Journey indicator bar */}
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span>Quiz (Free)</span>
+                <ChevronRight className="h-3 w-3" />
+                <span>PDF Guide</span>
+                <ChevronRight className="h-3 w-3" />
+                <span>Playbook</span>
+                <ChevronRight className="h-3 w-3" />
+                <span>Toolkit</span>
+              </div>
+              
+              {/* Quick access for returning users */}
+              <p className="text-xs text-muted-foreground">
+                Already started? Jump to: 
+                <a href="https://familylyfefix.store/playbook" className="underline ml-1">Playbook</a> • 
+                <a href="/toolkit" className="underline ml-1">Toolkit</a>
+              </p>
+            </div>
             
             {/* Social Proof in Hero */}
             <div className="flex items-center gap-3">
@@ -249,6 +276,13 @@ const FamilyLyfeFix = () => {
                     That experience led to Family Lyfe Fix — a complete system that ensures no 
                     family goes through that chaos again.
                   </p>
+                  <p className="text-muted-foreground mb-4">
+                    <span className="font-semibold">That's why we created a complete journey:</span><br />
+                    • Start with our Quiz to see where you stand (free)<br />
+                    • Get the Conversation Starter PDF to break the ice<br />
+                    • Use the Playbook to guide difficult conversations<br />
+                    • Organize everything with the Toolkit
+                  </p>
                   <div className="flex items-center gap-2">
                     <Shield className="h-5 w-5 text-primary" />
                     <p className="font-semibold">500+ Families Protected & Organized</p>
@@ -322,6 +356,102 @@ const FamilyLyfeFix = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Product Showcase Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">Choose Your Starting Point</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Every family is different. Start where you're comfortable.
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Quiz Card */}
+            <Card className="relative">
+              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
+              <CardContent className="pt-6">
+                <FileQuestion className="h-8 w-8 text-primary mb-3" />
+                <h3 className="font-semibold mb-2">Readiness Quiz</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  5-minute assessment to see where your family stands
+                </p>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+                    Take Quiz Free
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            {/* PDF Card */}
+            <Card>
+              <CardContent className="pt-6">
+                <FileText className="h-8 w-8 text-primary mb-3" />
+                <h3 className="font-semibold mb-2">Conversation Starter</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  PDF guide to break the ice with family
+                </p>
+                <p className="font-bold mb-2">$7</p>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a href="https://familylyfefix.store/pdf">Get the Guide</a>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            {/* Playbook Card */}
+            <Card>
+              <CardContent className="pt-6">
+                <BookOpen className="h-8 w-8 text-primary mb-3" />
+                <h3 className="font-semibold mb-2">The Playbook</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Complete conversation framework & scripts
+                </p>
+                <p className="font-bold mb-2">$27</p>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a href="https://familylyfefix.store/playbook">Get Playbook</a>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            {/* Toolkit Card */}
+            <Card className="border-primary relative">
+              <Badge className="absolute -top-2 -right-2" variant="secondary">MOST POPULAR</Badge>
+              <CardContent className="pt-6">
+                <Package className="h-8 w-8 text-primary mb-3" />
+                <h3 className="font-semibold mb-2">Complete Toolkit</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Full Notion system to organize everything
+                </p>
+                <p className="font-bold mb-2">
+                  <span className="line-through text-muted-foreground">$67</span> $47
+                </p>
+                <Button size="sm" className="w-full" asChild>
+                  <a href="/toolkit">Get Toolkit</a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Bundle Option */}
+          <Card className="mt-8 border-primary bg-primary/5">
+            <CardContent className="pt-6 text-center">
+              <Badge variant="secondary" className="mb-3">BEST VALUE</Badge>
+              <h3 className="font-semibold text-xl mb-2">Complete Journey Bundle</h3>
+              <p className="text-muted-foreground mb-4">
+                Get everything: Quiz results + PDF + Playbook + Toolkit
+              </p>
+              <p className="text-2xl font-bold mb-4">
+                <span className="line-through text-muted-foreground">$101</span> 
+                <span className="text-primary ml-2">$67</span>
+                <Badge className="ml-2">Save $34</Badge>
+              </p>
+              <Button size="lg" asChild>
+                <a href="https://familylyfefix.store/bundle">Get Complete Bundle</a>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -419,9 +549,9 @@ const FamilyLyfeFix = () => {
                 1
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-xl mb-2">Get Instant Access</h3>
+                <h3 className="font-semibold text-xl mb-2">Discover Your Readiness</h3>
                 <p className="text-muted-foreground">
-                  Click the button, complete checkout, and receive your Notion template immediately
+                  Take the free quiz, get your personalized readiness score, and receive the Conversation Starter PDF
                 </p>
               </div>
             </div>
@@ -431,9 +561,9 @@ const FamilyLyfeFix = () => {
                 2
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-xl mb-2">Fill In Your Family's Info</h3>
+                <h3 className="font-semibold text-xl mb-2">Have the Conversation</h3>
                 <p className="text-muted-foreground">
-                  Follow our guided system to organize everything — takes just 90 minutes
+                  Use the Playbook to guide family discussions, navigate difficult topics with confidence, and get everyone on the same page
                 </p>
               </div>
             </div>
@@ -443,9 +573,9 @@ const FamilyLyfeFix = () => {
                 3
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-xl mb-2">Sleep Better Tonight</h3>
+                <h3 className="font-semibold text-xl mb-2">Organize Everything</h3>
                 <p className="text-muted-foreground">
-                  Share access with trusted family members and enjoy complete peace of mind
+                  Set up your Toolkit in Notion, input all critical information, and share securely with family
                 </p>
               </div>
             </div>
@@ -509,25 +639,26 @@ const FamilyLyfeFix = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: Lock, text: "Password & account manager" },
-              { icon: Heart, text: "Healthcare directives template" },
-              { icon: Users, text: "Emergency contacts system" },
-              { icon: Shield, text: "Insurance policy tracker" },
-              { icon: Clock, text: "Important dates calendar" },
-              { icon: CheckCircle, text: "Legal documents checklist" },
-              { icon: AlertCircle, text: "Digital legacy planner" },
-              { icon: Star, text: "Financial accounts overview" },
-              { icon: ArrowRight, text: "Final wishes template" },
-              { icon: Heart, text: "Family medical history" },
-              { icon: Users, text: "Pet care instructions" },
-              { icon: Shield, text: "Home management guide" },
-              { icon: Clock, text: "Subscription tracker" },
-              { icon: CheckCircle, text: "Professional contacts list" },
-              { icon: Star, text: "Lifetime updates included" }
+              { icon: Lock, text: "Password & account manager", product: "Toolkit" },
+              { icon: Heart, text: "Healthcare directives template", product: "Toolkit" },
+              { icon: Users, text: "Emergency contacts system", product: "Toolkit" },
+              { icon: Shield, text: "Insurance policy tracker", product: "Toolkit" },
+              { icon: Clock, text: "Important dates calendar", product: "Toolkit" },
+              { icon: CheckCircle, text: "Legal documents checklist", product: "Toolkit" },
+              { icon: AlertCircle, text: "Digital legacy planner", product: "Toolkit" },
+              { icon: Star, text: "Financial accounts overview", product: "Toolkit" },
+              { icon: BookOpen, text: "Conversation scripts & templates", product: "Playbook" },
+              { icon: Heart, text: "Family discussion guides", product: "Playbook" },
+              { icon: FileText, text: "Ice-breaker conversation starters", product: "PDF" },
+              { icon: FileQuestion, text: "Readiness assessment", product: "Quiz" },
+              { icon: Shield, text: "Home management guide", product: "Toolkit" },
+              { icon: CheckCircle, text: "Professional contacts list", product: "Toolkit" },
+              { icon: Star, text: "Lifetime updates included", product: "All" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <item.icon className="h-5 w-5 text-primary shrink-0" />
                 <span className="text-sm">{item.text}</span>
+                <Badge variant="outline" className="text-xs ml-auto">{item.product}</Badge>
               </div>
             ))}
           </div>
@@ -609,6 +740,53 @@ const FamilyLyfeFix = () => {
                 you risk nothing.
               </AccordionContent>
             </AccordionItem>
+            
+            <AccordionItem value="item-7" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                Which product should I start with?
+              </AccordionTrigger>
+              <AccordionContent>
+                Start with our free Quiz to see where your family stands. Based on your results, you'll 
+                get a personalized recommendation. Generally: If you're not ready for conversations yet, 
+                start with the PDF. If you need help having the talk, get the Playbook. If you're ready 
+                to organize everything, go straight to the Toolkit. The Bundle gives you everything at 
+                the best value.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-8" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                Can I upgrade from the Playbook to the Toolkit?
+              </AccordionTrigger>
+              <AccordionContent>
+                Absolutely! Many families start with the Playbook to have the conversation, then upgrade 
+                to the Toolkit to organize everything. We offer upgrade pricing for existing customers - 
+                just email us at support@familylyfefix.com with your original order number.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-9" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                Is the Quiz really free?
+              </AccordionTrigger>
+              <AccordionContent>
+                Yes, 100% free with no credit card required. You'll get your personalized readiness score 
+                and recommendations instantly. We believe every family should know where they stand, 
+                regardless of budget. The Quiz takes just 5 minutes and gives you clarity on your next steps.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-10" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                What's the difference between the PDF and Playbook?
+              </AccordionTrigger>
+              <AccordionContent>
+                The PDF ($7) is a simple conversation starter - perfect for breaking the ice with family. 
+                The Playbook ($27) is a complete framework with scripts, templates, and strategies for 
+                navigating difficult conversations. Think of the PDF as the appetizer and the Playbook as 
+                the full meal. Both complement the Toolkit perfectly.
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </div>
       </section>
@@ -623,41 +801,74 @@ const FamilyLyfeFix = () => {
             Join 500+ families who've already protected their loved ones
           </p>
           
-          <Card className="mb-8">
-            <CardContent className="pt-8 pb-8">
-              <div className="mb-6">
-                <p className="text-3xl font-bold">
-                  <span className="line-through text-muted-foreground mr-2">$67</span>
-                  <span className="text-primary">$47</span>
-                </p>
-                <Badge variant="destructive" className="mt-2">
-                  Save $20 - Today Only!
-                </Badge>
-              </div>
+          <div className="space-y-4">
+            {/* Main Toolkit CTA */}
+            <Card className="mb-8">
+              <CardContent className="pt-8 pb-8">
+                <div className="mb-6">
+                  <p className="text-3xl font-bold">
+                    <span className="line-through text-muted-foreground mr-2">$67</span>
+                    <span className="text-primary">$47</span>
+                  </p>
+                  <Badge variant="destructive" className="mt-2">
+                    Save $20 - Today Only!
+                  </Badge>
+                </div>
+                
+                <Button size="lg" className="w-full mb-4" asChild>
+                  <a href="https://familylyfefix.store/toolkit">
+                    Get Your Family's Emergency Plan Now
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+                
+                <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <Shield className="h-4 w-4" />
+                    <span>30-Day Guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Lock className="h-4 w-4" />
+                    <span>Secure Checkout</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    <span>Instant Access</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            {/* Alternative CTAs */}
+            <div className="grid md:grid-cols-3 gap-4 text-center">
+              <Card className="p-4">
+                <p className="text-sm font-semibold mb-2">Not ready to buy?</p>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+                    Take Free Quiz
+                  </a>
+                </Button>
+              </Card>
               
-              <Button size="lg" className="w-full mb-4" asChild>
-                <a href="https://familylyfefix.store/toolkit">
-                  Get Your Family's Emergency Plan Now
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
+              <Card className="p-4">
+                <p className="text-sm font-semibold mb-2">Need conversation help?</p>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a href="https://familylyfefix.store/playbook">
+                    Get the Playbook
+                  </a>
+                </Button>
+              </Card>
               
-              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Shield className="h-4 w-4" />
-                  <span>30-Day Guarantee</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Lock className="h-4 w-4" />
-                  <span>Secure Checkout</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
-                  <span>Instant Access</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              <Card className="p-4">
+                <p className="text-sm font-semibold mb-2">Want it all?</p>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a href="https://familylyfefix.store/bundle">
+                    See Bundle Deal
+                  </a>
+                </Button>
+              </Card>
+            </div>
+          </div>
           
           <p className="text-sm text-muted-foreground">
             Questions? Email us at support@familylyfefix.com
