@@ -134,7 +134,7 @@ const FamilyLyfeFix = () => {
                 ))}
               </div>
               <p className="text-sm text-muted-foreground">
-                Join 500+ families who sleep better at night
+                Join families who will sleep better at night
               </p>
             </div>
           </div>
