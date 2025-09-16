@@ -879,7 +879,7 @@ const FamilyLyfeFix = () => {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 border-t">
         <div className="text-center text-sm text-muted-foreground">
-          <p>© 2024 Family Lyfe Fix. All rights reserved.</p>
+          <p>© 2025 Family Lyfe Fix. All rights reserved.</p>
           <p className="mt-2">
             Plan for Tomorrow, Live Today™
           </p>
