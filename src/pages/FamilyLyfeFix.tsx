@@ -395,7 +395,7 @@ const FamilyLyfeFix = () => {
                 <p className="text-sm text-muted-foreground mb-4">
                   PDF guide to break the ice with family
                 </p>
-                <p className="font-bold mb-2">$7</p>
+                <p className="font-bold mb-2">FREE</p>
                 <Button variant="outline" size="sm" className="w-full" asChild>
                   <a href="https://familylyfefix.store/pdf">Get the Guide</a>
                 </Button>
