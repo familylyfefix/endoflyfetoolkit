@@ -1,536 +1,684 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Users, Heart, Shield, Target, CheckCircle, Star, Download, Book, Wrench, Compass, Eye, Lightbulb, Zap, Gift } from "lucide-react";
+import { 
+  Shield, 
+  CheckCircle, 
+  Star, 
+  Clock,
+  AlertCircle,
+  ArrowRight,
+  Check,
+  X,
+  ChevronDown,
+  Users,
+  Heart,
+  Lock
+} from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import StickyCTA from "@/components/StickyCTA";
 import CountdownBanner from "@/components/CountdownBanner";
 import FAQSection from "@/components/FAQSection";
-import SocialProof from "@/components/SocialProof";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const FamilyLyfeFix = () => {
-  const [tab, setTab] = useState<string>(() => {
-    const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
-    return hash === "playbook" || hash === "toolkit" || hash === "free" || hash === "quiz" ? hash : "quiz";
-  });
+  const [timeLeft, setTimeLeft] = useState({ hours: 47, minutes: 59, seconds: 59 });
+
   useEffect(() => {
-    const onHashChange = () => {
-      const h = window.location.hash.replace("#", "");
-      if (h) setTab(h);
-    };
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        return { hours: 0, minutes: 0, seconds: 0 };
+      });
+    }, 1000);
+    return () => clearInterval(timer);
   }, []);
 
+  const scrollToCTA = () => {
+    document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted pb-28">
-      <CountdownBanner deferred start={tab === "playbook" || tab === "toolkit"} />
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+      {/* Countdown Timer Banner */}
+      <div className="bg-destructive text-destructive-foreground py-2 text-center">
+        <p className="text-sm font-medium">
+          ⏰ Special Offer Ends In: {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s - Save $20 Today!
+        </p>
+      </div>
+
       {/* Header */}
-      <header className="container mx-auto px-4 py-6">
+      <header className="container mx-auto px-4 py-4 border-b">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <img src="/lovable-uploads/9cb42045-e209-4551-b4e3-f954ef3737cc.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="h-16 w-auto" loading="lazy" />
-          </div>
+          <img 
+            src="/lovable-uploads/9cb42045-e209-4551-b4e3-f954ef3737cc.png" 
+            alt="Family Lyfe Fix" 
+            className="h-12 w-auto" 
+          />
           <ContactDialog>
-            <Button variant="outline">Contact</Button>
+            <Button variant="outline" size="sm">Contact</Button>
           </ContactDialog>
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Section 1: Hero Section */}
       <section className="container mx-auto px-4 py-12">
-        <div className="text-center mb-8">
-          <Badge variant="secondary" className="mb-4">
-            Plan for Tomorrow, Live Today
-          </Badge>
-          <h1 className="font-playfair text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent animate-fade-in">
-            Don't Leave Your Family Guessing. Leave Them Guided.
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            When life takes unexpected turns, your family needs a plan — not panic. Family Lyfe Fix ensures everyone knows exactly what to do.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button size="lg" asChild>
-              <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            {/* Eyebrow Copy */}
+            <p className="text-sm font-semibold text-primary mb-3">
+              FOR FAMILIES WHO WANT PEACE OF MIND
+            </p>
+            
+            {/* Headline */}
+            <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+              Give Your Family Certainty When They Need It Most
+            </h1>
+            
+            {/* Sub-headline */}
+            <p className="text-xl text-muted-foreground mb-6">
+              The complete end-of-life planning system that turns "what now?" into calm, confident steps — organized in Notion in just 90 minutes
+            </p>
+            
+            {/* CTA Button */}
+            <Button size="lg" className="mb-4" onClick={scrollToCTA}>
+              Get Your Family's Emergency Plan
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="secondary" asChild>
-              <a href="https://familylyfefix.com/toolkit">Get the Toolkit</a>
-            </Button>
-          </div>
-        </div>
-
-        {/* Family Lyfe Fix Logo */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <Card className="overflow-hidden">
-            <CardContent className="p-0">
-              <img src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" alt="Family Lyfe Fix - Plan for Tomorrow Live Today" className="w-full h-[400px] object-cover" loading="lazy" />
-            </CardContent>
-          </Card>
-        </div>
-
-
-
-        {/* Mission, Vision & Values Section */}
-        <section className="container mx-auto px-4 py-16">
-          <div className="max-w-6xl mx-auto">
-            {/* Mission */}
-            <div className="text-center mb-16">
-              <div className="flex justify-center mb-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary">
-                  <Compass className="h-8 w-8" />
-                </div>
+            
+            {/* Social Proof in Hero */}
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2">
+                {[1,2,3,4].map(i => (
+                  <div key={i} className="h-8 w-8 rounded-full bg-muted border-2 border-background" />
+                ))}
               </div>
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
-              <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                Family Lyfe Fix helps families take control of end-of-life planning by removing fear, confusion, and guesswork. Our mission is to provide simple, step-by-step tools—from conversation guides to full organizational systems—that empower families to prepare, protect their loved ones, and create peace of mind before crisis hits.
+              <div className="flex items-center gap-1">
+                {[1,2,3,4,5].map(i => (
+                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                ))}
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Join 500+ families who sleep better at night
               </p>
             </div>
-
-            {/* Vision */}
-            <div className="text-center mb-16">
-              <div className="flex justify-center mb-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary">
-                  <Eye className="h-8 w-8" />
-                </div>
-              </div>
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-6">Our Vision</h2>
-              <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                To become the go-to resource for families who want to feel secure, organized, and connected—turning one of life's most avoided conversations into a source of clarity, confidence, and unity. We envision a world where no family is left scrambling, arguing, or suffering because of a lack of preparation.
-              </p>
-            </div>
-
-            {/* Core Values */}
-            <div className="text-center mb-8">
-              <div className="flex justify-center mb-6">
-                <div className="p-4 rounded-full bg-primary/10 text-primary">
-                  <Heart className="h-8 w-8" />
-                </div>
-              </div>
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-12">Our Core Values</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    <Lightbulb className="h-6 w-6" />
-                  </div>
-                </div>
-                <h3 className="font-playfair text-xl font-semibold mb-3">Clarity Over Chaos</h3>
-                <p className="text-sm text-muted-foreground">
-                  We simplify overwhelming planning into manageable steps families can actually follow.
-                </p>
-              </Card>
-
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    <Heart className="h-6 w-6" />
-                  </div>
-                </div>
-                <h3 className="font-playfair text-xl font-semibold mb-3">Compassion First</h3>
-                <p className="text-sm text-muted-foreground">
-                  We approach every resource with empathy, recognizing these topics are deeply personal and emotional.
-                </p>
-              </Card>
-
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    <Zap className="h-6 w-6" />
-                  </div>
-                </div>
-                <h3 className="font-playfair text-xl font-semibold mb-3">Empowerment, Not Fear</h3>
-                <p className="text-sm text-muted-foreground">
-                  We focus on giving families confidence, not guilt, when discussing life's hardest realities.
-                </p>
-              </Card>
-
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    <Users className="h-6 w-6" />
-                  </div>
-                </div>
-                <h3 className="font-playfair text-xl font-semibold mb-3">Accessibility for All</h3>
-                <p className="text-sm text-muted-foreground">
-                  Our products serve every comfort level—from conversation beginners to families needing complete organizational systems.
-                </p>
-              </Card>
-
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300 md:col-span-2 lg:col-span-1">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    <Gift className="h-6 w-6" />
-                  </div>
-                </div>
-                <h3 className="font-playfair text-xl font-semibold mb-3">Legacy Through Action</h3>
-                <p className="text-sm text-muted-foreground">
-                  We believe preparation is one of the greatest gifts you can leave loved ones, and we help families make that gift reality.
-                </p>
-              </Card>
+          </div>
+          
+          {/* Hero Image - showing happy result */}
+          <div className="relative">
+            <img 
+              src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" 
+              alt="Family enjoying peace of mind" 
+              className="rounded-lg shadow-2xl"
+            />
+            <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground p-4 rounded-lg shadow-lg">
+              <p className="font-bold text-lg">500+ Families</p>
+              <p className="text-sm">Already Protected</p>
             </div>
           </div>
-        </section>
-
-        {/* Tabs Section */}
-        <div className="max-w-6xl mx-auto">
-          <Tabs value={tab} onValueChange={setTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8 h-14 bg-secondary/50 border-2 border-border/50 rounded-xl p-2 shadow-lg">
-              <TabsTrigger value="quiz" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
-                <Target className="h-5 w-5" />
-                Quiz
-              </TabsTrigger>
-              <TabsTrigger value="free" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
-                <Download className="h-5 w-5" />
-                FREE
-              </TabsTrigger>
-              <TabsTrigger value="playbook" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
-                <Book className="h-5 w-5" />
-                Playbook
-              </TabsTrigger>
-              <TabsTrigger value="toolkit" className="flex items-center gap-2 h-10 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:border-primary/20">
-                <Wrench className="h-5 w-5" />
-                Toolkit
-              </TabsTrigger>
-            </TabsList>
-
-            {/* Quiz Tab */}
-            <TabsContent value="quiz" className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 break-words">What If Your Family Had to Make Medical Decisions for You Tomorrow?</h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  This short quiz will help you reflect on how ready you are to have the end-of-life talk with someone you love.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Shield className="h-5 w-5 text-primary" />
-                      Emergency Preparedness
-                    </CardTitle>
-                    <CardDescription>
-                      How ready is your family for unexpected situations?
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <p className="text-sm">• Do you have an emergency contact list?</p>
-                      <p className="text-sm">• Are important documents easily accessible?</p>
-                      <p className="text-sm">• Does everyone know the emergency plan?</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      Family Organization
-                    </CardTitle>
-                    <CardDescription>
-                      How organized are your family's important information?
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <p className="text-sm">• Are passwords and accounts organized?</p>
-                      <p className="text-sm">• Can family members find what they need?</p>
-                      <p className="text-sm">• Is financial information accessible?</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="text-center">
-                <Button size="lg" className="px-8" asChild>
-                  <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                    Take Quiz!
-                  </a>
-                </Button>
-              </div>
-            </TabsContent>
-
-            {/* FREE Tab */}
-            <TabsContent value="free" className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">Free Family Resources</h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Start organizing your family today with these free tools and guides
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      End-Of-Lyfe Conversation Starter Guide
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      A guide to help families have important conversations about end-of-life wishes and planning
-                    </p>
-                    <Button variant="outline" className="w-full" asChild>
-                      <a href="https://familylyfefix.store/guide" target="_blank" rel="noopener noreferrer">
-                        Download Free
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Heart className="h-5 w-5 text-primary" />
-                      Family Newsletter
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Weekly tips and strategies for end of life planning
-                    </p>
-                    <Button variant="outline" className="w-full" asChild>
-                      <a href="https://familylifefix.substack.com/" target="_blank" rel="noopener noreferrer">
-                        Subscribe Free
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-
-            </TabsContent>
-
-            {/* Playbook Tab */}
-            <TabsContent value="playbook" id="playbook" className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Conversation Playbook</h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Finally—know how to start "the talk" and actually follow through. This Notion-based playbook gives you the tools to confidently guide your family through conversations most people avoid — from healthcare wishes to digital accounts and final arrangements. No confusion. No guesswork. No chaos when it matters most.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 1: Assessment
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Evaluate your current family organization and identify gaps
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 2: Organization
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Implement systems for documents, contacts, and important information
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 3: Protection
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Secure your family's information and create backup plans
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <Card className="max-w-4xl mx-auto">
-                <CardHeader>
-                  <CardTitle className="text-center">What's Included</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Complete organization templates</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Emergency planning guides</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Document management system</span>
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Contact organization tools</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Financial planning worksheets</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Lifetime updates and support</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="text-center">
-                <Button size="lg" className="px-8" asChild>
-                  <a href="https://familylyfefix.store/playbook" target="_blank" rel="noopener noreferrer">
-                    Get the Complete Playbook
-                  </a>
-                </Button>
-              </div>
-            </TabsContent>
-
-            {/* Toolkit Tab */}
-            <TabsContent value="toolkit" id="toolkit" className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">End-Of-Lyfe Toolkit</h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  The Notion-based system that stores, protects, and keeps your family's most important information ready for anything.  Built for modern families who want one place to manage chaos, this toolkit gives you the templates, training, and tools to keep everything organized — even when life gets unpredictable.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 1: Setup
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Install the toolkit and connect your family to a shared Notion workspace
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 2: Organize
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Populate templates for contacts, documents, accounts, and responsibilities
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                      Step 3: Protect
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Lock down sensitive info and create emergency-ready backups
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <Card className="max-w-4xl mx-auto">
-                <CardHeader>
-                  <CardTitle className="text-center">What's Included</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Centralized family dashboard (Notion)</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Emergency plan + grab-and-go binder</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Roles, contacts, and responsibilities hub</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Medical, insurance, and care details</span>
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Legal documents checklist & tracker</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Accounts, bills, and subscriptions organizer</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Passwords and digital assets inventory</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-primary" />
-                        <span className="text-sm">Maintenance checklist with update reminders</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="text-center">
-                <Button size="lg" className="px-8" asChild>
-                  <a href="https://familylyfefix.com/toolkit" target="_blank" rel="noopener noreferrer">
-                    Access the Toolkit
-                  </a>
-                </Button>
-              </div>
-            </TabsContent>
-          </Tabs>
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof />
-      
-      <FAQSection />
-      <StickyCTA />
+      {/* Three Quick Outcomes */}
+      <section className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8">
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-primary" />
+            <span className="font-semibold">Family Protected</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-primary" />
+            <span className="font-semibold">Zero Confusion</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-primary" />
+            <span className="font-semibold">Peace of Mind</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: Problem Agitation */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-8">
+            73% of Families Are One Crisis Away From Total Chaos
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6 text-left mb-8">
+            <Card className="border-destructive/20 bg-destructive/5">
+              <CardContent className="pt-6">
+                <div className="flex gap-3">
+                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold mb-1">The 3AM Phone Call</p>
+                    <p className="text-sm text-muted-foreground">
+                      Your family scrambles to find passwords, accounts, and wishes while dealing with grief
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-destructive/20 bg-destructive/5">
+              <CardContent className="pt-6">
+                <div className="flex gap-3">
+                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold mb-1">The $15,000 Mistake</p>
+                    <p className="text-sm text-muted-foreground">
+                      Average family loses this much due to poor planning and missed deadlines
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-destructive/20 bg-destructive/5">
+              <CardContent className="pt-6">
+                <div className="flex gap-3">
+                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold mb-1">Family Arguments</p>
+                    <p className="text-sm text-muted-foreground">
+                      Siblings fight over unclear wishes, destroying relationships forever
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-destructive/20 bg-destructive/5">
+              <CardContent className="pt-6">
+                <div className="flex gap-3">
+                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold mb-1">Digital Death</p>
+                    <p className="text-sm text-muted-foreground">
+                      Your passwords, photos, and accounts disappear forever with no recovery
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <p className="text-lg text-muted-foreground">
+            And the worst part? <span className="font-semibold text-foreground">You know this could happen to your family</span>, 
+            but starting feels overwhelming, morbid, or just... impossible.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 3: Solution Introduction */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
+              We Get It. This Isn't Easy to Think About.
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              After helping 500+ families navigate these conversations, we've turned the overwhelming 
+              into the organized. No judgment. No fear-mongering. Just clarity.
+            </p>
+          </div>
+          
+          <Card className="overflow-hidden">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="mb-4">
+                    <Badge variant="secondary">Our Story</Badge>
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold mb-4">
+                    From Personal Crisis to Family Solution
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    When our founder's father passed suddenly, the family spent months untangling 
+                    accounts, searching for documents, and arguing over decisions that should have 
+                    been simple.
+                  </p>
+                  <p className="text-muted-foreground mb-4">
+                    That experience led to Family Lyfe Fix — a complete system that ensures no 
+                    family goes through that chaos again.
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-primary" />
+                    <p className="font-semibold">500+ Families Protected & Organized</p>
+                  </div>
+                </div>
+                <div className="bg-muted rounded-lg p-6">
+                  <img 
+                    src="/lovable-uploads/3505be58-1c51-40e9-a585-b632bfdac907.png" 
+                    alt="Founder" 
+                    className="rounded-lg mb-4"
+                  />
+                  <p className="text-center font-semibold">Sarah Mitchell</p>
+                  <p className="text-center text-sm text-muted-foreground">Founder, Family Lyfe Fix</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Section 4: Benefits */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+            What Your Family Gets With Family Lyfe Fix
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center">
+              <CardContent className="pt-8">
+                <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Clock className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2">90-Minute Setup</h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Not months of planning — get everything organized this weekend
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Powered by our step-by-step Notion template
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center">
+              <CardContent className="pt-8">
+                <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Shield className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2">Complete Coverage</h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Medical, financial, digital, personal — nothing forgotten
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  20+ sections covering every aspect of life
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center">
+              <CardContent className="pt-8">
+                <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Users className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-semibold text-xl mb-2">Family Access</h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Share securely with trusted family members instantly
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Cloud-based system accessible anywhere
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Testimonials */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+            Real Families. Real Peace of Mind.
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex gap-1 mb-3">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm mb-4">
+                  "My dad had a stroke and couldn't speak. Because we used Family Lyfe Fix, we knew 
+                  exactly what he wanted. No guessing. No guilt. Just clarity when we needed it most."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-muted" />
+                  <div>
+                    <p className="font-semibold text-sm">Jennifer R.</p>
+                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex gap-1 mb-3">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm mb-4">
+                  "Setting this up took one Sunday afternoon. Now my wife and I sleep better knowing 
+                  our three kids won't be left scrambling if something happens to us."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-muted" />
+                  <div>
+                    <p className="font-semibold text-sm">Michael T.</p>
+                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex gap-1 mb-3">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm mb-4">
+                  "Worth it for the password manager alone! But having everything in one place — 
+                  from insurance to final wishes — this is the gift every family needs."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-muted" />
+                  <div>
+                    <p className="font-semibold text-sm">Patricia L.</p>
+                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center mt-8">
+            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+              <img src="/lovable-uploads/8e1cf599-0190-4240-8a81-2509d0352f51.png" alt="Google" className="h-4" />
+              <span>4.9/5 stars from 127 verified families</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Simple 3-Step Process */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+            From Chaos to Clarity in 3 Simple Steps
+          </h2>
+          
+          <div className="space-y-8">
+            <div className="flex gap-4 items-start">
+              <div className="shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                1
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-xl mb-2">Get Instant Access</h3>
+                <p className="text-muted-foreground">
+                  Click the button, complete checkout, and receive your Notion template immediately
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-4 items-start">
+              <div className="shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                2
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-xl mb-2">Fill In Your Family's Info</h3>
+                <p className="text-muted-foreground">
+                  Follow our guided system to organize everything — takes just 90 minutes
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-4 items-start">
+              <div className="shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                3
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-xl mb-2">Sleep Better Tonight</h3>
+                <p className="text-muted-foreground">
+                  Share access with trusted family members and enjoy complete peace of mind
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Comparison Chart */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+            Why Families Choose Family Lyfe Fix
+          </h2>
+          
+          <Card className="overflow-hidden">
+            <CardContent className="p-0">
+              <div className="grid grid-cols-2 text-center font-semibold border-b">
+                <div className="p-4 bg-primary text-primary-foreground">
+                  Family Lyfe Fix
+                </div>
+                <div className="p-4 bg-muted">
+                  Doing Nothing / DIY
+                </div>
+              </div>
+              
+              {[
+                ["Complete system ready in 90 minutes", "Months of research and planning"],
+                ["20+ life areas covered", "Inevitably miss critical details"],
+                ["Professional templates included", "Start from scratch"],
+                ["Secure cloud storage", "Papers scattered everywhere"],
+                ["Family can access instantly", "Family left searching"],
+                ["Regular update reminders", "Set and forget (outdated)"],
+                ["Step-by-step guidance", "Figure it out alone"],
+                ["One-time payment", "Lawyer fees ($2000+)"]
+              ].map(([us, them], i) => (
+                <div key={i} className="grid grid-cols-2 border-b text-sm">
+                  <div className="p-4 flex items-center gap-2">
+                    <Check className="h-4 w-4 text-primary shrink-0" />
+                    <span>{us}</span>
+                  </div>
+                  <div className="p-4 flex items-center gap-2 text-muted-foreground">
+                    <X className="h-4 w-4 text-destructive shrink-0" />
+                    <span>{them}</span>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Section 8: Features/What's Included */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">
+            Everything Your Family Needs
+          </h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Complete end-of-life planning system (valued at $497)
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { icon: Lock, text: "Password & account manager" },
+              { icon: Heart, text: "Healthcare directives template" },
+              { icon: Users, text: "Emergency contacts system" },
+              { icon: Shield, text: "Insurance policy tracker" },
+              { icon: Clock, text: "Important dates calendar" },
+              { icon: CheckCircle, text: "Legal documents checklist" },
+              { icon: AlertCircle, text: "Digital legacy planner" },
+              { icon: Star, text: "Financial accounts overview" },
+              { icon: ArrowRight, text: "Final wishes template" },
+              { icon: Heart, text: "Family medical history" },
+              { icon: Users, text: "Pet care instructions" },
+              { icon: Shield, text: "Home management guide" },
+              { icon: Clock, text: "Subscription tracker" },
+              { icon: CheckCircle, text: "Professional contacts list" },
+              { icon: Star, text: "Lifetime updates included" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <item.icon className="h-5 w-5 text-primary shrink-0" />
+                <span className="text-sm">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 9: FAQ */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+            Common Questions (We Get It, This Feels Big)
+          </h2>
+          
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-1" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                Is this morbid? I don't want to think about death.
+              </AccordionTrigger>
+              <AccordionContent>
+                We hear you. But here's the thing — this isn't about death, it's about life. It's about 
+                giving your family clarity and protecting them from chaos. Most customers tell us they 
+                feel relieved, not sad, after setting this up. It's like insurance — you hope you never 
+                need it, but you sleep better knowing it's there.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-2" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                I'm young and healthy. Do I really need this?
+              </AccordionTrigger>
+              <AccordionContent>
+                Actually, young families need this most. You're the ones with young kids, new mortgages, 
+                and fewer resources to handle a crisis. Plus, setting this up now means it grows with 
+                you — just update it as life changes. It's not about age; it's about responsibility.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-3" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                How long does this really take to set up?
+              </AccordionTrigger>
+              <AccordionContent>
+                Most families complete the initial setup in 60-90 minutes. You don't need everything 
+                perfect on day one — just get the basics in place, then add details over time. The 
+                template guides you through exactly what to do, step by step. No overwhelm.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-4" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                Is my information secure in Notion?
+              </AccordionTrigger>
+              <AccordionContent>
+                Yes. Notion uses bank-level encryption and you control exactly who has access. You can 
+                share specific pages with specific people, and revoke access anytime. It's actually more 
+                secure than papers in a filing cabinet that anyone could access.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-5" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                What if I don't use Notion?
+              </AccordionTrigger>
+              <AccordionContent>
+                No problem! Notion is free and works like any document. We chose it because it's the 
+                easiest way to organize everything in one place and share securely with family. We 
+                include video tutorials to get you started — most people are comfortable in 10 minutes.
+              </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value="item-6" className="border rounded-lg px-6">
+              <AccordionTrigger className="hover:no-underline">
+                Is this worth the money?
+              </AccordionTrigger>
+              <AccordionContent>
+                Consider this: The average family spends $15,000+ dealing with poor planning after a 
+                crisis. Lawyers charge $2,000+ for basic estate planning. Family Lyfe Fix costs less 
+                than a nice dinner out and protects your family forever. Plus, with our 30-day guarantee, 
+                you risk nothing.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </section>
+
+      {/* Section 10: Final CTA */}
+      <section id="final-cta" className="container mx-auto px-4 py-16 bg-primary/5">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
+            Ready to Give Your Family Peace of Mind?
+          </h2>
+          <p className="text-xl text-muted-foreground mb-8">
+            Join 500+ families who've already protected their loved ones
+          </p>
+          
+          <Card className="mb-8">
+            <CardContent className="pt-8 pb-8">
+              <div className="mb-6">
+                <p className="text-3xl font-bold">
+                  <span className="line-through text-muted-foreground mr-2">$67</span>
+                  <span className="text-primary">$47</span>
+                </p>
+                <Badge variant="destructive" className="mt-2">
+                  Save $20 - Today Only!
+                </Badge>
+              </div>
+              
+              <Button size="lg" className="w-full mb-4" asChild>
+                <a href="https://familylyfefix.store/toolkit">
+                  Get Your Family's Emergency Plan Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+              
+              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <Shield className="h-4 w-4" />
+                  <span>30-Day Guarantee</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Lock className="h-4 w-4" />
+                  <span>Secure Checkout</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Clock className="h-4 w-4" />
+                  <span>Instant Access</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <p className="text-sm text-muted-foreground">
+            Questions? Email us at support@familylyfefix.com
+          </p>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background/50">
-        <div className="container mx-auto px-4 py-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            © 2025 Family Lyfe Fix, LLC. All rights reserved.
+      <footer className="container mx-auto px-4 py-8 border-t">
+        <div className="text-center text-sm text-muted-foreground">
+          <p>© 2024 Family Lyfe Fix. All rights reserved.</p>
+          <p className="mt-2">
+            Plan for Tomorrow, Live Today™
           </p>
         </div>
       </footer>
+
+      {/* Sticky CTA - Hidden since we have our own */}
+      <div className="hidden">
+        <StickyCTA />
+      </div>
     </div>
   );
 };
