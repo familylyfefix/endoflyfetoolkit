@@ -147,8 +147,7 @@ const FamilyLyfeFix = () => {
               className="rounded-lg shadow-2xl"
             />
             <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground p-4 rounded-lg shadow-lg">
-              <p className="font-bold text-lg">500+ Families</p>
-              <p className="text-sm">Already Protected</p>
+              <p className="font-bold text-lg">Our Goal: Help 500+ Families Achieve Peace of Mind</p>
             </div>
           </div>
         </div>
