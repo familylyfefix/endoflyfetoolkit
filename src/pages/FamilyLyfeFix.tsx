@@ -875,7 +875,7 @@ const FamilyLyfeFix = () => {
           </div>
           
           <p className="text-sm text-muted-foreground">
-            Questions? Email us at support@familylyfefix.com
+            Questions? Email us at hello@familylyfefix.com
           </p>
         </div>
       </section>
