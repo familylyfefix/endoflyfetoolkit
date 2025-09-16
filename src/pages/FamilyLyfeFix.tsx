@@ -379,6 +379,7 @@ const FamilyLyfeFix = () => {
                 <p className="text-sm text-muted-foreground mb-4">
                   5-minute assessment to see where your family stands
                 </p>
+                <p className="font-bold mb-2">FREE</p>
                 <Button variant="outline" size="sm" className="w-full" asChild>
                   <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
                     Take Quiz Free
