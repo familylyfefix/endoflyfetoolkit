@@ -389,7 +389,8 @@ const FamilyLyfeFix = () => {
             </Card>
             
             {/* PDF Card */}
-            <Card>
+            <Card className="relative">
+              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
               <CardContent className="pt-6">
                 <FileText className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Conversation Starter</h3>
