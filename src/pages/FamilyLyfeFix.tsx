@@ -97,7 +97,7 @@ const FamilyLyfeFix = () => {
             <div className="space-y-4">
               <Button size="lg" className="w-full" asChild>
                 <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                  Start Your Journey - Take the Free Quiz
+                  Start Now — Avoid Chaos Later →
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
