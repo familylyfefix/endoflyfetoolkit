@@ -161,11 +161,11 @@ const FamilyLyfeFix = () => {
         <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8">
           <div className="flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-primary" />
-            <span className="font-semibold">Family Protected</span>
+            <span className="font-semibold">Legacy Secured</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-primary" />
-            <span className="font-semibold">Zero Confusion</span>
+            <span className="font-semibold">No Guesswork</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-primary" />
