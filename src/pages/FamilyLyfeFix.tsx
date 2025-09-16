@@ -267,19 +267,19 @@ const FamilyLyfeFix = () => {
                     <Badge variant="secondary">Our Story</Badge>
                   </div>
                   <h3 className="font-playfair text-2xl font-bold mb-4">
-                    From Personal Crisis to Family Solution
+                    From Foresight to Family Solution
                   </h3>
                   <p className="text-muted-foreground mb-4">
-                    When our founder's father passed suddenly, the family spent months untangling 
-                    accounts, searching for documents, and arguing over decisions that should have 
-                    been simple.
+                    Our founder Catherine started Family Lyfe Fix after recognizing a critical gap in end-of-life planning resources. As the daughter of an organized baby boomer who has all her planning documents ready, Catherine realized how fortunate she was—and how unprepared most families are.
                   </p>
                   <p className="text-muted-foreground mb-4">
-                    That experience led to Family Lyfe Fix — a complete system that ensures no 
-                    family goes through that chaos again.
+                    Watching friends navigate unexpected family crises without proper planning was a wake-up call. She witnessed families scrambling for documents, making difficult decisions without knowing their loved one's wishes, and discovering nothing had been planned. This revealed that good planning shouldn't be a privilege for the naturally organized or wealthy.
                   </p>
                   <p className="text-muted-foreground mb-4">
-                    <span className="font-semibold">That's why we created a complete journey:</span><br />
+                    Catherine founded Family Lyfe Fix to help families move from reactive to proactive planning, providing practical resources so they can make thoughtful choices from a place of love and clarity before crisis strikes.
+                  </p>
+                  <p className="text-muted-foreground mb-4">
+                    <span className="font-semibold">That's why we developed a complete end-of-life planning system with multiple resources:</span><br />
                     • Start with our Quiz to see where you stand (free)<br />
                     • Get the Conversation Starter PDF to break the ice<br />
                     • Use the Playbook to guide difficult conversations<br />
@@ -287,7 +287,7 @@ const FamilyLyfeFix = () => {
                   </p>
                   <div className="flex items-center gap-2">
                     <Shield className="h-5 w-5 text-primary" />
-                    <p className="font-semibold">500+ Families Protected & Organized</p>
+                    <p className="font-semibold">Our Mission: Help 500+ Families Get Protected & Organized</p>
                   </div>
                 </div>
                 <div className="bg-muted rounded-lg p-6">
@@ -296,7 +296,7 @@ const FamilyLyfeFix = () => {
                     alt="Founder" 
                     className="rounded-lg mb-4"
                   />
-                  <p className="text-center font-semibold">Sarah Mitchell</p>
+                  <p className="text-center font-semibold">Catherine</p>
                   <p className="text-center text-sm text-muted-foreground">Founder, Family Lyfe Fix</p>
                 </div>
               </div>
