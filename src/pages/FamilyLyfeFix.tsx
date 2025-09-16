@@ -89,9 +89,9 @@ const FamilyLyfeFix = () => {
             </h1>
             
             {/* Sub-headline */}
-            <p className="text-xl text-muted-foreground mb-6">
-              The complete end-of-life planning system that turns "what now?" into calm, confident steps — organized in Notion in just 90 minutes
-            </p>
+          <p className="text-xl text-muted-foreground mb-6">
+            The complete end-of-life planning system that turns "what now?" into calm, confident steps — simplified with easy-to-use Notion templates
+          </p>
             
             {/* Progressive CTA Section */}
             <div className="space-y-4">
