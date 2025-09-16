@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import avatar1 from '@/assets/avatar1.jpg';
+import avatar2 from '@/assets/avatar2.jpg';
+import avatar3 from '@/assets/avatar3.jpg';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -124,9 +127,9 @@ const FamilyLyfeFix = () => {
             {/* Social Proof in Hero */}
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
-                {[1,2,3,4].map(i => (
-                  <div key={i} className="h-8 w-8 rounded-full bg-muted border-2 border-background" />
-                ))}
+                <img src={avatar1} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
+                <img src={avatar2} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
+                <img src={avatar3} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
               </div>
               <div className="flex items-center gap-1">
                 {[1,2,3,4,5].map(i => (
