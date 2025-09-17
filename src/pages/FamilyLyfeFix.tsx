@@ -287,10 +287,6 @@ const FamilyLyfeFix = () => {
                     • Use the Playbook to guide difficult conversations<br />
                     • Organize everything with the Toolkit
                   </p>
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-primary" />
-                    <p className="font-semibold">Our Mission: Help 500+ Families Get Protected & Organized</p>
-                  </div>
                 </div>
                 <div className="bg-muted rounded-lg p-6 space-y-6">
                   <div>
