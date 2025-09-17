@@ -869,15 +869,6 @@ const FamilyLyfeFix = () => {
                   </a>
                 </Button>
               </Card>
-              
-              <Card className="p-4">
-                <p className="text-sm font-semibold mb-2">Want it all?</p>
-                <Button variant="outline" size="sm" className="w-full" asChild>
-                  <a href="https://familylyfefix.store/bundle">
-                    See Bundle Deal
-                  </a>
-                </Button>
-              </Card>
             </div>
           </div>
           
