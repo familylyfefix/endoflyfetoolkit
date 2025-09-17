@@ -256,8 +256,7 @@ const FamilyLyfeFix = () => {
               We Get It. This Isn't Easy to Think About.
             </h2>
             <p className="text-lg text-muted-foreground">
-              After helping 500+ families navigate these conversations, we've turned the overwhelming 
-              into the organized. No judgment. No fear-mongering. Just clarity.
+              Our mission is simple: turn the overwhelming into the organized. No judgment. No fear-mongering. Just clarity.
             </p>
           </div>
           
