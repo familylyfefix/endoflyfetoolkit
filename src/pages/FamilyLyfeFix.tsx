@@ -463,25 +463,6 @@ const FamilyLyfeFix = () => {
               </CardContent>
             </Card>
           </div>
-          
-          {/* Bundle Option */}
-          <Card className="mt-8 border-primary bg-primary/5">
-            <CardContent className="pt-6 text-center">
-              <Badge variant="secondary" className="mb-3">BEST VALUE</Badge>
-              <h3 className="font-semibold text-xl mb-2">Complete Journey Bundle</h3>
-              <p className="text-muted-foreground mb-4">
-                Get everything: Quiz results + PDF + Playbook + Toolkit
-              </p>
-              <p className="text-2xl font-bold mb-4">
-                <span className="line-through text-muted-foreground">$101</span> 
-                <span className="text-primary ml-2">$67</span>
-                <Badge className="ml-2">Save $34</Badge>
-              </p>
-              <Button size="lg" asChild>
-                <a href="https://familylyfefix.store/bundle">Get Complete Bundle</a>
-              </Button>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
