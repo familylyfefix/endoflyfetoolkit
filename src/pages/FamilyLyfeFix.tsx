@@ -22,7 +22,9 @@ import {
   FileQuestion,
   FileText,
   BookOpen,
-  Package
+  Package,
+  Target,
+  Eye
 } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import StickyCTA from "@/components/StickyCTA";
@@ -290,14 +292,39 @@ const FamilyLyfeFix = () => {
                     <p className="font-semibold">Our Mission: Help 500+ Families Get Protected & Organized</p>
                   </div>
                 </div>
-                <div className="bg-muted rounded-lg p-6">
-                  <img 
-                    src="/lovable-uploads/3505be58-1c51-40e9-a585-b632bfdac907.png" 
-                    alt="Founder" 
-                    className="rounded-lg mb-4"
-                  />
-                  <p className="text-center font-semibold">Catherine</p>
-                  <p className="text-center text-sm text-muted-foreground">Founder, Family Lyfe Fix</p>
+                <div className="bg-muted rounded-lg p-6 space-y-6">
+                  <div>
+                    <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                      <Target className="h-4 w-4" />
+                      Our Mission
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      Help 500+ families get protected and organized with practical, accessible end-of-life planning resources that turn overwhelming tasks into manageable steps.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                      <Eye className="h-4 w-4" />
+                      Our Vision
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      A world where every family has the tools and confidence to have difficult conversations, ensuring no one is left scrambling during life's most challenging moments.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                      <Heart className="h-4 w-4" />
+                      Core Beliefs
+                    </h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Planning is an act of love, not morbidity</li>
+                      <li>• Every family deserves accessible resources</li>
+                      <li>• Small steps today prevent chaos tomorrow</li>
+                      <li>• Clarity brings peace of mind</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </CardContent>
