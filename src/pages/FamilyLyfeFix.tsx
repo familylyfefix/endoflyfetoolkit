@@ -102,7 +102,7 @@ const FamilyLyfeFix = () => {
             <div className="space-y-4">
               <Button size="lg" className="w-full" asChild>
                 <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                  Start Now — Avoid Chaos Later
+                  Start Here - Avoid Chaos Later
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
