@@ -111,7 +111,7 @@ const FamilyLyfeFix = () => {
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <span>Quiz (Free)</span>
                 <ChevronRight className="h-3 w-3" />
-                <a href="https://familylyfefix.store/pdf" className="underline hover:text-primary">PDF Guide</a>
+                <a href="https://familylyfefix.store/pdf" className="underline hover:text-primary">FREE Conversation Guide</a>
                 <ChevronRight className="h-3 w-3" />
                 <span>Playbook</span>
                 <ChevronRight className="h-3 w-3" />
