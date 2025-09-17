@@ -316,13 +316,14 @@ const FamilyLyfeFix = () => {
                   <div>
                     <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
                       <Heart className="h-4 w-4" />
-                      Core Beliefs
+                      Core Values
                     </h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Planning is an act of love, not morbidity</li>
-                      <li>• Every family deserves accessible resources</li>
-                      <li>• Small steps today prevent chaos tomorrow</li>
-                      <li>• Clarity brings peace of mind</li>
+                    <ul className="text-sm text-muted-foreground space-y-2">
+                      <li><span className="font-semibold">• Clarity Over Chaos:</span> We simplify overwhelming planning into manageable steps families can actually follow.</li>
+                      <li><span className="font-semibold">• Compassion First:</span> We approach every resource with empathy, recognizing these topics are deeply personal and emotional.</li>
+                      <li><span className="font-semibold">• Empowerment, Not Fear:</span> We focus on giving families confidence, not guilt, when discussing life's hardest realities.</li>
+                      <li><span className="font-semibold">• Accessibility for All:</span> Our products serve every comfort level—from conversation beginners to families needing complete organizational systems.</li>
+                      <li><span className="font-semibold">• Legacy Through Action:</span> We believe preparation is one of the greatest gifts you can leave loved ones, and we help families make that gift reality.</li>
                     </ul>
                   </div>
                 </div>
