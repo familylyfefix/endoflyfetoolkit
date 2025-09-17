@@ -428,14 +428,17 @@ const FamilyLyfeFix = () => {
             </Card>
             
             {/* Playbook Card */}
-            <Card>
+            <Card className="border-primary relative">
+              <Badge className="absolute -top-2 -right-2" variant="secondary">MOST POPULAR</Badge>
               <CardContent className="pt-6">
                 <BookOpen className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">The Playbook</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Complete conversation framework & scripts
                 </p>
-                <p className="font-bold mb-2">$27</p>
+                <p className="font-bold mb-2">
+                  <span className="line-through text-muted-foreground">$57</span> $37
+                </p>
                 <Button variant="outline" size="sm" className="w-full" asChild>
                   <a href="https://familylyfefix.store/playbook">Get Playbook</a>
                 </Button>
