@@ -849,27 +849,6 @@ const FamilyLyfeFix = () => {
                 </div>
               </CardContent>
             </Card>
-            
-            {/* Alternative CTAs */}
-            <div className="grid md:grid-cols-3 gap-4 text-center">
-              <Card className="p-4">
-                <p className="text-sm font-semibold mb-2">Not ready to buy?</p>
-                <Button variant="outline" size="sm" className="w-full" asChild>
-                  <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                    Take Free Quiz
-                  </a>
-                </Button>
-              </Card>
-              
-              <Card className="p-4">
-                <p className="text-sm font-semibold mb-2">Need conversation help?</p>
-                <Button variant="outline" size="sm" className="w-full" asChild>
-                  <a href="https://familylyfefix.store/playbook">
-                    Get the Playbook
-                  </a>
-                </Button>
-              </Card>
-            </div>
           </div>
           
           <p className="text-sm text-muted-foreground">
