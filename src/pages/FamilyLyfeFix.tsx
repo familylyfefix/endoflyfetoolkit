@@ -832,7 +832,7 @@ const FamilyLyfeFix = () => {
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
               <CardContent className="pt-6 flex flex-col h-full">
                 <Package className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">Complete Toolkit</h3>
+                <h3 className="font-semibold mb-2">The Toolkit</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Full Notion system to organize everything
                 </p>
