@@ -753,7 +753,7 @@ const FamilyLyfeFix = () => {
             Ready to Give Your Family Peace of Mind?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Join 500+ families who've already protected their loved ones
+            Start protecting your loved ones today
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 mb-8">
