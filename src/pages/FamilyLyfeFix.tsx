@@ -821,7 +821,7 @@ const FamilyLyfeFix = () => {
           <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-6">
             <div className="flex items-center gap-1">
               <Shield className="h-4 w-4" />
-              <span>30-Day Guarantee</span>
+              <span>Trusted by Families</span>
             </div>
             <div className="flex items-center gap-1">
               <Lock className="h-4 w-4" />
