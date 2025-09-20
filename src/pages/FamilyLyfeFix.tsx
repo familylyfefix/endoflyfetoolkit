@@ -714,9 +714,9 @@ const FamilyLyfeFix = () => {
                 Can I upgrade from the Playbook to the Toolkit?
               </AccordionTrigger>
               <AccordionContent>
-                Absolutely! Many families start with the Playbook to have the conversation, then upgrade 
-                to the Toolkit to organize everything. We offer upgrade pricing for existing customers - 
-                just email us at support@familylyfefix.com with your original order number.
+                Absolutely! Many families start with the Playbook to have the conversation, then move 
+                to the Toolkit to organize everything. If you're interested in the Toolkit, simply 
+                visit our website to purchase it.
               </AccordionContent>
             </AccordionItem>
             
