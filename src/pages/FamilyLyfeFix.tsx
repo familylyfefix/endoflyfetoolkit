@@ -725,9 +725,9 @@ const FamilyLyfeFix = () => {
                 Is the Quiz really free?
               </AccordionTrigger>
               <AccordionContent>
-                Yes, 100% free with no credit card required. You'll get your personalized readiness score 
-                and recommendations instantly. We believe every family should know where they stand, 
-                regardless of budget. The Quiz takes just 5 minutes and gives you clarity on your next steps.
+                Yes, 100% free with no credit card required. After completing the quiz, you'll receive 
+                a free guide to help you get started. We believe every family should know where they stand, 
+                regardless of budget. The Quiz takes less than 5 minutes and gives you clarity on your next steps.
               </AccordionContent>
             </AccordionItem>
             
