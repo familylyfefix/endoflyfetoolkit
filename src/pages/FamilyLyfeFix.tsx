@@ -596,12 +596,10 @@ const FamilyLyfeFix = () => {
       {/* Section 8: Features/What's Included */}
       <section className="container mx-auto px-4 py-16 bg-muted/30">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
             Everything Your Family Needs
           </h2>
-          <p className="text-center text-muted-foreground mb-12">
-            Complete end-of-life planning system (valued at $497)
-          </p>
+          
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
