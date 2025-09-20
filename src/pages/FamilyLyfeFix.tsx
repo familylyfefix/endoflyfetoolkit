@@ -419,72 +419,80 @@ const FamilyLyfeFix = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Quiz Card */}
-            <Card className="relative">
+            <Card className="relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <FileQuestion className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Readiness Quiz</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   5-minute assessment to see where your family stands
                 </p>
-                <p className="font-bold mb-2">FREE</p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                    Take Quiz Free
-                  </a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">FREE</p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+                      Take Quiz Free
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
             
             {/* PDF Card */}
-            <Card className="relative">
+            <Card className="relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <FileText className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Conversation Starter</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   PDF guide to break the ice with family
                 </p>
-                <p className="font-bold mb-2">FREE</p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="https://familylyfefix.store/pdf">Get the Guide</a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">FREE</p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="https://familylyfefix.store/pdf">Get the Guide</a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
             
             {/* Playbook Card */}
-            <Card className="border-primary relative">
+            <Card className="border-primary relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <BookOpen className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">The Playbook</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Complete conversation framework & scripts
                 </p>
-                <p className="font-bold mb-2">
-                  <span className="line-through text-muted-foreground">$57</span> $37
-                </p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="https://familylyfefix.store/playbook">Get Playbook</a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">
+                    <span className="line-through text-muted-foreground">$57</span> $37
+                  </p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="https://familylyfefix.store/playbook">Get Playbook</a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
             
             {/* Toolkit Card */}
-            <Card className="border-primary relative">
+            <Card className="border-primary relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <Package className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Complete Toolkit</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Full Notion system to organize everything
                 </p>
-                <p className="font-bold mb-2">
-                  <span className="line-through text-muted-foreground">$67</span> $47
-                </p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="/toolkit">Get Toolkit</a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">
+                    <span className="line-through text-muted-foreground">$67</span> $47
+                  </p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="/toolkit">Get Toolkit</a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -747,88 +755,96 @@ const FamilyLyfeFix = () => {
       </section>
 
       {/* Section 10: Final CTA */}
-      <section id="final-cta" className="container mx-auto px-4 py-16 bg-primary/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
+      <section id="final-cta" className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">
             Ready to Give Your Family Peace of Mind?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Start protecting your loved ones today
+          <p className="text-center text-muted-foreground mb-12">
+            Every family is different. Start where you're comfortable.
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Quiz Card */}
-            <Card className="relative">
+            <Card className="relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <FileQuestion className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Readiness Quiz</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   5-minute assessment to see where your family stands
                 </p>
-                <p className="font-bold mb-2">FREE</p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                    Take Quiz Free
-                  </a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">FREE</p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+                      Take Quiz Free
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
             
             {/* PDF Card */}
-            <Card className="relative">
+            <Card className="relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <FileText className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Conversation Starter</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   PDF guide to break the ice with family
                 </p>
-                <p className="font-bold mb-2">FREE</p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="https://familylyfefix.store/pdf">Get the Guide</a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">FREE</p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="https://familylyfefix.store/pdf">Get the Guide</a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
             
             {/* Playbook Card */}
-            <Card className="border-primary relative">
+            <Card className="border-primary relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <BookOpen className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">The Playbook</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Complete conversation framework & scripts
                 </p>
-                <p className="font-bold mb-2">
-                  <span className="line-through text-muted-foreground">$57</span> $37
-                </p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="https://familylyfefix.store/playbook">Get Playbook</a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">
+                    <span className="line-through text-muted-foreground">$57</span> $37
+                  </p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="https://familylyfefix.store/playbook">Get Playbook</a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
             
             {/* Toolkit Card */}
-            <Card className="border-primary relative">
+            <Card className="border-primary relative h-full">
               <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 flex flex-col h-full">
                 <Package className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Complete Toolkit</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Full Notion system to organize everything
                 </p>
-                <p className="font-bold mb-2">
-                  <span className="line-through text-muted-foreground">$67</span> $47
-                </p>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                  <a href="/toolkit">Get Toolkit</a>
-                </Button>
+                <div className="mt-auto">
+                  <p className="font-bold mb-2">
+                    <span className="line-through text-muted-foreground">$67</span> $47
+                  </p>
+                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                    <a href="/toolkit">Get Toolkit</a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
           
-          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-6">
+          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-6 mt-12">
             <div className="flex items-center gap-1">
               <Shield className="h-4 w-4" />
               <span>Trusted by Families</span>
@@ -843,7 +859,7 @@ const FamilyLyfeFix = () => {
             </div>
           </div>
           
-          <p className="text-sm text-muted-foreground">
+          <p className="text-center text-sm text-muted-foreground">
             Questions? Email us at hello@familylyfefix.com
           </p>
         </div>
