@@ -328,61 +328,6 @@ const FamilyLyfeFix = () => {
         </div>
       </section>
 
-      {/* Section 4: Benefits */}
-      <section className="container mx-auto px-4 py-16 bg-muted/30">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
-            What Your Family Gets With Family Lyfe Fix
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center">
-              <CardContent className="pt-8">
-                <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Clock className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2">90-Minute Setup</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Not months of planning — get everything organized this weekend
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Powered by our step-by-step Notion template
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center">
-              <CardContent className="pt-8">
-                <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Shield className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2">Complete Coverage</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Medical, financial, digital, personal — nothing forgotten
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  20+ sections covering every aspect of life
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center">
-              <CardContent className="pt-8">
-                <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-semibold text-xl mb-2">Family Access</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Share securely with trusted family members instantly
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Cloud-based system accessible anywhere
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* Product Showcase Section */}
       <section className="container mx-auto px-4 py-16">
