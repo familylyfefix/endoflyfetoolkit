@@ -568,9 +568,6 @@ const FamilyLyfeFix = () => {
               </div>
               
               {[
-                ["Complete system ready in 90 minutes", "Months of research and planning"],
-                ["20+ life areas covered", "Inevitably miss critical details"],
-                ["Professional templates included", "Start from scratch"],
                 ["Secure cloud storage", "Papers scattered everywhere"],
                 ["Family can access instantly", "Family left searching"],
                 ["Regular update reminders", "Set and forget (outdated)"],
