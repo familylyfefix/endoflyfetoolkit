@@ -619,7 +619,6 @@ const FamilyLyfeFix = () => {
               { icon: FileText, text: "Ice-breaker conversation starters", product: "PDF" },
               { icon: FileQuestion, text: "Readiness assessment", product: "Quiz" },
               { icon: Users, text: "Professional contacts list", product: "Toolkit" },
-              { icon: CheckCircle, text: "Pet care instructions", product: "Toolkit" },
               { icon: Star, text: "Lifetime updates included", product: "All" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
