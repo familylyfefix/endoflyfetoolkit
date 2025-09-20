@@ -614,7 +614,6 @@ const FamilyLyfeFix = () => {
               { icon: FileText, text: "Will & estate planning templates", product: "Toolkit" },
               { icon: Clock, text: "Important dates & deadlines tracker", product: "Toolkit" },
               { icon: CheckCircle, text: "After Death Checklist", product: "Toolkit" },
-              { icon: AlertCircle, text: "Healthcare directives template", product: "Toolkit" },
               { icon: Star, text: "Financial accounts overview", product: "Toolkit" },
               { icon: Shield, text: "Insurance policy tracker", product: "Toolkit" },
               { icon: BookOpen, text: "Conversation scripts & templates", product: "Playbook" },
