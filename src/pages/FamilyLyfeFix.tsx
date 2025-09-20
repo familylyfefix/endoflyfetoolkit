@@ -704,9 +704,8 @@ const FamilyLyfeFix = () => {
               <AccordionContent>
                 Start with our free Quiz to see where your family stands. Based on your results, you'll 
                 get a personalized recommendation. Generally: If you're not ready for conversations yet, 
-                start with the PDF. If you need help having the talk, get the Playbook. If you're ready 
-                to organize everything, go straight to the Toolkit. The Bundle gives you everything at 
-                the best value.
+                start with the Guide. If you need help having the talk, get the Playbook. If you're ready 
+                to organize everything, go straight to the Toolkit.
               </AccordionContent>
             </AccordionItem>
             
