@@ -614,7 +614,7 @@ const FamilyLyfeFix = () => {
               { icon: Shield, text: "Insurance policy tracker", product: "Toolkit" },
               { icon: BookOpen, text: "Conversation scripts & templates", product: "Playbook" },
               { icon: Heart, text: "Family discussion guides", product: "Playbook" },
-              { icon: FileText, text: "Ice-breaker conversation starters", product: "PDF" },
+              { icon: FileText, text: "Ice-breaker conversation starters", product: "Guide" },
               { icon: FileQuestion, text: "Readiness assessment", product: "Quiz" },
               { icon: Users, text: "Professional contacts list", product: "Toolkit" }
             ].map((item, i) => (
