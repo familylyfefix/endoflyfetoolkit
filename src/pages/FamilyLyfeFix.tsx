@@ -24,7 +24,10 @@ import {
   BookOpen,
   Package,
   Target,
-  Eye
+  Eye,
+  MessageCircle,
+  Book,
+  Plus
 } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import StickyCTA from "@/components/StickyCTA";
@@ -483,7 +486,7 @@ const FamilyLyfeFix = () => {
                 <Package className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Complete Toolkit</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Full Notion system to organize everything
+                  Comprehensive Notion system with 6 essential sections to organize all your family's important information
                 </p>
                 <div className="mt-auto">
                   <p className="font-bold mb-2">
@@ -602,20 +605,24 @@ const FamilyLyfeFix = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: Lock, text: "Password & account manager", product: "Toolkit" },
-              { icon: Heart, text: "Healthcare directives template", product: "Toolkit" },
-              { icon: Users, text: "Emergency contacts system", product: "Toolkit" },
-              { icon: Shield, text: "Insurance policy tracker", product: "Toolkit" },
-              { icon: Clock, text: "Important dates calendar", product: "Toolkit" },
+              { icon: FileText, text: "Final Wishes & Directives section", product: "Toolkit" },
+              { icon: Users, text: "Important Contacts organizer", product: "Toolkit" },
+              { icon: Shield, text: "Legal & Financial Records vault", product: "Toolkit" },
+              { icon: Heart, text: "Medical Information hub", product: "Toolkit" },
+              { icon: Lock, text: "Digital Life & Assets manager", product: "Toolkit" },
+              { icon: MessageCircle, text: "Personal Messages space", product: "Toolkit" },
+              { icon: FileText, text: "Will & estate planning templates", product: "Toolkit" },
+              { icon: Clock, text: "Important dates & deadlines tracker", product: "Toolkit" },
               { icon: CheckCircle, text: "Legal documents checklist", product: "Toolkit" },
-              { icon: AlertCircle, text: "Digital legacy planner", product: "Toolkit" },
+              { icon: AlertCircle, text: "Healthcare directives template", product: "Toolkit" },
               { icon: Star, text: "Financial accounts overview", product: "Toolkit" },
+              { icon: Shield, text: "Insurance policy tracker", product: "Toolkit" },
               { icon: BookOpen, text: "Conversation scripts & templates", product: "Playbook" },
               { icon: Heart, text: "Family discussion guides", product: "Playbook" },
               { icon: FileText, text: "Ice-breaker conversation starters", product: "PDF" },
               { icon: FileQuestion, text: "Readiness assessment", product: "Quiz" },
-              { icon: Shield, text: "Home management guide", product: "Toolkit" },
-              { icon: CheckCircle, text: "Professional contacts list", product: "Toolkit" },
+              { icon: Users, text: "Professional contacts list", product: "Toolkit" },
+              { icon: CheckCircle, text: "Pet care instructions", product: "Toolkit" },
               { icon: Star, text: "Lifetime updates included", product: "All" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
@@ -830,7 +837,7 @@ const FamilyLyfeFix = () => {
                 <Package className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Complete Toolkit</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Full Notion system to organize everything
+                  Comprehensive Notion system with 6 essential sections to organize all your family's important information
                 </p>
                 <div className="mt-auto">
                   <p className="font-bold mb-2">
