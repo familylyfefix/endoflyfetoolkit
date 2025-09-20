@@ -607,7 +607,6 @@ const FamilyLyfeFix = () => {
             {[
               { icon: FileText, text: "Final Wishes section", product: "Toolkit" },
               { icon: Users, text: "Important Contacts organizer", product: "Toolkit" },
-              { icon: Shield, text: "Legal & Financial Records vault", product: "Toolkit" },
               { icon: Heart, text: "Medical Information hub", product: "Toolkit" },
               { icon: Lock, text: "Digital Life & Assets manager", product: "Toolkit" },
               { icon: MessageCircle, text: "Personal Messages space", product: "Toolkit" },
