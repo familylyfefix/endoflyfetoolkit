@@ -328,8 +328,88 @@ const FamilyLyfeFix = () => {
         </div>
       </section>
 
+      {/* Section 4: Testimonials */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+            Real Families. Real Peace of Mind.
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex gap-1 mb-3">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm mb-4">
+                  "My dad had a stroke and couldn't speak. Because we used Family Lyfe Fix, we knew 
+                  exactly what he wanted. No guessing. No guilt. Just clarity when we needed it most."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-muted" />
+                  <div>
+                    <p className="font-semibold text-sm">Jennifer R.</p>
+                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex gap-1 mb-3">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm mb-4">
+                  "Setting this up took one Sunday afternoon. Now my wife and I sleep better knowing 
+                  our three kids won't be left scrambling if something happens to us."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-muted" />
+                  <div>
+                    <p className="font-semibold text-sm">Michael T.</p>
+                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex gap-1 mb-3">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm mb-4">
+                  "Worth it for the password manager alone! But having everything in one place — 
+                  from insurance to final wishes — this is the gift every family needs."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-muted" />
+                  <div>
+                    <p className="font-semibold text-sm">Patricia L.</p>
+                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center mt-8">
+            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+              <img src="/lovable-uploads/8e1cf599-0190-4240-8a81-2509d0352f51.png" alt="Google" className="h-4" />
+              <span>4.9/5 stars from 127 verified families</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Product Showcase Section */}
+      {/* Section 5: Product Showcase */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">Choose Your Starting Point</h2>
@@ -407,87 +487,6 @@ const FamilyLyfeFix = () => {
                 </Button>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5: Testimonials */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
-            Real Families. Real Peace of Mind.
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex gap-1 mb-3">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-sm mb-4">
-                  "My dad had a stroke and couldn't speak. Because we used Family Lyfe Fix, we knew 
-                  exactly what he wanted. No guessing. No guilt. Just clarity when we needed it most."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-muted" />
-                  <div>
-                    <p className="font-semibold text-sm">Jennifer R.</p>
-                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex gap-1 mb-3">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-sm mb-4">
-                  "Setting this up took one Sunday afternoon. Now my wife and I sleep better knowing 
-                  our three kids won't be left scrambling if something happens to us."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-muted" />
-                  <div>
-                    <p className="font-semibold text-sm">Michael T.</p>
-                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex gap-1 mb-3">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-sm mb-4">
-                  "Worth it for the password manager alone! But having everything in one place — 
-                  from insurance to final wishes — this is the gift every family needs."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-muted" />
-                  <div>
-                    <p className="font-semibold text-sm">Patricia L.</p>
-                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          
-          <div className="text-center mt-8">
-            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-              <img src="/lovable-uploads/8e1cf599-0190-4240-8a81-2509d0352f51.png" alt="Google" className="h-4" />
-              <span>4.9/5 stars from 127 verified families</span>
-            </div>
           </div>
         </div>
       </section>
