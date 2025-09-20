@@ -610,7 +610,6 @@ const FamilyLyfeFix = () => {
               { icon: Heart, text: "Medical Information hub", product: "Toolkit" },
               { icon: Lock, text: "Digital Life & Assets manager", product: "Toolkit" },
               { icon: MessageCircle, text: "Personal Messages space", product: "Toolkit" },
-              { icon: FileText, text: "Will & estate planning templates", product: "Toolkit" },
               { icon: CheckCircle, text: "After Death Checklist", product: "Toolkit" },
               { icon: Star, text: "Financial accounts overview", product: "Toolkit" },
               { icon: Shield, text: "Insurance policy tracker", product: "Toolkit" },
