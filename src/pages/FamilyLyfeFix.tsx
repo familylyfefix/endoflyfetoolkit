@@ -602,7 +602,6 @@ const FamilyLyfeFix = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: FileText, text: "Final Wishes section", product: "Toolkit" },
               { icon: Users, text: "Important Contacts organizer", product: "Toolkit" },
               { icon: Lock, text: "Digital Life & Assets manager", product: "Toolkit" },
               { icon: MessageCircle, text: "Personal Messages space", product: "Toolkit" },
