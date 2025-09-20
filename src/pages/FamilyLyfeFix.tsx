@@ -801,10 +801,7 @@ const FamilyLyfeFix = () => {
               </Badge>
               <CardContent className="pt-6 pb-6">
                 <h3 className="font-semibold text-lg mb-2">Complete Toolkit</h3>
-                <p className="text-3xl font-bold mb-1">
-                  <span className="line-through text-muted-foreground text-xl mr-2">$67</span>
-                  $47
-                </p>
+                <p className="text-3xl font-bold mb-1">$47</p>
                 <p className="text-sm text-muted-foreground mb-4">
                   Everything you need in one place
                 </p>
