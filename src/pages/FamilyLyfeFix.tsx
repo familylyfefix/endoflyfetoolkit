@@ -42,10 +42,20 @@ import {
 
 const FamilyLyfeFix = () => {
   const [timeLeft, setTimeLeft] = useState({ hours: 47, minutes: 59, seconds: 59 });
+  const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
+    // Stop timer if already expired
+    if (isExpired) return;
+    
     const timer = setInterval(() => {
       setTimeLeft(prev => {
+        // Check if timer has reached zero
+        if (prev.hours === 0 && prev.minutes === 0 && prev.seconds === 0) {
+          setIsExpired(true);
+          return prev;
+        }
+        
         if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
         if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
         if (prev.hours > 0) return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
@@ -53,7 +63,7 @@ const FamilyLyfeFix = () => {
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isExpired]);
 
   const scrollToCTA = () => {
     document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' });
