@@ -486,7 +486,7 @@ const FamilyLyfeFix = () => {
                 <Package className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Complete Toolkit</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Comprehensive Notion system with 6 essential sections to organize all your family's important information
+                  Full Notion system to organize everything
                 </p>
                 <div className="mt-auto">
                   <p className="font-bold mb-2">
@@ -827,7 +827,7 @@ const FamilyLyfeFix = () => {
                 <Package className="h-8 w-8 text-primary mb-3" />
                 <h3 className="font-semibold mb-2">Complete Toolkit</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Comprehensive Notion system with 6 essential sections to organize all your family's important information
+                  Full Notion system to organize everything
                 </p>
                 <div className="mt-auto">
                   <p className="font-bold mb-2">
