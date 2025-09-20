@@ -733,12 +733,12 @@ const FamilyLyfeFix = () => {
             
             <AccordionItem value="item-10" className="border rounded-lg px-6">
               <AccordionTrigger className="hover:no-underline">
-                What's the difference between the PDF and Playbook?
+                What's the difference between the Guide and Playbook?
               </AccordionTrigger>
               <AccordionContent>
-                The PDF ($7) is a simple conversation starter - perfect for breaking the ice with family. 
-                The Playbook ($27) is a complete framework with scripts, templates, and strategies for 
-                navigating difficult conversations. Think of the PDF as the appetizer and the Playbook as 
+                The Guide (FREE) is a simple conversation starter - perfect for breaking the ice with family. 
+                The Playbook ($37) is a complete framework with scripts and strategies for 
+                navigating difficult conversations. Think of the Guide as the appetizer and the Playbook as 
                 the full meal. Both complement the Toolkit perfectly.
               </AccordionContent>
             </AccordionItem>
