@@ -765,7 +765,7 @@ const FamilyLyfeFix = () => {
                 <p className="text-sm text-muted-foreground mb-4">
                   Perfect conversation starter
                 </p>
-                <Button size="sm" variant="outline" className="w-full" asChild>
+                <Button size="sm" variant="secondary" className="w-full" asChild>
                   <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
                     Take Quiz & Get Guide
                     <ArrowRight className="ml-2 h-4 w-4" />
