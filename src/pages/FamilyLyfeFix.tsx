@@ -656,9 +656,11 @@ const FamilyLyfeFix = () => {
                 How long does this really take to set up?
               </AccordionTrigger>
               <AccordionContent>
-                Most families complete the initial setup in 60-90 minutes. You don't need everything 
-                perfect on day one — just get the basics in place, then add details over time. The 
-                template guides you through exactly what to do, step by step. No overwhelm.
+                The initial setup is designed to be quick and manageable. You can work at your own 
+                pace — some families get the basics done in one sitting, while others prefer to spread 
+                it out. You don't need everything perfect on day one — just get the essentials in place, 
+                then add details over time. The template guides you through exactly what to do, step by 
+                step. No overwhelm.
               </AccordionContent>
             </AccordionItem>
             
