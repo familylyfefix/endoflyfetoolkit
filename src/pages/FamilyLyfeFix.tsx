@@ -574,8 +574,7 @@ const FamilyLyfeFix = () => {
                 ["Secure cloud storage", "Papers scattered everywhere"],
                 ["Family can access instantly", "Family left searching"],
                 ["Regular update reminders", "Set and forget (outdated)"],
-                ["Step-by-step guidance", "Figure it out alone"],
-                ["One-time payment", "Lawyer fees ($2000+)"]
+                ["Step-by-step guidance", "Figure it out alone"]
               ].map(([us, them], i) => (
                 <div key={i} className="grid grid-cols-2 border-b text-sm">
                   <div className="p-4 flex items-center gap-2">
