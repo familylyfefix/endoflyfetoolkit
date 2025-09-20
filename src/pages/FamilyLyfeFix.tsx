@@ -682,7 +682,7 @@ const FamilyLyfeFix = () => {
               <AccordionContent>
                 No problem! Notion is free and works like any document. We chose it because it's the 
                 easiest way to organize everything in one place and share securely with family. We 
-                include video tutorials to get you started — most people are comfortable in 10 minutes.
+                include clear PDF instructions to get you started — most people are comfortable in 10 minutes.
               </AccordionContent>
             </AccordionItem>
             
