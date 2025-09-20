@@ -748,7 +748,7 @@ const FamilyLyfeFix = () => {
 
       {/* Section 10: Final CTA */}
       <section id="final-cta" className="container mx-auto px-4 py-16 bg-primary/5">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
             Ready to Give Your Family Peace of Mind?
           </h2>
@@ -756,43 +756,81 @@ const FamilyLyfeFix = () => {
             Join 500+ families who've already protected their loved ones
           </p>
           
-          <div className="space-y-4">
-            {/* Main Toolkit CTA */}
-            <Card className="mb-8">
-              <CardContent className="pt-8 pb-8">
-                <div className="mb-6">
-                  <p className="text-3xl font-bold">
-                    <span className="line-through text-muted-foreground mr-2">$67</span>
-                    <span className="text-primary">$47</span>
-                  </p>
-                  <Badge variant="destructive" className="mt-2">
-                    Save $20 - Today Only!
-                  </Badge>
-                </div>
-                
-                <Button size="lg" className="w-full mb-4" asChild>
-                  <a href="https://familylyfefix.store/toolkit">
-                    Get Your Family's Emergency Plan Now
-                    <ArrowRight className="ml-2 h-5 w-5" />
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {/* Free Guide */}
+            <Card className="relative">
+              <CardContent className="pt-6 pb-6">
+                <h3 className="font-semibold text-lg mb-2">Quick Start Guide</h3>
+                <p className="text-3xl font-bold mb-2">FREE</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Perfect conversation starter
+                </p>
+                <Button size="sm" variant="outline" className="w-full" asChild>
+                  <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+                    Take Quiz & Get Guide
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                
-                <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Shield className="h-4 w-4" />
-                    <span>30-Day Guarantee</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Lock className="h-4 w-4" />
-                    <span>Secure Checkout</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-4 w-4" />
-                    <span>Instant Access</span>
-                  </div>
-                </div>
               </CardContent>
             </Card>
+
+            {/* Playbook */}
+            <Card className="relative">
+              <CardContent className="pt-6 pb-6">
+                <h3 className="font-semibold text-lg mb-2">The Playbook</h3>
+                <p className="text-3xl font-bold mb-2">$37</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Complete conversation framework
+                </p>
+                <Button size="sm" variant="secondary" className="w-full" asChild>
+                  <a href="https://familylyfefix.store/playbook">
+                    Get the Playbook
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Toolkit - Featured */}
+            <Card className="relative border-primary">
+              <Badge variant="default" className="absolute -top-3 left-1/2 -translate-x-1/2">
+                Most Popular
+              </Badge>
+              <CardContent className="pt-6 pb-6">
+                <h3 className="font-semibold text-lg mb-2">Complete Toolkit</h3>
+                <p className="text-3xl font-bold mb-1">
+                  <span className="line-through text-muted-foreground text-xl mr-2">$67</span>
+                  $47
+                </p>
+                <Badge variant="destructive" className="mb-2">
+                  Save $20 - Today Only!
+                </Badge>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Everything you need in one place
+                </p>
+                <Button size="sm" className="w-full" asChild>
+                  <a href="https://familylyfefix.store/toolkit">
+                    Get the Toolkit
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-6">
+            <div className="flex items-center gap-1">
+              <Shield className="h-4 w-4" />
+              <span>30-Day Guarantee</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Lock className="h-4 w-4" />
+              <span>Secure Checkout</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-4 w-4" />
+              <span>Instant Access</span>
+            </div>
           </div>
           
           <p className="text-sm text-muted-foreground">
