@@ -616,8 +616,7 @@ const FamilyLyfeFix = () => {
               { icon: Heart, text: "Family discussion guides", product: "Playbook" },
               { icon: FileText, text: "Ice-breaker conversation starters", product: "PDF" },
               { icon: FileQuestion, text: "Readiness assessment", product: "Quiz" },
-              { icon: Users, text: "Professional contacts list", product: "Toolkit" },
-              { icon: Star, text: "Lifetime updates included", product: "All" }
+              { icon: Users, text: "Professional contacts list", product: "Toolkit" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <item.icon className="h-5 w-5 text-primary shrink-0" />
