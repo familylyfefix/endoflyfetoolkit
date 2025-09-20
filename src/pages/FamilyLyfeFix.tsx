@@ -693,8 +693,7 @@ const FamilyLyfeFix = () => {
               <AccordionContent>
                 Consider this: The average family spends $15,000+ dealing with poor planning after a 
                 crisis. Lawyers charge $2,000+ for basic estate planning. Family Lyfe Fix costs less 
-                than a nice dinner out and protects your family forever. Plus, with our 30-day guarantee, 
-                you risk nothing.
+                than a nice dinner out and protects your family forever.
               </AccordionContent>
             </AccordionItem>
             
