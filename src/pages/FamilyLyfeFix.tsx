@@ -574,7 +574,8 @@ const FamilyLyfeFix = () => {
                 ["Secure cloud storage", "Papers scattered everywhere"],
                 ["Family can access instantly", "Family left searching"],
                 ["Regular update reminders", "Set and forget (outdated)"],
-                ["Step-by-step guidance", "Figure it out alone"]
+                ["Step-by-step guidance", "Figure it out alone"],
+                ["One-time payment", "Lawyer fees ($2000+)"]
               ].map(([us, them], i) => (
                 <div key={i} className="grid grid-cols-2 border-b text-sm">
                   <div className="p-4 flex items-center gap-2">
@@ -595,13 +596,16 @@ const FamilyLyfeFix = () => {
       {/* Section 8: Features/What's Included */}
       <section className="container mx-auto px-4 py-16 bg-muted/30">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">
             Everything Your Family Needs
           </h2>
-          
+          <p className="text-center text-muted-foreground mb-12">
+            Complete end-of-life planning system (valued at $497)
+          </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
+              { icon: FileText, text: "Final Wishes section", product: "Toolkit" },
               { icon: Users, text: "Important Contacts organizer", product: "Toolkit" },
               { icon: Lock, text: "Digital Life & Assets manager", product: "Toolkit" },
               { icon: MessageCircle, text: "Personal Messages space", product: "Toolkit" },
