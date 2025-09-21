@@ -8,6 +8,7 @@ import Checkout from "./pages/Checkout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
 import FamilyLyfeFix from "./pages/FamilyLyfeFix";
+import EstatePlanningChecklist from "./pages/EstatePlanningChecklist";
 
 const queryClient = new QueryClient();
 
