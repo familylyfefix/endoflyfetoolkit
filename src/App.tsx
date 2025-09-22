@@ -27,6 +27,7 @@ const App = () => {
             <Route path="/familylyfefix" element={<Navigate to="/" replace />} />
             <Route path="/toolkit" element={<Index />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checklist" element={<EstatePlanningChecklist />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
