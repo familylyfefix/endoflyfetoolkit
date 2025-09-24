@@ -140,10 +140,6 @@ const EstatePlanningChecklist = () => {
             <Home className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
             <Calendar className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
           </div>
-          
-          <div className="mt-12 text-xs text-[#8B7355]/60">
-            © Family Lyfe Fix | Baby Lyfe's motto: "Planning ahead isn't just for naptime."
-          </div>
         </div>
       </div>
 
