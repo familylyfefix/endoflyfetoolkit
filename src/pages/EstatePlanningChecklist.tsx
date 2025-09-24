@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Download, Heart, FileText, Users, Shield, Home, Phone, Calendar, Archive, Sparkles, Check } from 'lucide-react';
+import { Download, Heart, FileText, Users, Shield, Home, Phone, Calendar, Archive, Sparkles, Check, ClipboardList, Baby } from 'lucide-react';
 
 interface ChecklistItem {
   id: string;
@@ -9,10 +9,13 @@ interface ChecklistItem {
   task: string;
   hasInput?: boolean;
   inputPlaceholder?: string;
+  inputType?: 'text' | 'date' | 'select';
+  options?: string[];
 }
 
 interface ChecklistSection {
   title: string;
+  subtitle?: string;
   items: ChecklistItem[];
 }
 
@@ -36,6 +39,9 @@ const EstatePlanningChecklist = () => {
     <div className="bg-white rounded-lg p-6 shadow-sm">
       <div className="bg-[#E8B4B8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
         <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">{section.title}</h3>
+        {section.subtitle && (
+          <p className="text-[#4A3C28]/70 text-xs mt-1 italic">{section.subtitle}</p>
+        )}
       </div>
       <div className="space-y-4">
         {section.items.map((item, index) => (
@@ -45,7 +51,7 @@ const EstatePlanningChecklist = () => {
               <p className="text-[#4A3C28] text-sm leading-relaxed">{item.task}</p>
               {item.hasInput && (
                 <input
-                  type="text"
+                  type={item.inputType || 'text'}
                   placeholder={item.inputPlaceholder}
                   value={formData[item.id] || ''}
                   onChange={(e) => handleInput(item.id, e.target.value)}
@@ -102,50 +108,69 @@ const EstatePlanningChecklist = () => {
       {/* Page 1: Cover */}
       <div className="pdf-page min-h-screen flex items-center justify-center p-8">
         <div className="text-center">
-          <div className="flex justify-center gap-8 mb-12">
+          <div className="flex justify-center gap-8 mb-8">
             <FileText className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
             <Heart className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
             <Shield className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
           </div>
           
-          <h1 className="text-7xl text-[#4A3C28] mb-4" style={{ fontFamily: 'Dancing Script, cursive' }}>
-            Estate Planning
+          <p className="text-sm text-[#8B7355] font-medium mb-4">Baby Lyfe's Estate Planning Checklist</p>
+          
+          <h1 className="text-6xl md:text-7xl text-[#4A3C28] mb-4" style={{ fontFamily: 'Dancing Script, cursive' }}>
+            The "I'm Not Dead Yet"
           </h1>
           
-          <div className="flex items-center justify-center gap-3 mb-12">
+          <div className="flex items-center justify-center gap-3 mb-6">
             <div className="w-20 h-px bg-[#D4C4B0]"></div>
-            <Sparkles className="w-5 h-5 text-[#E8B4B8]" />
+            <Baby className="w-5 h-5 text-[#E8B4B8]" />
             <div className="w-20 h-px bg-[#D4C4B0]"></div>
           </div>
           
-          <h2 className="text-2xl text-[#8B7355] uppercase tracking-[0.3em]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-            Checklist
+          <h2 className="text-2xl text-[#8B7355] uppercase tracking-[0.3em] mb-12" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
+            Planning Guide
           </h2>
+          
+          <div className="max-w-2xl mx-auto space-y-4 text-sm text-[#4A3C28]/80 text-left">
+            <p>
+              This checklist is designed to help you protect the people you love most. It covers the essential documents and decisions 
+              you need to make while you're healthy and able - because planning ahead is one of the greatest gifts you can give your family. 
+              Use this alongside your will to create a comprehensive plan that truly covers all aspects of your life.
+            </p>
+            <p className="italic">
+              As you work through this checklist, remember that each item you complete brings peace of mind to both you and your loved ones. 
+              Take your time, and check off each item as you finish it.
+            </p>
+          </div>
           
           <div className="mt-16 flex justify-center gap-8">
             <Users className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
             <Home className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
             <Calendar className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
           </div>
+          
+          <div className="mt-12 text-xs text-[#8B7355]/60">
+            © Family Lyfe Fix | Baby Lyfe's motto: "Planning ahead isn't just for naptime."
+          </div>
         </div>
       </div>
 
       {/* Page 2: Essential Legal Documents */}
       <div className="pdf-page p-8">
-        <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Getting Started
+        <h2 className="text-3xl text-[#4A3C28] mb-2 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
+          Essential Legal Documents
         </h2>
+        <p className="text-center text-sm text-[#8B7355] mb-8 italic">These are the must-haves. Not suggestions. Requirements.</p>
         
         <ChecklistTable 
           section={{
-            title: "Essential Legal Documents",
+            title: "Core Documents",
             items: [
-              { id: "will", number: "1", task: "Create or update my will", hasInput: true, inputPlaceholder: "Date completed" },
-              { id: "will-location", number: "2", task: "Store will in secure location", hasInput: true, inputPlaceholder: "Location" },
-              { id: "executor", number: "3", task: "Name executor(s)", hasInput: true, inputPlaceholder: "Name(s)" },
-              { id: "poa-financial", number: "4", task: "Designate financial power of attorney", hasInput: true, inputPlaceholder: "Name" },
-              { id: "poa-medical", number: "5", task: "Designate medical power of attorney", hasInput: true, inputPlaceholder: "Name" },
-              { id: "trust", number: "6", task: "Consider setting up a trust", hasInput: true, inputPlaceholder: "Type/Status" },
+              { id: "will", number: "1", task: "Last Will and Testament", hasInput: true, inputPlaceholder: "Date completed" },
+              { id: "will-executor", number: "2", task: "Names executor/personal representative", hasInput: true, inputPlaceholder: "Executor name" },
+              { id: "will-guardian", number: "3", task: "Names guardians for minor children (if applicable)", hasInput: true, inputPlaceholder: "Guardian name(s)" },
+              { id: "poa-financial", number: "4", task: "Durable Power of Attorney for Finances", hasInput: true, inputPlaceholder: "Agent name" },
+              { id: "poa-financial-alt", number: "5", task: "Alternate financial POA agent", hasInput: true, inputPlaceholder: "Alternate agent name" },
+              { id: "poa-effective", number: "6", task: "POA effective immediately or upon incapacity?", hasInput: true, inputPlaceholder: "Immediately / Upon incapacity" },
             ]
           }}
         />
@@ -153,12 +178,15 @@ const EstatePlanningChecklist = () => {
         <div className="mt-8">
           <ChecklistTable 
             section={{
-              title: "Healthcare Directives",
+              title: "Healthcare Documents",
               items: [
-                { id: "living-will", number: "7", task: "Complete living will/advance directive", hasInput: true, inputPlaceholder: "Date" },
-                { id: "dnr", number: "8", task: "Decide on DNR preferences", hasInput: true, inputPlaceholder: "Yes/No" },
-                { id: "organ", number: "9", task: "Document organ donation wishes", hasInput: true, inputPlaceholder: "Yes/No" },
-                { id: "healthcare-proxy", number: "10", task: "Appoint healthcare proxy", hasInput: true, inputPlaceholder: "Name" },
+                { id: "healthcare-poa", number: "7", task: "Healthcare Power of Attorney/Healthcare Proxy", hasInput: true, inputPlaceholder: "Agent name" },
+                { id: "healthcare-alt", number: "8", task: "Alternate healthcare agent", hasInput: true, inputPlaceholder: "Alternate agent name" },
+                { id: "hipaa", number: "9", task: "HIPAA authorization included?", hasInput: true, inputPlaceholder: "Yes / No" },
+                { id: "hipaa-form", number: "10", task: "HIPAA Authorization Form (if not included above)", hasInput: true, inputPlaceholder: "Authorized persons" },
+                { id: "living-will", number: "11", task: "Living Will/Medical Directive", hasInput: true, inputPlaceholder: "Date completed" },
+                { id: "end-of-life", number: "12", task: "End-of-life preferences documented?", hasInput: true, inputPlaceholder: "Yes / No" },
+                { id: "organ", number: "13", task: "Organ donation preferences?", hasInput: true, inputPlaceholder: "Yes / No / Undecided" },
               ]
             }}
             startNumber={7}
@@ -166,146 +194,117 @@ const EstatePlanningChecklist = () => {
         </div>
       </div>
 
-      {/* Page 3: Financial Planning */}
+      {/* Page 3: Minor Children & Beneficiaries */}
       <div className="pdf-page p-8">
         <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Financial Planning
+          Family Protection
         </h2>
         
         <ChecklistTable 
           section={{
-            title: "Beneficiary Designations",
+            title: "If You Have Minor Children",
             items: [
-              { id: "life-insurance", number: "11", task: "Update life insurance beneficiaries", hasInput: true, inputPlaceholder: "Policy #" },
-              { id: "retirement", number: "12", task: "Update 401(k)/IRA beneficiaries", hasInput: true, inputPlaceholder: "Account #" },
-              { id: "bank", number: "13", task: "Add beneficiaries to bank accounts", hasInput: true, inputPlaceholder: "Bank name" },
-              { id: "investment", number: "14", task: "Update investment account beneficiaries", hasInput: true, inputPlaceholder: "Account #" },
-              { id: "pension", number: "15", task: "Review pension beneficiaries", hasInput: true, inputPlaceholder: "Plan name" },
+              { id: "guardian-primary", number: "14", task: "Primary guardian nomination in will", hasInput: true, inputPlaceholder: "Primary guardian name" },
+              { id: "guardian-alternate", number: "15", task: "Alternate guardian", hasInput: true, inputPlaceholder: "Alternate guardian name" },
+              { id: "guardian-discussed", number: "16", task: "Have you discussed this with them?", hasInput: true, inputPlaceholder: "Yes / No" },
+              { id: "standby-guardian", number: "17", task: "Standby Guardianship Forms (for temporary incapacity)", hasInput: true, inputPlaceholder: "Date completed" },
+              { id: "state-requirements", number: "18", task: "Check your state's requirements and time limits", hasInput: true, inputPlaceholder: "Requirements verified (Yes/No)" },
             ]
           }}
-          startNumber={11}
+          startNumber={14}
         />
         
         <div className="mt-8">
           <ChecklistTable 
             section={{
-              title: "Financial Information",
+              title: "Beneficiary Designations",
+              subtitle: "These override your will, so get them right. Seriously.",
               items: [
-                { id: "accounts-list", number: "16", task: "List all bank accounts", hasInput: true, inputPlaceholder: "Number of accounts" },
-                { id: "debts", number: "17", task: "Document outstanding debts", hasInput: true, inputPlaceholder: "Total amount" },
-                { id: "assets", number: "18", task: "Inventory valuable assets", hasInput: true, inputPlaceholder: "Categories" },
-                { id: "safe-deposit", number: "19", task: "Document safe deposit box location", hasInput: true, inputPlaceholder: "Bank & box #" },
-                { id: "financial-advisor", number: "20", task: "Share advisor contact info", hasInput: true, inputPlaceholder: "Name & phone" },
+                { id: "ira1", number: "19", task: "IRA Account #1", hasInput: true, inputPlaceholder: "Institution & Primary beneficiary" },
+                { id: "ira1-contingent", number: "20", task: "IRA #1 Contingent beneficiary", hasInput: true, inputPlaceholder: "Contingent beneficiary name" },
+                { id: "401k", number: "21", task: "401(k)/403(b)", hasInput: true, inputPlaceholder: "Employer/Institution & Primary beneficiary" },
+                { id: "401k-contingent", number: "22", task: "401(k) Contingent beneficiary", hasInput: true, inputPlaceholder: "Contingent beneficiary name" },
+                { id: "401k-spouse", number: "23", task: "Spouse consent obtained (if required)?", hasInput: true, inputPlaceholder: "Yes / No / N/A" },
+                { id: "life-insurance", number: "24", task: "Life Insurance Policy", hasInput: true, inputPlaceholder: "Company & Policy number" },
+                { id: "life-beneficiary", number: "25", task: "Life insurance beneficiaries", hasInput: true, inputPlaceholder: "Primary & Contingent beneficiaries" },
               ]
             }}
-            startNumber={16}
+            startNumber={19}
           />
         </div>
       </div>
 
-      {/* Page 4: Family & Personal */}
+      {/* Page 4: Financial Accounts */}
       <div className="pdf-page p-8">
         <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Family & Personal
+          Financial Accounts
         </h2>
         
         <ChecklistTable 
           section={{
-            title: "Guardian & Childcare Plans",
+            title: "Bank & Investment Accounts",
             items: [
-              { id: "guardian", number: "21", task: "Name guardian for minor children", hasInput: true, inputPlaceholder: "Name(s)" },
-              { id: "guardian-backup", number: "22", task: "Name backup guardian", hasInput: true, inputPlaceholder: "Name(s)" },
-              { id: "pet-care", number: "23", task: "Arrange pet care", hasInput: true, inputPlaceholder: "Caretaker name" },
-              { id: "childcare-funds", number: "24", task: "Set aside childcare funds", hasInput: true, inputPlaceholder: "Amount/Location" },
+              { id: "bank-pod", number: "26", task: "Bank Accounts (POD - Payable on Death)", hasInput: true, inputPlaceholder: "Institution & Beneficiary" },
+              { id: "investment-tod", number: "27", task: "Investment Accounts (TOD - Transfer on Death)", hasInput: true, inputPlaceholder: "Institution & Beneficiary" },
+              { id: "checking", number: "28", task: "Checking Account", hasInput: true, inputPlaceholder: "Bank & Account number" },
+              { id: "checking-balance", number: "29", task: "Checking approximate balance", hasInput: true, inputPlaceholder: "Balance" },
+              { id: "savings", number: "30", task: "Savings Account", hasInput: true, inputPlaceholder: "Bank & Account number" },
+              { id: "savings-balance", number: "31", task: "Savings approximate balance", hasInput: true, inputPlaceholder: "Balance" },
+              { id: "brokerage", number: "32", task: "Investment/Brokerage Account", hasInput: true, inputPlaceholder: "Institution & Account number" },
+              { id: "brokerage-value", number: "33", task: "Investment approximate value", hasInput: true, inputPlaceholder: "Value" },
             ]
           }}
-          startNumber={21}
+          startNumber={26}
         />
         
         <div className="mt-8">
           <ChecklistTable 
             section={{
-              title: "Personal Wishes",
+              title: "Asset Inventory",
+              subtitle: "Know what you have. Revolutionary concept, I know.",
               items: [
-                { id: "funeral", number: "25", task: "Document funeral preferences", hasInput: true, inputPlaceholder: "Burial/Cremation" },
-                { id: "funeral-home", number: "26", task: "Pre-arrange with funeral home", hasInput: true, inputPlaceholder: "Name" },
-                { id: "obituary", number: "27", task: "Write obituary outline", hasInput: true, inputPlaceholder: "Status" },
-                { id: "memorial", number: "28", task: "Specify memorial preferences", hasInput: true, inputPlaceholder: "Type" },
-                { id: "charity", number: "29", task: "List charitable donation wishes", hasInput: true, inputPlaceholder: "Organizations" },
+                { id: "primary-residence", number: "34", task: "Primary Residence Address", hasInput: true, inputPlaceholder: "Address" },
+                { id: "ownership", number: "35", task: "Owned individually or jointly?", hasInput: true, inputPlaceholder: "Individual / Joint" },
+                { id: "mortgage", number: "36", task: "Mortgage balance", hasInput: true, inputPlaceholder: "Balance" },
+                { id: "title-location", number: "37", task: "Title/deed location", hasInput: true, inputPlaceholder: "Location" },
+                { id: "other-real-estate", number: "38", task: "Other Real Estate", hasInput: true, inputPlaceholder: "Address & Type" },
               ]
             }}
-            startNumber={25}
+            startNumber={34}
           />
         </div>
       </div>
 
-      {/* Page 5: Digital & Documentation */}
+      {/* Page 5: Personal Property & Digital Assets */}
       <div className="pdf-page p-8">
         <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Digital & Documentation
+          Personal & Digital Assets
         </h2>
         
         <ChecklistTable 
           section={{
-            title: "Digital Legacy",
+            title: "Personal Property (High Value Items)",
             items: [
-              { id: "passwords", number: "30", task: "Create password manager account", hasInput: true, inputPlaceholder: "Service name" },
-              { id: "social-media", number: "31", task: "Document social media accounts", hasInput: true, inputPlaceholder: "Platforms" },
-              { id: "email", number: "32", task: "List important email accounts", hasInput: true, inputPlaceholder: "Primary email" },
-              { id: "digital-assets", number: "33", task: "Inventory digital assets", hasInput: true, inputPlaceholder: "Types" },
-              { id: "online-accounts", number: "34", task: "List subscription services", hasInput: true, inputPlaceholder: "Count" },
+              { id: "jewelry", number: "39", task: "Jewelry", hasInput: true, inputPlaceholder: "Description & Appraised value" },
+              { id: "art", number: "40", task: "Art/Collectibles", hasInput: true, inputPlaceholder: "Description & Location" },
+              { id: "art-value", number: "41", task: "Art/Collectibles appraised value", hasInput: true, inputPlaceholder: "Value" },
+              { id: "business", number: "42", task: "Business/Partnership", hasInput: true, inputPlaceholder: "Business name" },
+              { id: "business-ownership", number: "43", task: "Ownership percentage", hasInput: true, inputPlaceholder: "Percentage" },
+              { id: "succession-plan", number: "44", task: "Succession plan in place?", hasInput: true, inputPlaceholder: "Yes / No" },
             ]
           }}
-          startNumber={30}
+          startNumber={39}
         />
         
         <div className="mt-8">
           <ChecklistTable 
             section={{
-              title: "Document Storage",
+              title: "Digital Assets",
               items: [
-                { id: "documents-location", number: "35", task: "Organize important documents", hasInput: true, inputPlaceholder: "Location" },
-                { id: "copies", number: "36", task: "Make copies of key documents", hasInput: true, inputPlaceholder: "Status" },
-                { id: "trusted-person", number: "37", task: "Share location with trusted person", hasInput: true, inputPlaceholder: "Name" },
-                { id: "emergency-contacts", number: "38", task: "Create emergency contact list", hasInput: true, inputPlaceholder: "Updated date" },
-                { id: "review-schedule", number: "39", task: "Schedule annual review", hasInput: true, inputPlaceholder: "Month" },
-              ]
-            }}
-            startNumber={35}
-          />
-        </div>
-      </div>
-
-      {/* Page 6: Insurance & Property */}
-      <div className="pdf-page p-8">
-        <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Insurance & Property
-        </h2>
-        
-        <ChecklistTable 
-          section={{
-            title: "Insurance Policies",
-            items: [
-              { id: "health-insurance", number: "40", task: "Document health insurance details", hasInput: true, inputPlaceholder: "Provider & Policy #" },
-              { id: "life-insurance-details", number: "41", task: "List life insurance policies", hasInput: true, inputPlaceholder: "Companies" },
-              { id: "disability", number: "42", task: "Note disability insurance", hasInput: true, inputPlaceholder: "Provider" },
-              { id: "long-term-care", number: "43", task: "Document long-term care insurance", hasInput: true, inputPlaceholder: "Policy #" },
-              { id: "auto-insurance", number: "44", task: "List auto insurance details", hasInput: true, inputPlaceholder: "Provider" },
-            ]
-          }}
-          startNumber={40}
-        />
-        
-        <div className="mt-8">
-          <ChecklistTable 
-            section={{
-              title: "Property & Assets",
-              items: [
-                { id: "real-estate", number: "45", task: "List all real estate owned", hasInput: true, inputPlaceholder: "Properties" },
-                { id: "mortgage", number: "46", task: "Document mortgage information", hasInput: true, inputPlaceholder: "Lender" },
-                { id: "vehicle-titles", number: "47", task: "Organize vehicle titles", hasInput: true, inputPlaceholder: "Vehicles" },
-                { id: "valuables", number: "48", task: "Inventory valuable items", hasInput: true, inputPlaceholder: "Categories" },
-                { id: "business-interests", number: "49", task: "Document business ownership", hasInput: true, inputPlaceholder: "Business names" },
+                { id: "password-manager", number: "45", task: "Password manager in use?", hasInput: true, inputPlaceholder: "Yes / No - Service name" },
+                { id: "digital-executor", number: "46", task: "Digital executor named?", hasInput: true, inputPlaceholder: "Yes / No - Name" },
+                { id: "social-media", number: "47", task: "Social media account preferences documented?", hasInput: true, inputPlaceholder: "Yes / No" },
+                { id: "online-accounts", number: "48", task: "Online Account Inventory completed", hasInput: true, inputPlaceholder: "Date completed" },
               ]
             }}
             startNumber={45}
@@ -313,37 +312,49 @@ const EstatePlanningChecklist = () => {
         </div>
       </div>
 
-      {/* Page 7: Professional Contacts */}
+      {/* Page 6: Key People & Contacts */}
       <div className="pdf-page p-8">
-        <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Professional Contacts
+        <h2 className="text-3xl text-[#4A3C28] mb-2 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
+          Key People & Contact Info
         </h2>
+        <p className="text-center text-sm text-[#8B7355] mb-8 italic">The humans you're trusting with important stuff</p>
         
         <ChecklistTable 
           section={{
-            title: "Key Professionals",
+            title: "Legal & Financial Team",
             items: [
-              { id: "attorney", number: "50", task: "Estate attorney", hasInput: true, inputPlaceholder: "Name & Phone" },
-              { id: "accountant", number: "51", task: "Accountant/CPA", hasInput: true, inputPlaceholder: "Name & Phone" },
-              { id: "financial-planner", number: "52", task: "Financial planner", hasInput: true, inputPlaceholder: "Name & Phone" },
-              { id: "insurance-agent", number: "53", task: "Insurance agent", hasInput: true, inputPlaceholder: "Name & Phone" },
-              { id: "doctor", number: "54", task: "Primary care physician", hasInput: true, inputPlaceholder: "Name & Phone" },
-              { id: "employer", number: "55", task: "Employer HR contact", hasInput: true, inputPlaceholder: "Name & Phone" },
+              { id: "attorney", number: "49", task: "Estate Planning Attorney", hasInput: true, inputPlaceholder: "Name & Phone" },
+              { id: "financial-advisor", number: "50", task: "Financial Advisor", hasInput: true, inputPlaceholder: "Name, Company & Phone" },
+              { id: "accountant", number: "51", task: "Accountant/CPA", hasInput: true, inputPlaceholder: "Name, Company & Phone" },
             ]
           }}
-          startNumber={50}
+          startNumber={49}
         />
         
         <div className="mt-8">
           <ChecklistTable 
             section={{
-              title: "Family Communication",
+              title: "Document Storage Locations",
               items: [
-                { id: "family-meeting", number: "56", task: "Schedule family meeting", hasInput: true, inputPlaceholder: "Date" },
-                { id: "wishes-discussion", number: "57", task: "Discuss wishes with family", hasInput: true, inputPlaceholder: "Completed" },
-                { id: "questions", number: "58", task: "Address family questions", hasInput: true, inputPlaceholder: "Topics" },
-                { id: "location-shared", number: "59", task: "Share document locations", hasInput: true, inputPlaceholder: "With whom" },
-                { id: "annual-review", number: "60", task: "Plan annual review together", hasInput: true, inputPlaceholder: "Month" },
+                { id: "safe-deposit", number: "52", task: "Safe deposit box location", hasInput: true, inputPlaceholder: "Bank & Box number" },
+                { id: "home-safe", number: "53", task: "Home safe/file cabinet", hasInput: true, inputPlaceholder: "Location in home" },
+                { id: "attorney-copies", number: "54", task: "Attorney's office", hasInput: true, inputPlaceholder: "Attorney name & address" },
+                { id: "other-storage", number: "55", task: "Other storage location", hasInput: true, inputPlaceholder: "Location details" },
+              ]
+            }}
+            startNumber={52}
+          />
+        </div>
+        
+        <div className="mt-8">
+          <ChecklistTable 
+            section={{
+              title: "Copies Provided To",
+              items: [
+                { id: "spouse-copies", number: "56", task: "Spouse/partner", hasInput: true, inputPlaceholder: "Date provided" },
+                { id: "children-copies", number: "57", task: "Adult children", hasInput: true, inputPlaceholder: "Names & dates" },
+                { id: "attorney-copies-given", number: "58", task: "Attorney", hasInput: true, inputPlaceholder: "Date provided" },
+                { id: "trusted-person", number: "59", task: "Other trusted person", hasInput: true, inputPlaceholder: "Name & date" },
               ]
             }}
             startNumber={56}
@@ -351,59 +362,182 @@ const EstatePlanningChecklist = () => {
         </div>
       </div>
 
-      {/* Page 8: Notes & Additional Items */}
+      {/* Page 7: Review & Update Schedule */}
       <div className="pdf-page p-8">
-        <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Notes & Reminders
+        <h2 className="text-3xl text-[#4A3C28] mb-2 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
+          Review & Update Schedule
         </h2>
+        <p className="text-center text-sm text-[#8B7355] mb-8 italic">Because life changes, and your documents should too</p>
+        
+        <ChecklistTable 
+          section={{
+            title: "Annual Review Items",
+            items: [
+              { id: "beneficiary-review", number: "60", task: "Beneficiary Designations Review", hasInput: true, inputPlaceholder: "Date of last review" },
+              { id: "changes-needed", number: "61", task: "Changes needed?", hasInput: true, inputPlaceholder: "Yes / No - Details" },
+              { id: "next-review", number: "62", task: "Next review date", hasInput: true, inputPlaceholder: "Date" },
+              { id: "agents-willing", number: "63", task: "All agents/executors still willing and able?", hasInput: true, inputPlaceholder: "Yes / No" },
+              { id: "contact-current", number: "64", task: "Contact info current?", hasInput: true, inputPlaceholder: "Yes / No" },
+            ]
+          }}
+          startNumber={60}
+        />
+        
+        <div className="mt-8">
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-[#E8B4B8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
+              <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">Major Life Event Triggers</h3>
+              <p className="text-[#4A3C28]/70 text-xs mt-1 italic">Update documents within 60 days of any of these events:</p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                "Marriage", "Divorce", "Birth/adoption of child", "Death of beneficiary or agent",
+                "Significant change in financial situation", "Move to different state", "Retirement", "Diagnosis of serious illness"
+              ].map((event, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <Check className="w-4 h-4 text-[#E8B4B8]" />
+                  <span className="text-sm text-[#4A3C28]">{event}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Page 8: State Requirements & Next Steps */}
+      <div className="pdf-page p-8">
+        <h2 className="text-3xl text-[#4A3C28] mb-2 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
+          State-Specific Requirements
+        </h2>
+        <p className="text-center text-sm text-[#8B7355] mb-8 italic">Because apparently every state has to be different</p>
+        
+        <ChecklistTable 
+          section={{
+            title: "Your State Requirements",
+            items: [
+              { id: "state", number: "65", task: "Your State", hasInput: true, inputPlaceholder: "State name" },
+              { id: "witnesses", number: "66", task: "Number of witnesses needed", hasInput: true, inputPlaceholder: "Number" },
+              { id: "witness-quals", number: "67", task: "Specific witness qualifications required?", hasInput: true, inputPlaceholder: "Yes / No - Details" },
+              { id: "notarization", number: "68", task: "Which documents require notarization", hasInput: true, inputPlaceholder: "List documents" },
+              { id: "age-requirements", number: "69", task: "Minimum age for agents/proxies", hasInput: true, inputPlaceholder: "Age" },
+              { id: "special-requirements", number: "70", task: "Any special state requirements", hasInput: true, inputPlaceholder: "Details" },
+              { id: "state-forms", number: "71", task: "Using state-approved forms?", hasInput: true, inputPlaceholder: "Yes / No - Source" },
+            ]
+          }}
+          startNumber={65}
+        />
+        
+        <div className="mt-8">
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-[#E8B4B8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
+              <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">If You Move to a New State</h3>
+            </div>
+            <div className="space-y-3">
+              {[
+                "Research new state's requirements",
+                "Update documents if needed",
+                "Re-execute documents if required",
+                "Update professional team (attorney, etc.)"
+              ].map((task, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <span className="text-[#8B7355] font-medium">{index + 1}.</span>
+                  <span className="text-sm text-[#4A3C28]">{task}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Page 9: Next Steps */}
+      <div className="pdf-page p-8">
+        <h2 className="text-3xl text-[#4A3C28] mb-2 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
+          Next Steps
+        </h2>
+        <p className="text-center text-sm text-[#8B7355] mb-8 italic">What to do after completing this checklist</p>
+        
+        <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
+          <div className="bg-[#E8B4B8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
+            <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">Immediate Actions</h3>
+          </div>
+          <div className="space-y-3">
+            {[
+              "Schedule appointments for missing documents",
+              "Gather required information for attorney meetings",
+              "Update any outdated beneficiary designations",
+              "Inform key people of their roles and responsibilities"
+            ].map((action, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <ClipboardList className="w-4 h-4 text-[#E8B4B8] mt-0.5" />
+                <span className="text-sm text-[#4A3C28]">{action}</span>
+              </div>
+            ))}
+          </div>
+        </div>
         
         <div className="bg-white rounded-lg p-6 shadow-sm">
           <div className="bg-[#E8B4B8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
-            <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">Additional Notes</h3>
+            <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">Ongoing Responsibilities</h3>
           </div>
-          
-          <div className="space-y-4">
-            <div className="border-b border-[#F0E6E0] pb-3">
-              <label className="text-[#8B7355] text-sm font-medium">Important Dates to Remember:</label>
-              <textarea 
-                className="mt-2 w-full h-20 border border-[#D4C4B0] rounded-md p-2 text-sm text-[#4A3C28] resize-none focus:border-[#8B7355] focus:outline-none"
-                placeholder="Annual review dates, policy renewals, etc."
-              />
-            </div>
+          <div className="space-y-3">
+            {[
+              "Set calendar reminders for annual reviews",
+              "Keep document storage locations secure but accessible",
+              "Communicate your wishes to family members",
+              "Consider whether a trust is needed for your situation"
+            ].map((task, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <Calendar className="w-4 h-4 text-[#E8B4B8] mt-0.5" />
+                <span className="text-sm text-[#4A3C28]">{task}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Page 10: Final Thoughts */}
+      <div className="pdf-page p-8">
+        <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
+          Final Thoughts from Baby Lyfe
+        </h2>
+        
+        <div className="bg-white rounded-lg p-8 shadow-sm">
+          <div className="space-y-6 text-[#4A3C28]">
+            <p className="text-sm leading-relaxed">
+              Look, I know this seems like a lot of work. But you know what's more work? Leaving your family to figure out your mess 
+              while they're grieving because you couldn't be bothered to fill out some forms.
+            </p>
             
-            <div className="border-b border-[#F0E6E0] pb-3">
-              <label className="text-[#8B7355] text-sm font-medium">Special Instructions:</label>
-              <textarea 
-                className="mt-2 w-full h-20 border border-[#D4C4B0] rounded-md p-2 text-sm text-[#4A3C28] resize-none focus:border-[#8B7355] focus:outline-none"
-                placeholder="Any specific wishes or instructions..."
-              />
-            </div>
+            <p className="text-sm leading-relaxed">
+              I'm literally learning how to use a sippy cup, and I'm still more organized than most adults when it comes to planning ahead. 
+              Don't let a baby show you up.
+            </p>
             
-            <div className="border-b border-[#F0E6E0] pb-3">
-              <label className="text-[#8B7355] text-sm font-medium">Family Contacts:</label>
-              <textarea 
-                className="mt-2 w-full h-20 border border-[#D4C4B0] rounded-md p-2 text-sm text-[#4A3C28] resize-none focus:border-[#8B7355] focus:outline-none"
-                placeholder="Important family member contact information..."
-              />
-            </div>
+            <p className="text-sm font-semibold">
+              Get this stuff done. Your future self (and your family) will thank you.
+            </p>
             
-            <div>
-              <label className="text-[#8B7355] text-sm font-medium">Other Reminders:</label>
-              <textarea 
-                className="mt-2 w-full h-32 border border-[#D4C4B0] rounded-md p-2 text-sm text-[#4A3C28] resize-none focus:border-[#8B7355] focus:outline-none"
-                placeholder="Any other important information..."
-              />
+            <div className="pt-6 border-t border-[#F0E6E0]">
+              <p className="text-sm text-[#8B7355]">
+                Need help getting started? Visit FamilyLyfeFix.com for more resources, or consult with an estate planning attorney in your state.
+              </p>
             </div>
           </div>
         </div>
         
-        <div className="mt-8 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-20 h-px bg-[#D4C4B0]"></div>
-            <Heart className="w-5 h-5 text-[#E8B4B8]" />
-            <div className="w-20 h-px bg-[#D4C4B0]"></div>
+        <div className="mt-12 text-center space-y-3">
+          <div className="flex justify-center gap-3 items-center">
+            <Baby className="w-6 h-6 text-[#E8B4B8]" />
+            <p className="text-sm font-medium text-[#8B7355]">
+              Baby Lyfe's Motto: "Planning ahead isn't just for naptime."
+            </p>
+            <Baby className="w-6 h-6 text-[#E8B4B8]" />
           </div>
-          <p className="text-[#8B7355] text-sm italic">Remember to review and update this checklist annually</p>
+          
+          <div className="text-xs text-[#8B7355]/60 max-w-2xl mx-auto">
+            <p>© 2025 Family Lyfe Fix. This checklist is for informational purposes only and is not legal advice.</p>
+            <p>Consult with a qualified estate planning attorney in your state for personalized guidance.</p>
+          </div>
         </div>
       </div>
     </div>
