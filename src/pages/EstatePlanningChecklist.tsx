@@ -493,22 +493,31 @@ const EstatePlanningChecklist = () => {
         <div className="bg-white rounded-lg p-8 shadow-sm">
           <div className="space-y-6 text-[#4A3C28]">
             <p className="text-sm leading-relaxed">
-              Look, I know this seems like a lot of work. But you know what's more work? Leaving your family to figure out your mess 
-              while they're grieving because you couldn't be bothered to fill out some forms.
+              This checklist might feel overwhelming at first glance. But here's the truth: taking the time to complete 
+              these documents now is one of the most loving things you can do for your family. It's not about preparing 
+              for the worst - it's about ensuring your loved ones are protected and your wishes are honored, no matter 
+              what life brings.
             </p>
             
             <p className="text-sm leading-relaxed">
-              I'm literally learning how to use a sippy cup, and I'm still more organized than most adults when it comes to planning ahead. 
-              Don't let a baby show you up.
+              Every family deserves the security that comes from proper planning. When you take care of these details 
+              ahead of time, you're giving your family the gift of clarity during what could be the most difficult 
+              moments of their lives.
+            </p>
+            
+            <p className="text-sm leading-relaxed">
+              You don't have to do this alone. Estate planning can feel complex, but with the right guidance and 
+              resources, it becomes much more manageable.
             </p>
             
             <p className="text-sm font-semibold">
-              Get this stuff done. Your future self (and your family) will thank you.
+              Your family's future matters. Take the first step today.
             </p>
             
             <div className="pt-6 border-t border-[#F0E6E0]">
               <p className="text-sm text-[#8B7355]">
-                Need help getting started? Visit FamilyLyfeFix.com for more resources, or consult with an estate planning attorney in your state.
+                Need help getting started? Visit [YourWebsite.com] for more resources, or consult with an estate 
+                planning attorney in your state who can guide you through the process with care and expertise.
               </p>
             </div>
           </div>
