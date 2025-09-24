@@ -524,13 +524,6 @@ const EstatePlanningChecklist = () => {
         </div>
         
         <div className="mt-12 text-center space-y-3">
-          <div className="flex justify-center gap-3 items-center">
-            <Baby className="w-6 h-6 text-[#E8B4B8]" />
-            <p className="text-sm font-medium text-[#8B7355]">
-              Baby Lyfe's Motto: "Planning ahead isn't just for naptime."
-            </p>
-            <Baby className="w-6 h-6 text-[#E8B4B8]" />
-          </div>
           
           <div className="text-xs text-[#8B7355]/60 max-w-2xl mx-auto">
             <p>© 2025 Family Lyfe Fix. This checklist is for informational purposes only and is not legal advice.</p>
