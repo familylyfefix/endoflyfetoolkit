@@ -116,9 +116,6 @@ const EstatePlanningChecklist = () => {
           
           <p className="text-sm text-[#8B7355] font-medium mb-4">Baby Lyfe's Estate Planning Checklist</p>
           
-          <h1 className="text-6xl md:text-7xl text-[#4A3C28] mb-4" style={{ fontFamily: 'Dancing Script, cursive' }}>
-            The "I'm Not Dead Yet"
-          </h1>
           
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="w-20 h-px bg-[#D4C4B0]"></div>
