@@ -516,7 +516,7 @@ const EstatePlanningChecklist = () => {
             
             <div className="pt-6 border-t border-[#F0E6E0]">
               <p className="text-sm text-[#8B7355]">
-                Need help getting started? Visit [YourWebsite.com] for more resources, or consult with an estate 
+                Need help getting started? Visit familylyfefix.com for more resources, or consult with an estate 
                 planning attorney in your state who can guide you through the process with care and expertise.
               </p>
             </div>
