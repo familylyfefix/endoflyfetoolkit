@@ -487,7 +487,7 @@ const EstatePlanningChecklist = () => {
       {/* Page 10: Final Thoughts */}
       <div className="pdf-page p-8">
         <h2 className="text-3xl text-[#4A3C28] mb-8 text-center" style={{ fontFamily: 'Dancing Script, cursive' }}>
-          Final Thoughts from Baby Lyfe
+          Final Thoughts
         </h2>
         
         <div className="bg-white rounded-lg p-8 shadow-sm">
