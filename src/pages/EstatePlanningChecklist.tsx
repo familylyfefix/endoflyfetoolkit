@@ -117,11 +117,7 @@ const EstatePlanningChecklist = () => {
           <p className="text-sm text-[#8B7355] font-medium mb-4">Family Lyfe Fix's Estate Planning Checklist</p>
           
           
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-20 h-px bg-[#D4C4B0]"></div>
-            <Baby className="w-5 h-5 text-[#E8B4B8]" />
-            <div className="w-20 h-px bg-[#D4C4B0]"></div>
-          </div>
+          <div className="w-40 h-px bg-[#D4C4B0] mb-6"></div>
           
           <h2 className="text-2xl text-[#8B7355] uppercase tracking-[0.3em] mb-12" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
             Planning Guide
