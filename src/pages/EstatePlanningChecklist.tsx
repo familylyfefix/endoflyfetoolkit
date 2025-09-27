@@ -38,9 +38,9 @@ const EstatePlanningChecklist = () => {
   const ChecklistTable = ({ section, startNumber = 1 }: { section: ChecklistSection; startNumber?: number }) => (
     <div className="bg-white rounded-lg p-6 shadow-sm">
       <div className="bg-[#8DA3E8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
-        <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">{section.title}</h3>
+        <h3 className="text-white font-semibold uppercase tracking-wider text-sm">{section.title}</h3>
         {section.subtitle && (
-          <p className="text-[#4A3C28]/70 text-xs mt-1 italic">{section.subtitle}</p>
+          <p className="text-white/90 text-xs mt-1 italic">{section.subtitle}</p>
         )}
       </div>
       <div className="space-y-4">
@@ -384,7 +384,7 @@ const EstatePlanningChecklist = () => {
                 "Significant change in financial situation", "Move to different state", "Retirement", "Diagnosis of serious illness"
               ].map((event, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <Check className="w-4 h-4 text-[#8DA3E8]" />
+                  <Check className="w-4 h-4 text-white" />
                   <span className="text-sm text-[#4A3C28]">{event}</span>
                 </div>
               ))}
@@ -419,7 +419,7 @@ const EstatePlanningChecklist = () => {
         <div className="mt-8">
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <div className="bg-[#8DA3E8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
-              <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">If You Move to a New State</h3>
+              <h3 className="text-white font-semibold uppercase tracking-wider text-sm">If You Move to a New State</h3>
             </div>
             <div className="space-y-3">
               {[
@@ -447,7 +447,7 @@ const EstatePlanningChecklist = () => {
         
         <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
           <div className="bg-[#8DA3E8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
-            <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">Immediate Actions</h3>
+            <h3 className="text-white font-semibold uppercase tracking-wider text-sm">Immediate Actions</h3>
           </div>
           <div className="space-y-3">
             {[
@@ -457,7 +457,7 @@ const EstatePlanningChecklist = () => {
               "Inform key people of their roles and responsibilities"
             ].map((action, index) => (
               <div key={index} className="flex items-start gap-3">
-                <ClipboardList className="w-4 h-4 text-[#8DA3E8] mt-0.5" />
+                <ClipboardList className="w-4 h-4 text-white mt-0.5" />
                 <span className="text-sm text-[#4A3C28]">{action}</span>
               </div>
             ))}
@@ -466,7 +466,7 @@ const EstatePlanningChecklist = () => {
         
         <div className="bg-white rounded-lg p-6 shadow-sm">
           <div className="bg-[#8DA3E8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
-            <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">Ongoing Responsibilities</h3>
+            <h3 className="text-white font-semibold uppercase tracking-wider text-sm">Ongoing Responsibilities</h3>
           </div>
           <div className="space-y-3">
             {[
@@ -476,7 +476,7 @@ const EstatePlanningChecklist = () => {
               "Consider whether a trust is needed for your situation"
             ].map((task, index) => (
               <div key={index} className="flex items-start gap-3">
-                <Calendar className="w-4 h-4 text-[#8DA3E8] mt-0.5" />
+                <Calendar className="w-4 h-4 text-white mt-0.5" />
                 <span className="text-sm text-[#4A3C28]">{task}</span>
               </div>
             ))}
