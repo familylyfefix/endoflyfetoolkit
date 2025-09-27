@@ -37,8 +37,8 @@ const EstatePlanningChecklist = () => {
 
   const ChecklistTable = ({ section, startNumber = 1 }: { section: ChecklistSection; startNumber?: number }) => (
     <div className="bg-white rounded-lg p-6 shadow-sm">
-      <div className="bg-[#E8B4B8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
-        <h3 className="text-[#8DA3E8] font-semibold uppercase tracking-wider text-sm">{section.title}</h3>
+      <div className="bg-[#8DA3E8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
+        <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">{section.title}</h3>
         {section.subtitle && (
           <p className="text-[#4A3C28]/70 text-xs mt-1 italic">{section.subtitle}</p>
         )}
