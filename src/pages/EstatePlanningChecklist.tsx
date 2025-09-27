@@ -71,13 +71,13 @@ const EstatePlanningChecklist = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#FBF7F4] print:bg-[#FBF7F4]">
+    <div className="min-h-screen bg-[#F8F3F0] print:bg-[#F8F3F0]">
       {/* Print Styles */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
         
         @media print {
-          body { background: #FBF7F4 !important; }
+          body { background: #F8F3F0 !important; }
           .no-print { display: none !important; }
           .pdf-page { 
             page-break-after: always;
