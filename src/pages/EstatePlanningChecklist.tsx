@@ -136,9 +136,9 @@ const EstatePlanningChecklist = () => {
           </div>
           
           <div className="mt-16 flex justify-center gap-8">
-            <Users className="w-12 h-12 text-[#8DA3E8]" strokeWidth={1} />
-            <Home className="w-12 h-12 text-[#8DA3E8]" strokeWidth={1} />
-            <Calendar className="w-12 h-12 text-[#8DA3E8]" strokeWidth={1} />
+            <Users className="w-12 h-12 text-[#FEA55C]" strokeWidth={1} />
+            <Home className="w-12 h-12 text-[#FEA55C]" strokeWidth={1} />
+            <Calendar className="w-12 h-12 text-[#FEA55C]" strokeWidth={1} />
           </div>
         </div>
       </div>
