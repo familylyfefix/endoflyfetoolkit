@@ -374,7 +374,7 @@ const EstatePlanningChecklist = () => {
         
         <div className="mt-8">
           <div className="bg-white rounded-lg p-6 shadow-sm">
-            <div className="bg-[#E8B4B8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
+            <div className="bg-[#8DA3E8] -mx-6 -mt-6 px-6 py-3 mb-6 rounded-t-lg">
               <h3 className="text-[#4A3C28] font-semibold uppercase tracking-wider text-sm">Major Life Event Triggers</h3>
               <p className="text-[#4A3C28]/70 text-xs mt-1 italic">Update documents within 60 days of any of these events:</p>
             </div>
