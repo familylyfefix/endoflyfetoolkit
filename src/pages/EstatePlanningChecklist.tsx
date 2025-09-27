@@ -109,9 +109,9 @@ const EstatePlanningChecklist = () => {
       <div className="pdf-page min-h-screen flex items-center justify-center p-8">
         <div className="text-center">
           <div className="flex justify-center gap-8 mb-8">
-            <FileText className="w-12 h-12 text-[#8DA3E8]" strokeWidth={1} />
-            <Heart className="w-12 h-12 text-[#8DA3E8]" strokeWidth={1} />
-            <Shield className="w-12 h-12 text-[#8DA3E8]" strokeWidth={1} />
+            <FileText className="w-12 h-12 text-[#7c97fd]" strokeWidth={1} />
+            <Heart className="w-12 h-12 text-[#7c97fd]" strokeWidth={1} />
+            <Shield className="w-12 h-12 text-[#7c97fd]" strokeWidth={1} />
           </div>
           
           <p className="text-sm text-[#8B7355] font-medium mb-4">Family Lyfe Fix's</p>
