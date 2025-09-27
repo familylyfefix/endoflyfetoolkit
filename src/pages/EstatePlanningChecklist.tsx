@@ -120,7 +120,7 @@ const EstatePlanningChecklist = () => {
           <div className="w-40 h-px bg-[#D4C4B0] mb-6"></div>
           
           <h2 className="text-2xl text-[#8B7355] uppercase tracking-[0.3em] mb-12" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-            Planning Guide
+            Estate Planning Checklist
           </h2>
           
           <div className="max-w-2xl mx-auto space-y-4 text-sm text-[#4A3C28]/80 text-left">
