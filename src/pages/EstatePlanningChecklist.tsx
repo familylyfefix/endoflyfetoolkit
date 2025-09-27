@@ -114,7 +114,7 @@ const EstatePlanningChecklist = () => {
             <Shield className="w-12 h-12 text-[#E8B4B8]" strokeWidth={1} />
           </div>
           
-          <p className="text-sm text-[#8B7355] font-medium mb-4">Family Lyfe Fix's Estate Planning Checklist</p>
+          <p className="text-sm text-[#8B7355] font-medium mb-4">Family Lyfe Fix's</p>
           
           
           <div className="w-40 h-px bg-[#D4C4B0] mb-6"></div>
