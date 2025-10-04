@@ -41,7 +41,7 @@ const FamilyLyfeFix = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Eyebrow Copy */}
           <p className="text-sm font-semibold text-primary mb-3">
-            FREE 5-MINUTE ASSESSMENT
+            FREE 2-MINUTE ASSESSMENT
           </p>
           
           {/* Headline */}
@@ -66,7 +66,7 @@ const FamilyLyfeFix = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Clock className="h-4 w-4" />
-              <span>Takes only 5 minutes</span>
+              <span>Takes only 2 minutes</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Shield className="h-4 w-4" />
@@ -105,6 +105,18 @@ const FamilyLyfeFix = () => {
             alt="Family enjoying peace of mind" 
             className="rounded-lg shadow-2xl w-full"
           />
+        </div>
+      </section>
+
+      {/* Empathy Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
+            We Get It. This Isn't Easy to Think About.
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            No one wants to imagine worst-case scenarios. But the truth is, having a plan in place isn't about fear—it's about love. It's about making sure your family is protected, your wishes are honored, and the people you care about most aren't left scrambling when emotions are already running high.
+          </p>
         </div>
       </section>
 
@@ -151,7 +163,7 @@ const FamilyLyfeFix = () => {
                   <div>
                     <h3 className="font-semibold mb-2">Quick & Easy</h3>
                     <p className="text-sm text-muted-foreground">
-                      Takes only 5 minutes to complete—no complex forms, just straightforward questions about your family's readiness
+                      Takes only 2 minutes to complete—no complex forms, just straightforward questions about your family's readiness
                     </p>
                   </div>
                 </div>
@@ -191,7 +203,7 @@ const FamilyLyfeFix = () => {
               <div className="flex flex-col items-center gap-4 mb-6">
                 <div className="flex items-center gap-2 text-sm">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span>5-minute assessment</span>
+                  <span>2-minute assessment</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <CheckCircle className="h-4 w-4 text-primary" />
@@ -242,7 +254,7 @@ const FamilyLyfeFix = () => {
                 How long does the quiz take?
               </AccordionTrigger>
               <AccordionContent>
-                The quiz takes approximately 5 minutes to complete. It's designed to be quick and 
+                The quiz takes approximately 2 minutes to complete. It's designed to be quick and 
                 straightforward while still giving you valuable insights about your family's readiness.
               </AccordionContent>
             </AccordionItem>
@@ -306,7 +318,7 @@ const FamilyLyfeFix = () => {
             </div>
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4" />
-              <span>5 Minutes</span>
+              <span>2 Minutes</span>
             </div>
             <div className="flex items-center gap-1">
               <CheckCircle className="h-4 w-4" />
