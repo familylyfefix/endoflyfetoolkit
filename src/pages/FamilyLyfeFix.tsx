@@ -310,7 +310,7 @@ const FamilyLyfeFix = () => {
                 Ready to Discover Your Score?
               </h2>
               <p className="text-muted-foreground mb-6">
-                Take the free readiness quiz now and get your personalized results plus a free conversation starter guide
+                Take the FREE Ready for the Talk Quiz
               </p>
               
               <div className="flex flex-col items-center gap-4 mb-6">
