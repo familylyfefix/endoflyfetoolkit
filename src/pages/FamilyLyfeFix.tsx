@@ -414,7 +414,7 @@ const FamilyLyfeFix = () => {
             Start Your Family's Planning Journey Today
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Ready for the Talk Quiz
+            Take the first step toward giving your family peace of mind with our FREE Ready for the Talk Quiz
           </p>
           
           <Button size="lg" asChild>
