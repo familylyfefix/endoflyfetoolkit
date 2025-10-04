@@ -388,7 +388,7 @@ const FamilyLyfeFix = () => {
                 Do I need to provide any personal information?
               </AccordionTrigger>
               <AccordionContent>
-                We only ask for your email address so we can send you your results and free guide. 
+                We only ask for your name and email address so we can send you your results and free guide. 
                 Your privacy is important to us, and we'll never share your information with third parties.
               </AccordionContent>
             </AccordionItem>
