@@ -237,7 +237,7 @@ const FamilyLyfeFix = () => {
       <section className="container mx-auto px-4 py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
-            Why Take the Readiness Quiz?
+            Why Take the Ready for the Talk Quiz?
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
