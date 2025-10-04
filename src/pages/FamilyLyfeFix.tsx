@@ -49,7 +49,7 @@ const FamilyLyfeFix = () => {
           
           {/* Headline */}
           <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-            Is Your Family Ready for the Unexpected?
+            What If Your Family Had to Make Medical Decisions for You Tomorrow?
           </h1>
           
           {/* Sub-headline */}
