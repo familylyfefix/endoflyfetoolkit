@@ -1,38 +1,17 @@
-import { useEffect, useState } from "react";
 import avatar1 from '@/assets/avatar1.jpg';
 import avatar2 from '@/assets/avatar2.jpg';
 import avatar3 from '@/assets/avatar3.jpg';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { 
   Shield, 
   CheckCircle, 
   Star, 
   Clock,
-  AlertCircle,
   ArrowRight,
-  Check,
-  X,
-  ChevronDown,
-  ChevronRight,
-  Users,
-  Heart,
-  Lock,
-  FileQuestion,
-  FileText,
-  BookOpen,
-  Package,
-  Target,
-  Eye,
-  MessageCircle,
-  Book,
-  Plus
+  FileQuestion
 } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
-import StickyCTA from "@/components/StickyCTA";
-import CountdownBanner from "@/components/CountdownBanner";
-import FAQSection from "@/components/FAQSection";
 import {
   Accordion,
   AccordionContent,
@@ -41,43 +20,8 @@ import {
 } from "@/components/ui/accordion";
 
 const FamilyLyfeFix = () => {
-  const [timeLeft, setTimeLeft] = useState({ hours: 47, minutes: 59, seconds: 59 });
-  const [isExpired, setIsExpired] = useState(false);
-
-  useEffect(() => {
-    // Stop timer if already expired
-    if (isExpired) return;
-    
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        // Check if timer has reached zero
-        if (prev.hours === 0 && prev.minutes === 0 && prev.seconds === 0) {
-          setIsExpired(true);
-          return prev;
-        }
-        
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        if (prev.hours > 0) return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        return { hours: 0, minutes: 0, seconds: 0 };
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [isExpired]);
-
-  const scrollToCTA = () => {
-    document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted">
-      {/* Countdown Timer Banner */}
-      <div className="bg-destructive text-destructive-foreground py-2 text-center">
-        <p className="text-sm font-medium">
-          ⏰ Special Offer Ends In: {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s - Save $20 Today!
-        </p>
-      </div>
-
       {/* Header */}
       <header className="container mx-auto px-4 py-4 border-b">
         <div className="flex items-center justify-between">
@@ -92,778 +36,285 @@ const FamilyLyfeFix = () => {
         </div>
       </header>
 
-      {/* Section 1: Hero Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
-          <div>
-            {/* Eyebrow Copy */}
-            <p className="text-sm font-semibold text-primary mb-3">
-              FOR FAMILIES WHO WANT PEACE OF MIND
-            </p>
-            
-            {/* Headline */}
-            <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              Give Your Family Certainty When They Need It Most
-            </h1>
-            
-            {/* Sub-headline */}
-          <p className="text-xl text-muted-foreground mb-6">
-            The complete end-of-life planning system that turns "what now?" into calm, confident steps — simplified with easy-to-use Notion templates
+      {/* Hero Section - Quiz Focused */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Eyebrow Copy */}
+          <p className="text-sm font-semibold text-primary mb-3">
+            FREE 5-MINUTE ASSESSMENT
           </p>
+          
+          {/* Headline */}
+          <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+            Is Your Family Ready for the Unexpected?
+          </h1>
+          
+          {/* Sub-headline */}
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Discover your family's readiness score and get a free personalized guide to start planning with confidence
+          </p>
+          
+          {/* Primary CTA */}
+          <Button size="lg" className="mb-8" asChild>
+            <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+              Take the Free Quiz Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </Button>
+          
+          {/* Trust indicators */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Clock className="h-4 w-4" />
+              <span>Takes only 5 minutes</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Shield className="h-4 w-4" />
+              <span>100% free, no credit card</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-4 w-4" />
+              <span>Get instant results</span>
+            </div>
+          </div>
+          
+          {/* Social Proof */}
+          <div className="flex items-center justify-center gap-3">
+            <div className="flex -space-x-2">
+              <img src={avatar1} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
+              <img src={avatar2} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
+              <img src={avatar3} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
+            </div>
+            <div className="flex items-center gap-1">
+              {[1,2,3,4,5].map(i => (
+                <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Join 500+ families taking control
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="container mx-auto px-4 pb-16">
+        <div className="max-w-3xl mx-auto">
+          <img 
+            src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" 
+            alt="Family enjoying peace of mind" 
+            className="rounded-lg shadow-2xl w-full"
+          />
+        </div>
+      </section>
+
+      {/* Why Take the Quiz */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
+            Why Take the Readiness Quiz?
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-primary shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-2">Know Where You Stand</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Get a personalized readiness score that shows you exactly what areas need attention for your family's planning
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
             
-            {/* Progressive CTA Section */}
-            <div className="space-y-4">
-              <Button size="lg" className="w-full" asChild>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-3">
+                  <FileQuestion className="h-6 w-6 text-primary shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-2">Free Conversation Guide</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Receive a free PDF guide immediately after completing the quiz to help you start important conversations
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-3">
+                  <Clock className="h-6 w-6 text-primary shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-2">Quick & Easy</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Takes only 5 minutes to complete—no complex forms, just straightforward questions about your family's readiness
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-3">
+                  <Shield className="h-6 w-6 text-primary shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-2">Completely Free</h3>
+                    <p className="text-sm text-muted-foreground">
+                      No credit card required, no hidden costs. Just valuable insights to help protect your family's future
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Quiz CTA Card */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-2xl mx-auto">
+          <Card className="border-primary shadow-xl">
+            <CardContent className="pt-8 pb-8 text-center">
+              <FileQuestion className="h-16 w-16 text-primary mx-auto mb-4" />
+              <h2 className="font-playfair text-3xl font-bold mb-3">
+                Ready to Discover Your Score?
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Take the free readiness quiz now and get your personalized results plus a free conversation starter guide
+              </p>
+              
+              <div className="flex flex-col items-center gap-4 mb-6">
+                <div className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>5-minute assessment</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>Instant personalized results</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>Free conversation guide included</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span>No credit card needed</span>
+                </div>
+              </div>
+              
+              <Button size="lg" className="w-full md:w-auto" asChild>
                 <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                  Start Here - Take Quiz NOW - Get Free Guide
+                  Start Your Free Quiz
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
-              
-              {/* Journey indicator bar */}
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span>Quiz (Free)</span>
-                <ChevronRight className="h-3 w-3" />
-                <a href="https://familylyfefix.store/pdf" className="underline hover:text-primary">FREE Conversation Guide</a>
-                <ChevronRight className="h-3 w-3" />
-                <span>Playbook</span>
-                <ChevronRight className="h-3 w-3" />
-                <span>Toolkit</span>
-              </div>
-              
-              {/* Quick access for returning users */}
-              <p className="text-xs text-muted-foreground">
-                Already started? Jump to: 
-                <a href="https://familylyfefix.store/playbook" className="underline ml-1">Playbook</a> • 
-                <a href="/toolkit" className="underline ml-1">Toolkit</a>
-              </p>
-            </div>
-            
-            {/* Social Proof in Hero */}
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-2">
-                <img src={avatar1} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
-                <img src={avatar2} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
-                <img src={avatar3} alt="Family member" className="h-8 w-8 rounded-full object-cover border-2 border-background" />
-              </div>
-              <div className="flex items-center gap-1">
-                {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Join families who will sleep better at night
-              </p>
-            </div>
-          </div>
-          
-          {/* Hero Image - showing happy result */}
-          <div className="relative">
-            <img 
-              src="/lovable-uploads/baef2c11-0b05-429f-bc8e-0b2d2c97fa57.png" 
-              alt="Family enjoying peace of mind" 
-              className="rounded-lg shadow-2xl"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Three Quick Outcomes */}
-      <section className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 md:gap-8">
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-primary" />
-            <span className="font-semibold">Legacy Secured</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-primary" />
-            <span className="font-semibold">No Guesswork</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-primary" />
-            <span className="font-semibold">Peace of Mind</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2: Problem Agitation */}
-      <section className="container mx-auto px-4 py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-8">
-            73% of Families Are One Crisis Away From Total Chaos
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-6 text-left mb-8">
-            <Card className="border-destructive/20 bg-destructive/5">
-              <CardContent className="pt-6">
-                <div className="flex gap-3">
-                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold mb-1">The 3AM Phone Call</p>
-                    <p className="text-sm text-muted-foreground">
-                      Your family scrambles to find passwords, accounts, and wishes while dealing with grief
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-destructive/20 bg-destructive/5">
-              <CardContent className="pt-6">
-                <div className="flex gap-3">
-                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold mb-1">The $15,000 Mistake</p>
-                    <p className="text-sm text-muted-foreground">
-                      Average family loses this much due to poor planning and missed deadlines
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-destructive/20 bg-destructive/5">
-              <CardContent className="pt-6">
-                <div className="flex gap-3">
-                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold mb-1">Family Arguments</p>
-                    <p className="text-sm text-muted-foreground">
-                      Siblings fight over unclear wishes, destroying relationships forever
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-destructive/20 bg-destructive/5">
-              <CardContent className="pt-6">
-                <div className="flex gap-3">
-                  <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold mb-1">Digital Death</p>
-                    <p className="text-sm text-muted-foreground">
-                      Your passwords, photos, and accounts disappear forever with no recovery
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          
-          <p className="text-lg text-muted-foreground">
-            And the worst part? <span className="font-semibold text-foreground">You know this could happen to your family</span>, 
-            but starting feels overwhelming, morbid, or just... impossible.
-          </p>
-        </div>
-      </section>
-
-      {/* Section 3: Solution Introduction */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
-              We Get It. This Isn't Easy to Think About.
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Our mission is simple: turn the overwhelming into the organized. No judgment. No fear-mongering. Just clarity.
-            </p>
-          </div>
-          
-          <Card className="overflow-hidden">
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="mb-4">
-                    <Badge variant="secondary">Our Story</Badge>
-                  </div>
-                  <h3 className="font-playfair text-2xl font-bold mb-4">
-                    From Foresight to Family Solution
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Our founder Catherine started Family Lyfe Fix after recognizing a critical gap in end-of-life planning resources. As the daughter of an organized baby boomer who has all her planning documents ready, Catherine realized how fortunate she was—and how unprepared most families are.
-                  </p>
-                  <p className="text-muted-foreground mb-4">
-                    Watching friends navigate unexpected family crises without proper planning was a wake-up call. She witnessed families scrambling for documents, making difficult decisions without knowing their loved one's wishes, and discovering nothing had been planned. This revealed that good planning shouldn't be a privilege for the naturally organized or wealthy.
-                  </p>
-                  <p className="text-muted-foreground mb-4">
-                    Catherine founded Family Lyfe Fix to help families move from reactive to proactive planning, providing practical resources so they can make thoughtful choices from a place of love and clarity before crisis strikes.
-                  </p>
-                  <p className="text-muted-foreground mb-4">
-                    <span className="font-semibold">That's why we developed a complete end-of-life planning system with multiple resources:</span><br />
-                    • Start with our Quiz to see where you stand (free)<br />
-                    • Get the Conversation Starter PDF to break the ice<br />
-                    • Use the Playbook to guide difficult conversations<br />
-                    • Organize everything with the Toolkit
-                  </p>
-                </div>
-                <div className="bg-muted rounded-lg p-6 space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
-                      <Target className="h-4 w-4" />
-                      Our Mission
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Help 500+ families get protected and organized with practical, accessible end-of-life planning resources that turn overwhelming tasks into manageable steps.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
-                      <Eye className="h-4 w-4" />
-                      Our Vision
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      A world where every family has the tools and confidence to have difficult conversations, ensuring no one is left scrambling during life's most challenging moments.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
-                      <Heart className="h-4 w-4" />
-                      Core Values
-                    </h4>
-                    <ul className="text-sm text-muted-foreground space-y-2">
-                      <li><span className="font-semibold">• Clarity Over Chaos:</span> We simplify overwhelming planning into manageable steps families can actually follow.</li>
-                      <li><span className="font-semibold">• Compassion First:</span> We approach every resource with empathy, recognizing these topics are deeply personal and emotional.</li>
-                      <li><span className="font-semibold">• Empowerment, Not Fear:</span> We focus on giving families confidence, not guilt, when discussing life's hardest realities.</li>
-                      <li><span className="font-semibold">• Accessibility for All:</span> Our products serve every comfort level—from conversation beginners to families needing complete organizational systems.</li>
-                      <li><span className="font-semibold">• Legacy Through Action:</span> We believe preparation is one of the greatest gifts you can leave loved ones, and we help families make that gift reality.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* Section 4: Testimonials */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
-            Real Families. Real Peace of Mind.
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex gap-1 mb-3">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-sm mb-4">
-                  "My dad had a stroke and couldn't speak. Because we used Family Lyfe Fix, we knew 
-                  exactly what he wanted. No guessing. No guilt. Just clarity when we needed it most."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-muted" />
-                  <div>
-                    <p className="font-semibold text-sm">Jennifer R.</p>
-                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex gap-1 mb-3">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-sm mb-4">
-                  "Setting this up took one Sunday afternoon. Now my wife and I sleep better knowing 
-                  our three kids won't be left scrambling if something happens to us."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-muted" />
-                  <div>
-                    <p className="font-semibold text-sm">Michael T.</p>
-                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex gap-1 mb-3">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-sm mb-4">
-                  "Worth it for the password manager alone! But having everything in one place — 
-                  from insurance to final wishes — this is the gift every family needs."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-muted" />
-                  <div>
-                    <p className="font-semibold text-sm">Patricia L.</p>
-                    <p className="text-xs text-muted-foreground">Verified Buyer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          
-          <div className="text-center mt-8">
-            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-              <img src="/lovable-uploads/8e1cf599-0190-4240-8a81-2509d0352f51.png" alt="Google" className="h-4" />
-              <span>4.9/5 stars from 127 verified families</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5: Product Showcase */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">Choose Your Starting Point</h2>
-          <p className="text-center text-muted-foreground mb-12">
-            Every family is different. Start where you're comfortable.
-          </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Quiz Card */}
-            <Card className="relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <FileQuestion className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">Readiness Quiz</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  5-minute assessment to see where your family stands
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">FREE</p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                      Take Quiz Free
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* PDF Card */}
-            <Card className="relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <FileText className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">Conversation Starter</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  PDF guide to break the ice with family
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">FREE</p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="https://familylyfefix.store/pdf">Get the Guide</a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* Playbook Card */}
-            <Card className="border-primary relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <BookOpen className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">The Playbook</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Complete conversation framework & scripts
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">
-                    <span className="line-through text-muted-foreground">$57</span> $37
-                  </p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="https://familylyfefix.store/playbook">Get Playbook</a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* Toolkit Card */}
-            <Card className="border-primary relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <Package className="h-8 w-8 text-primary mb-3" />
-                  <h3 className="font-semibold mb-2">The Toolkit</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Full Notion system to organize everything
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">
-                    <span className="line-through text-muted-foreground">$67</span> $47
-                  </p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="/toolkit">Get Toolkit</a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6: Simple 3-Step Process */}
+      {/* Mini FAQ */}
       <section className="container mx-auto px-4 py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
-            From Chaos to Clarity in 3 Simple Steps
-          </h2>
-          
-          <div className="space-y-8">
-            <div className="flex gap-4 items-start">
-              <div className="shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                1
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-xl mb-2">Discover Your Readiness</h3>
-                <p className="text-muted-foreground">
-                  Take the free quiz, get your personalized readiness score, and receive the Conversation Starter PDF
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex gap-4 items-start">
-              <div className="shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                2
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-xl mb-2">Have the Conversation</h3>
-                <p className="text-muted-foreground">
-                  Use the Playbook to guide family discussions, navigate difficult topics with confidence, and get everyone on the same page
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex gap-4 items-start">
-              <div className="shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                3
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-xl mb-2">Organize Everything</h3>
-                <p className="text-muted-foreground">
-                  Set up your Toolkit in Notion, input all critical information, and share securely with family
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 7: Comparison Chart */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
-            Why Families Choose Family Lyfe Fix
-          </h2>
-          
-          <Card className="overflow-hidden">
-            <CardContent className="p-0">
-              <div className="grid grid-cols-2 text-center font-semibold border-b">
-                <div className="p-4 bg-primary text-primary-foreground">
-                  Family Lyfe Fix
-                </div>
-                <div className="p-4 bg-muted">
-                  Doing Nothing / DIY
-                </div>
-              </div>
-              
-              {[
-                ["Secure cloud storage", "Papers scattered everywhere"],
-                ["Family can access instantly", "Family left searching"],
-                ["Regular update reminders", "Set and forget (outdated)"],
-                ["Step-by-step guidance", "Figure it out alone"],
-                ["One-time payment", "Lawyer fees ($2000+)"]
-              ].map(([us, them], i) => (
-                <div key={i} className="grid grid-cols-2 border-b text-sm">
-                  <div className="p-4 flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary shrink-0" />
-                    <span>{us}</span>
-                  </div>
-                  <div className="p-4 flex items-center gap-2 text-muted-foreground">
-                    <X className="h-4 w-4 text-destructive shrink-0" />
-                    <span>{them}</span>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Section 8: Features/What's Included */}
-      <section className="container mx-auto px-4 py-16 bg-muted/30">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">
-            Everything Your Family Needs
-          </h2>
-          <p className="text-center text-muted-foreground mb-12">
-            Complete end-of-life planning system (valued at $497)
-          </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { icon: FileText, text: "Final Wishes section", product: "Toolkit" },
-              { icon: Users, text: "Important Contacts organizer", product: "Toolkit" },
-              { icon: Lock, text: "Digital Life & Assets manager", product: "Toolkit" },
-              { icon: MessageCircle, text: "Personal Messages space", product: "Toolkit" },
-              { icon: CheckCircle, text: "After Death Checklist", product: "Toolkit" },
-              { icon: Star, text: "Financial accounts overview", product: "Toolkit" },
-              { icon: Shield, text: "Insurance policy tracker", product: "Toolkit" },
-              { icon: BookOpen, text: "Conversation scripts & templates", product: "Playbook" },
-              { icon: Heart, text: "Family discussion guides", product: "Playbook" },
-              { icon: FileText, text: "Ice-breaker conversation starters", product: "Guide" },
-              { icon: FileQuestion, text: "Readiness assessment", product: "Quiz" },
-              { icon: Users, text: "Professional contacts list", product: "Toolkit" }
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <item.icon className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-sm">{item.text}</span>
-                <Badge variant="outline" className="text-xs ml-auto">{item.product}</Badge>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 9: FAQ */}
-      <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
-            Common Questions (We Get It, This Feels Big)
+            Common Questions
           </h2>
           
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="item-1" className="border rounded-lg px-6">
               <AccordionTrigger className="hover:no-underline">
-                Is this morbid? I don't want to think about death.
+                Is the quiz really free?
               </AccordionTrigger>
               <AccordionContent>
-                We hear you. But here's the thing — this isn't about death, it's about life. It's about 
-                giving your family clarity and protecting them from chaos. Most customers tell us they 
-                feel relieved, not sad, after setting this up. It's like insurance — you hope you never 
-                need it, but you sleep better knowing it's there.
+                Yes, 100% free with no credit card required. After completing the quiz, you'll receive 
+                a free conversation starter guide to help you get started. We believe every family should 
+                know where they stand, regardless of budget.
               </AccordionContent>
             </AccordionItem>
             
             <AccordionItem value="item-2" className="border rounded-lg px-6">
               <AccordionTrigger className="hover:no-underline">
-                I'm young and healthy. Do I really need this?
+                How long does the quiz take?
               </AccordionTrigger>
               <AccordionContent>
-                Actually, young families need this most. You're the ones with young kids, new mortgages, 
-                and fewer resources to handle a crisis. Plus, setting this up now means it grows with 
-                you — just update it as life changes. It's not about age; it's about responsibility.
+                The quiz takes approximately 5 minutes to complete. It's designed to be quick and 
+                straightforward while still giving you valuable insights about your family's readiness.
               </AccordionContent>
             </AccordionItem>
             
             <AccordionItem value="item-3" className="border rounded-lg px-6">
               <AccordionTrigger className="hover:no-underline">
-                How long does this really take to set up?
+                What happens after I complete the quiz?
               </AccordionTrigger>
               <AccordionContent>
-                The initial setup is designed to be quick and manageable. You can work at your own 
-                pace — some families get the basics done in one sitting, while others prefer to spread 
-                it out. You don't need everything perfect on day one — just get the essentials in place, 
-                then add details over time. The template guides you through exactly what to do, step by 
-                step. No overwhelm.
+                You'll immediately receive your personalized readiness score along with a free 
+                conversation starter guide (PDF) via email. This guide will help you begin important 
+                conversations with your family based on your specific situation.
               </AccordionContent>
             </AccordionItem>
             
             <AccordionItem value="item-4" className="border rounded-lg px-6">
               <AccordionTrigger className="hover:no-underline">
-                Is my information secure in Notion?
+                Do I need to provide any personal information?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. Notion uses bank-level encryption and you control exactly who has access. You can 
-                share specific pages with specific people, and revoke access anytime. It's actually more 
-                secure than papers in a filing cabinet that anyone could access.
+                We only ask for your email address so we can send you your results and free guide. 
+                Your privacy is important to us, and we'll never share your information with third parties.
               </AccordionContent>
             </AccordionItem>
             
             <AccordionItem value="item-5" className="border rounded-lg px-6">
               <AccordionTrigger className="hover:no-underline">
-                What if I don't use Notion?
+                Will I be pressured to buy something?
               </AccordionTrigger>
               <AccordionContent>
-                No problem! Notion is free and works like any document. We chose it because it's the 
-                easiest way to organize everything in one place and share securely with family. We 
-                include clear PDF instructions to get you started — most people are comfortable in 10 minutes.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-6" className="border rounded-lg px-6">
-              <AccordionTrigger className="hover:no-underline">
-                Is this worth the money?
-              </AccordionTrigger>
-              <AccordionContent>
-                Consider this: The average family spends $15,000+ dealing with poor planning after a 
-                crisis. Lawyers charge $2,000+ for basic estate planning. Family Lyfe Fix costs less 
-                than a nice dinner out and protects your family forever.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-7" className="border rounded-lg px-6">
-              <AccordionTrigger className="hover:no-underline">
-                Which product should I start with?
-              </AccordionTrigger>
-              <AccordionContent>
-                Start with our free Quiz to see where your family stands. Based on your results, you'll 
-                get a personalized recommendation. Generally: If you're not ready for conversations yet, 
-                start with the Guide. If you need help having the talk, get the Playbook. If you're ready 
-                to organize everything, go straight to the Toolkit.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-8" className="border rounded-lg px-6">
-              <AccordionTrigger className="hover:no-underline">
-                Can I upgrade from the Playbook to the Toolkit?
-              </AccordionTrigger>
-              <AccordionContent>
-                Absolutely! Many families start with the Playbook to have the conversation, then move 
-                to the Toolkit to organize everything. If you're interested in the Toolkit, simply 
-                visit our website to purchase it.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-9" className="border rounded-lg px-6">
-              <AccordionTrigger className="hover:no-underline">
-                Is the Quiz really free?
-              </AccordionTrigger>
-              <AccordionContent>
-                Yes, 100% free with no credit card required. After completing the quiz, you'll receive 
-                a free guide to help you get started. We believe every family should know where they stand, 
-                regardless of budget. The Quiz takes less than 5 minutes and gives you clarity on your next steps.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-10" className="border rounded-lg px-6">
-              <AccordionTrigger className="hover:no-underline">
-                What's the difference between the Guide and Playbook?
-              </AccordionTrigger>
-              <AccordionContent>
-                The Guide (FREE) is a simple conversation starter - perfect for breaking the ice with family. 
-                The Playbook ($37) is a complete framework with scripts and strategies for 
-                navigating difficult conversations. Think of the Guide as the appetizer and the Playbook as 
-                the full meal. Both complement the Toolkit perfectly.
+                No pressure at all. The quiz and guide are completely free resources designed to help 
+                families get started with planning. If you want additional support, we offer optional 
+                products, but there's no obligation whatsoever.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
       </section>
 
-      {/* Section 10: Final CTA */}
-      <section id="final-cta" className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-4">
-            Ready to Give Your Family Peace of Mind?
+      {/* Final CTA */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
+            Start Your Family's Planning Journey Today
           </h2>
-          <p className="text-center text-muted-foreground mb-12">
-            Every family is different. Start where you're comfortable.
+          <p className="text-lg text-muted-foreground mb-8">
+            Take the first step toward giving your family peace of mind with our free readiness quiz
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Quiz Card */}
-            <Card className="relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <FileQuestion className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">Readiness Quiz</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  5-minute assessment to see where your family stands
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">FREE</p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
-                      Take Quiz Free
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* PDF Card */}
-            <Card className="relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">FREE</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <FileText className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">Conversation Starter</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  PDF guide to break the ice with family
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">FREE</p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="https://familylyfefix.store/pdf">Get the Guide</a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* Playbook Card */}
-            <Card className="border-primary relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <BookOpen className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">The Playbook</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Complete conversation framework & scripts
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">
-                    <span className="line-through text-muted-foreground">$57</span> $37
-                  </p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="https://familylyfefix.store/playbook">Get Playbook</a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* Toolkit Card */}
-            <Card className="border-primary relative h-full">
-              <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">MOST POPULAR</Badge>
-              <CardContent className="pt-6 flex flex-col h-full">
-                <Package className="h-8 w-8 text-primary mb-3" />
-                <h3 className="font-semibold mb-2">The Toolkit</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Full Notion system to organize everything
-                </p>
-                <div className="mt-auto">
-                  <p className="font-bold mb-2">
-                    <span className="line-through text-muted-foreground">$67</span> $47
-                  </p>
-                  <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                    <a href="/toolkit">Get Toolkit</a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <Button size="lg" asChild>
+            <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">
+              Take the Free Quiz Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </Button>
           
-          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mb-6 mt-12">
+          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground mt-8">
             <div className="flex items-center gap-1">
               <Shield className="h-4 w-4" />
-              <span>Trusted by Families</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Lock className="h-4 w-4" />
-              <span>Secure Checkout</span>
+              <span>100% Free</span>
             </div>
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4" />
-              <span>Instant Access</span>
+              <span>5 Minutes</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <CheckCircle className="h-4 w-4" />
+              <span>Instant Results</span>
             </div>
           </div>
           
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-sm text-muted-foreground mt-6">
             Questions? Email us at hello@familylyfefix.com
           </p>
         </div>
@@ -878,11 +329,6 @@ const FamilyLyfeFix = () => {
           </p>
         </div>
       </footer>
-
-      {/* Sticky CTA - Hidden since we have our own */}
-      <div className="hidden">
-        <StickyCTA />
-      </div>
     </div>
   );
 };
