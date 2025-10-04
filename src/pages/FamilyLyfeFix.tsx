@@ -54,7 +54,7 @@ const FamilyLyfeFix = () => {
           
           {/* Sub-headline */}
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Discover your family's readiness score and get a free personalized guide to start planning with confidence
+            This short quiz will help you reflect on how ready you are to have the end-of-life talk with someone you love.
           </p>
           
           {/* Primary CTA */}
