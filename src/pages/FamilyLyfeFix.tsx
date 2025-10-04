@@ -129,7 +129,7 @@ const FamilyLyfeFix = () => {
           {/* Left Column - Our Story */}
           <div className="space-y-6">
             <div>
-              <p className="text-sm font-semibold text-primary mb-3">OUR STORY</p>
+              <p className="text-sm font-semibold text-primary mb-3 text-center">OUR STORY</p>
               <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-6">
                 From Foresight to Family Solution
               </h2>
