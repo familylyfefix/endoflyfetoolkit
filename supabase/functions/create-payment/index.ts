@@ -7,33 +7,55 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
-  console.log('create-payment function called');
-  console.log('Request method:', req.method);
-  console.log('Request origin:', req.headers.get("origin"));
-  
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
-    console.log('Handling CORS preflight request');
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
     const requestBody = await req.json();
-    console.log('Request body received:', JSON.stringify(requestBody, null, 2));
-    const { price, customerInfo, couponCode } = requestBody;
+    const { customerInfo, couponCode } = requestBody;
+    
+    // Validate customer info
+    if (!customerInfo?.email || !customerInfo?.firstName || !customerInfo?.lastName) {
+      throw new Error("Missing required customer information");
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(customerInfo.email) || customerInfo.email.length > 255) {
+      throw new Error("Invalid email address");
+    }
+    
+    // Validate name lengths
+    if (customerInfo.firstName.length > 100 || customerInfo.lastName.length > 100) {
+      throw new Error("Name fields too long");
+    }
+    
+    // Validate address fields
+    if (customerInfo.address?.length > 500 || customerInfo.city?.length > 100 || customerInfo.zipCode?.length > 20) {
+      throw new Error("Address fields too long");
+    }
+    
+    // Sanitize coupon code (alphanumeric only, max 50 chars)
+    let sanitizedCouponCode = "";
+    if (couponCode && typeof couponCode === 'string') {
+      sanitizedCouponCode = couponCode.trim().replace(/[^a-zA-Z0-9]/g, '').substring(0, 50);
+    }
+    
+    // SERVER-SIDE PRICE CALCULATION - NEVER trust client
+    const PRODUCT_PRICE = 67; // Hardcoded price in dollars
     
     // Initialize Stripe
     const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
-    console.log('Stripe key exists:', !!stripeKey);
     
     if (!stripeKey) {
-      throw new Error("STRIPE_SECRET_KEY is not configured in Edge Function secrets");
+      throw new Error("Payment system not configured");
     }
     
     const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-10-16",
     });
-    console.log('Stripe client initialized');
 
     // Create session options
     const sessionOptions: any = {
@@ -46,7 +68,7 @@ serve(async (req) => {
               name: "End-Of-Lyfe Toolkit",
               description: "Complete digital toolkit for end-of-life planning - 3 downloads, 30-day access"
             },
-            unit_amount: price * 100, // Convert to cents
+            unit_amount: PRODUCT_PRICE * 100, // Convert to cents
           },
           quantity: 1,
         },
@@ -61,37 +83,26 @@ serve(async (req) => {
     };
 
     // Add coupon if provided
-    if (couponCode && couponCode.trim()) {
+    if (sanitizedCouponCode) {
       sessionOptions.discounts = [{
-        coupon: couponCode.trim()
+        coupon: sanitizedCouponCode
       }];
     }
 
     // Create a one-time payment session
-    console.log('Creating Stripe checkout session with options:', JSON.stringify(sessionOptions, null, 2));
     const session = await stripe.checkout.sessions.create(sessionOptions);
-    console.log('Stripe session created successfully:', session.id);
-    console.log('Checkout URL:', session.url);
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
     });
   } catch (error) {
-    console.error("Payment creation error:", error);
-    console.error("Error stack:", error.stack);
-    console.error("Error details:", JSON.stringify(error, null, 2));
+    // Minimal error logging without PII
+    console.error("[CREATE-PAYMENT] Error:", error.message);
     
-    // Return more detailed error information
-    const errorResponse = {
-      error: error.message,
-      type: error.constructor.name,
-      details: error.raw || error.context || null
-    };
-    
-    return new Response(JSON.stringify(errorResponse), {
+    return new Response(JSON.stringify({ error: error.message }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
-      status: error.statusCode || 500,
+      status: error.statusCode || 400,
     });
   }
 });

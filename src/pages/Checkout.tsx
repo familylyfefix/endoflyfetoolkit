@@ -101,28 +101,15 @@ const Checkout = () => {
     setIsProcessing(true);
     
     try {
-      const currentPrice = isExpired ? 67 : 47;
-      
-      // Log the payment details for debugging
-      console.log('Starting payment process for price:', currentPrice);
-      console.log('Customer email:', values.email);
-      
+      // Note: Price is calculated server-side for security
       const { data, error } = await supabase.functions.invoke('create-payment', {
         body: {
-          price: currentPrice,
           customerInfo: values,
           couponCode: values.couponCode
         }
       });
 
       if (error) {
-        console.error('Supabase function error:', error);
-        console.error('Error details:', {
-          message: error.message,
-          context: error.context,
-          status: error.status
-        });
-        
         // Check for coupon-related errors
         if (error.message?.includes('coupon') || error.message?.includes('No such coupon')) {
           toast({
@@ -150,19 +137,12 @@ const Checkout = () => {
         throw error;
       }
 
-      console.log('Payment response received:', data);
-
       if (data?.url) {
-        console.log('Redirecting to Stripe checkout:', data.url);
-        // Redirect to Stripe checkout
         window.location.href = data.url;
       } else {
-        console.error('No checkout URL in response:', data);
         throw new Error('No checkout URL received from payment processor');
       }
     } catch (error: any) {
-      console.error('Payment processing error:', error);
-      console.error('Error stack:', error.stack);
       
       // Provide more specific error messages
       let errorMessage = "There was an issue processing your payment. Please try again.";

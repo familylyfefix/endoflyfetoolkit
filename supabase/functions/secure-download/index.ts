@@ -18,13 +18,22 @@ serve(async (req) => {
   }
 
   try {
-    logStep("Starting secure download request");
-
-    const { sessionId } = await req.json();
-    if (!sessionId) {
-      throw new Error("Stripe session ID is required");
+    const { sessionId, email } = await req.json();
+    
+    // Validate sessionId format (Stripe pattern: cs_*)
+    if (!sessionId || typeof sessionId !== 'string' || !sessionId.match(/^cs_[a-zA-Z0-9_]+$/)) {
+      throw new Error("Invalid session ID format");
     }
-    logStep("Session ID received", { sessionId });
+    
+    // Validate email
+    if (!email || typeof email !== 'string') {
+      throw new Error("Email is required for verification");
+    }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email) || email.length > 255) {
+      throw new Error("Invalid email address");
+    }
 
     // Initialize Stripe to verify the session
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
@@ -43,7 +52,12 @@ serve(async (req) => {
     if (session.payment_status !== "paid") {
       throw new Error("Payment not completed for this session");
     }
-    logStep("Stripe session verified", { paymentStatus: session.payment_status });
+    
+    // SECURITY: Verify email matches the purchase
+    const sessionEmail = session.customer_details?.email || session.customer_email;
+    if (!sessionEmail || sessionEmail.toLowerCase() !== email.toLowerCase()) {
+      throw new Error("Email does not match purchase record");
+    }
 
     // Check if purchase session exists in our database
     let { data: purchaseSession, error: fetchError } = await supabase
@@ -58,12 +72,11 @@ serve(async (req) => {
 
     // If purchase session doesn't exist, create it
     if (!purchaseSession) {
-      logStep("Creating new purchase session record");
       const { data: newSession, error: insertError } = await supabase
         .from("purchase_sessions")
         .insert({
           stripe_session_id: sessionId,
-          customer_email: session.customer_details?.email || session.customer_email,
+          customer_email: sessionEmail,
           customer_name: session.customer_details?.name,
           customer_address: session.customer_details?.address ? 
             `${session.customer_details.address.line1}, ${session.customer_details.address.city}, ${session.customer_details.address.postal_code}` : null,
@@ -78,7 +91,6 @@ serve(async (req) => {
         throw new Error(`Failed to create purchase session: ${insertError.message}`);
       }
       purchaseSession = newSession;
-      logStep("Purchase session created", { sessionId: purchaseSession.id });
     }
 
     // Check if session has expired (30 days)
@@ -87,7 +99,6 @@ serve(async (req) => {
     if (now > expiryDate) {
       throw new Error("Download access has expired (30 days limit)");
     }
-    logStep("Session expiry check passed", { expiresAt: purchaseSession.expires_at });
 
     // Count existing download attempts for this session
     const { data: downloadAttempts, error: countError } = await supabase
@@ -103,7 +114,6 @@ serve(async (req) => {
     if (successfulDownloads >= 3) {
       throw new Error("Download limit reached (3 downloads maximum)");
     }
-    logStep("Download limit check passed", { successfulDownloads, remaining: 3 - successfulDownloads });
 
     // Create signed URL for the PDF (expires in 10 minutes)
     const fileName = "End-Of-LyfeToolkit.pdf";
@@ -114,12 +124,11 @@ serve(async (req) => {
     if (urlError) {
       throw new Error(`Failed to create download URL: ${urlError.message}`);
     }
-    logStep("Signed URL created", { fileName, expiresIn: "10 minutes" });
 
-    // Log this download attempt
-    const clientIP = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
-    const userAgent = req.headers.get("user-agent") || "unknown";
-    const urlExpiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes from now
+    // Log this download attempt with sanitized data
+    const clientIP = (req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown").substring(0, 45);
+    const userAgent = (req.headers.get("user-agent") || "unknown").substring(0, 255);
+    const urlExpiresAt = new Date(Date.now() + 10 * 60 * 1000);
 
     const { error: logError } = await supabase
       .from("download_attempts")
@@ -134,15 +143,8 @@ serve(async (req) => {
       });
 
     if (logError) {
-      console.error("Failed to log download attempt:", logError);
-      // Don't fail the request, just log the error
+      console.error("[SECURE-DOWNLOAD] Failed to log download attempt");
     }
-
-    logStep("Download attempt logged successfully", { 
-      remainingDownloads: 3 - successfulDownloads - 1,
-      clientIP,
-      userAgent 
-    });
 
     return new Response(JSON.stringify({
       downloadUrl: signedUrlData.signedUrl,
@@ -156,7 +158,7 @@ serve(async (req) => {
 
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
-    logStep("ERROR in secure-download", { message: errorMessage });
+    console.error("[SECURE-DOWNLOAD] Error:", errorMessage);
     return new Response(JSON.stringify({ error: errorMessage }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 400,

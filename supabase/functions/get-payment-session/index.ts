@@ -17,19 +17,17 @@ serve(async (req) => {
   }
 
   try {
-    logStep("Starting payment session retrieval");
-
     const { sessionId } = await req.json();
-    if (!sessionId) {
-      throw new Error("Session ID is required");
+    
+    // Validate sessionId format
+    if (!sessionId || typeof sessionId !== 'string' || !sessionId.match(/^cs_[a-zA-Z0-9_]+$/)) {
+      throw new Error("Invalid session ID format");
     }
-    logStep("Session ID received", { sessionId });
 
     const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
     if (!stripeKey) {
-      throw new Error("Stripe secret key not configured");
+      throw new Error("Payment system not configured");
     }
-    logStep("Stripe key verified");
 
     const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-10-16",
@@ -37,12 +35,6 @@ serve(async (req) => {
 
     // Retrieve the checkout session from Stripe
     const session = await stripe.checkout.sessions.retrieve(sessionId);
-    logStep("Retrieved Stripe session", { 
-      sessionId: session.id,
-      customerEmail: session.customer_email,
-      customerDetails: session.customer_details?.email,
-      paymentStatus: session.payment_status
-    });
 
     // Get customer email - check both possible fields
     const customerEmail = session.customer_email || session.customer_details?.email;
@@ -69,7 +61,7 @@ serve(async (req) => {
 
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
-    logStep("ERROR in get-payment-session", { message: errorMessage });
+    console.error("[GET-PAYMENT-SESSION] Error:", errorMessage);
     return new Response(JSON.stringify({ error: errorMessage }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,

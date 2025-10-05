@@ -47,13 +47,11 @@ const PaymentSuccess = () => {
 
       if (error) throw error;
       
-      console.log('Payment session details:', data);
       setCustomerEmail(data.customerEmail);
       setCustomerName(data.customerName);
       setOrderAmount((data.amountTotal || 0) / 100); // Convert from cents
       
     } catch (error) {
-      console.error('Error getting payment session details:', error);
       // Fallback pricing
       const launchDate = new Date("2025-07-15T00:00:00Z");
       const currentDate = new Date();
@@ -79,7 +77,10 @@ const PaymentSuccess = () => {
       setIsDownloading(true);
       
       const { data, error } = await supabase.functions.invoke('secure-download', {
-        body: { sessionId }
+        body: { 
+          sessionId,
+          email: customerEmail 
+        }
       });
 
       if (error) {
