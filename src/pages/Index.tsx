@@ -340,7 +340,6 @@ const Index = () => {
               
               <CardHeader className="text-center pb-4">
                 <div className="space-y-2">
-                  <p className="text-lg text-muted-foreground line-through">Regular Price: $67</p>
                   <p className="text-4xl font-bold text-primary">${isExpired ? '67' : '47'}</p>
                   <p className="text-muted-foreground">One-time payment • Lifetime access</p>
                 </div>
