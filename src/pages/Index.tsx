@@ -64,7 +64,7 @@ const Index = () => {
   }, []);
 
   const handleCTA = () => {
-    navigate('/checkout');
+    window.location.href = 'https://family-lyfe-fix-2.kit.com/products/end-of-lyfe-toolkit';
   };
 
   const faqs = [

@@ -16,7 +16,7 @@ const StickyCTA: React.FC = () => {
               <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
             </Button>
             <Button size="sm" asChild>
-              <a href="https://familylyfefix.com/toolkit">Get the Toolkit</a>
+              <a href="https://family-lyfe-fix-2.kit.com/products/end-of-lyfe-toolkit">Get the Toolkit</a>
             </Button>
             <Button size="sm" variant="outline" asChild>
               <a href="https://familylyfefix.typeform.com/ready-4the-talk" target="_blank" rel="noopener noreferrer">Take the Quiz</a>
