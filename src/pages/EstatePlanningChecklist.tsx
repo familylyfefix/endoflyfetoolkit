@@ -91,6 +91,29 @@ const EstatePlanningChecklist = () => {
             border-bottom: 1px solid #D4C4B0 !important; 
             background: transparent !important;
           }
+          
+          /* Prevent content from breaking across pages */
+          .space-y-4 > div {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+          }
+          
+          /* Ensure numbers are always visible */
+          .space-y-4 > div > span:first-child {
+            print-color-adjust: exact !important;
+            -webkit-print-color-adjust: exact !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            color: #8B7355 !important;
+            font-weight: 500 !important;
+            display: inline-block !important;
+          }
+          
+          /* Better table handling to prevent breaking */
+          .bg-white.rounded-lg {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+          }
         }
       `}</style>
 
