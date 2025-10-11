@@ -76,28 +76,31 @@ const EstatePlanningChecklist = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
         
-        @media print {
+          @media print {
+          @page { size: letter; margin: 12mm; }
+          html, body { height: auto !important; overflow: visible !important; }
           body { background: #F8F3F0 !important; }
           .no-print { display: none !important; }
-          .pdf-page { 
+          .pdf-page {
             page-break-after: always;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            height: auto !important;
+            min-height: auto !important;
+            display: block !important;
+            overflow: visible !important;
+            padding: 24px !important;
           }
           .pdf-page:last-child { page-break-after: auto; }
           * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-          input { 
-            border-bottom: 1px solid #D4C4B0 !important; 
+          input {
+            border-bottom: 1px solid #D4C4B0 !important;
             background: transparent !important;
           }
-          
           /* Prevent content from breaking across pages */
           .space-y-4 > div {
             page-break-inside: avoid !important;
             break-inside: avoid !important;
+            break-inside: avoid-page !important;
           }
-          
           /* Ensure numbers are always visible */
           .space-y-4 > div > span:first-child {
             print-color-adjust: exact !important;
@@ -108,11 +111,11 @@ const EstatePlanningChecklist = () => {
             font-weight: 500 !important;
             display: inline-block !important;
           }
-          
           /* Better table handling to prevent breaking */
           .bg-white.rounded-lg {
             page-break-inside: avoid !important;
             break-inside: avoid !important;
+            break-inside: avoid-page !important;
           }
         }
       `}</style>
