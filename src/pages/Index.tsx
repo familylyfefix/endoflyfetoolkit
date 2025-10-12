@@ -8,59 +8,11 @@ import { CheckCircle, Clock, Heart, Shield, Users, Star, ChevronDown, Download, 
 
 const Index = () => {
   const navigate = useNavigate();
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-  const [isExpired, setIsExpired] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Debug: Log when Index component loads
   useEffect(() => {
     console.log('Index component loaded - current URL:', window.location.pathname);
-  }, []);
-
-  useEffect(() => {
-    // Get or set the countdown start time for this visitor
-    const getCountdownStartTime = () => {
-      const stored = localStorage.getItem('countdownStartTime');
-      if (stored) {
-        return parseInt(stored);
-      } else {
-        const startTime = Date.now();
-        localStorage.setItem('countdownStartTime', startTime.toString());
-        return startTime;
-      }
-    };
-
-    const startTime = getCountdownStartTime();
-    const duration = 120 * 60 * 60 * 1000; // 120 hours (5 days) in milliseconds
-
-    const updateTimer = () => {
-      const now = Date.now();
-      const elapsed = now - startTime;
-      const remaining = duration - elapsed;
-
-      if (remaining <= 0) {
-        setIsExpired(true);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      const days = Math.floor(remaining / (24 * 60 * 60 * 1000));
-      const hours = Math.floor((remaining % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-      const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
-      const seconds = Math.floor((remaining % (60 * 1000)) / 1000);
-
-      setTimeLeft({ days, hours, minutes, seconds });
-    };
-
-    updateTimer();
-    const timer = setInterval(updateTimer, 1000);
-
-    return () => clearInterval(timer);
   }, []);
 
   const handleCTA = () => {
@@ -77,7 +29,7 @@ const Index = () => {
       answer: "The toolkit is designed to handle complex family dynamics with sections for multiple beneficiaries, step-families, and various relationship structures. It's fully customizable to your unique situation."
     },
     {
-      question: `Is this really worth $${isExpired ? '67' : '47'} when I could just write this myself?`,
+      question: "Is this really worth $47 when I could just write this myself?",
       answer: "While you could create something yourself, this template saves you 20+ hours of research and organization. It includes legal considerations, emotional support resources, and a proven framework that many families have successfully used."
     }
   ];
@@ -94,26 +46,6 @@ const Index = () => {
           />
         </div>
       </header>
-      {/* Countdown Banner */}
-      {isExpired ? (
-        <div className="bg-destructive/10 border-b-2 border-destructive/30 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <div className="text-destructive font-semibold flex items-center justify-center gap-2">
-              <Clock className="w-4 h-4" />
-              Special Offer Has Ended
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="bg-orange-50 border-b-2 border-orange-300 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <div className="text-orange-700 font-semibold flex items-center justify-center gap-2">
-              <Clock className="w-4 h-4" />
-              Early Bird Special Ends Soon: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-            </div>
-          </div>
-        </div>
-      )}
       
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 lg:py-24">
@@ -163,7 +95,7 @@ const Index = () => {
               className="text-lg px-8 py-6 h-auto"
               onClick={handleCTA}
             >
-              Get The Complete System Now - ${isExpired ? '67' : '47'}
+              Get The Complete System Now - $47
             </Button>
           </div>
         </div>
@@ -328,10 +260,6 @@ const Index = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <Badge className="mb-6 bg-destructive/10 text-destructive border-destructive/20">
-              ⚡ LIMITED TIME OFFER
-            </Badge>
-            
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">
               Get Complete Peace of Mind for Your Family
             </h2>
@@ -340,28 +268,12 @@ const Index = () => {
               
               <CardHeader className="text-center pb-4">
                 <div className="space-y-2">
-                  <p className="text-4xl font-bold text-primary">${isExpired ? '67' : '47'}</p>
+                  <p className="text-4xl font-bold text-primary">$47</p>
                   <p className="text-muted-foreground">One-time payment • Lifetime access</p>
                 </div>
               </CardHeader>
               
               <CardContent className="space-y-6">
-                {isExpired ? (
-                  <div className="bg-destructive/10 border-2 border-destructive/30 rounded-lg p-4 text-destructive font-semibold text-center flex items-center justify-center gap-2">
-                    <Clock className="w-5 h-5" />
-                    Special Offer Has Ended
-                  </div>
-                ) : (
-                  <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-4 text-orange-700 font-semibold text-center">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <Clock className="w-5 h-5" />
-                      5-Day Special Ends Soon:
-                    </div>
-                    <div className="text-2xl font-bold">
-                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                    </div>
-                  </div>
-                )}
                 
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
@@ -391,7 +303,7 @@ const Index = () => {
                   className="w-full text-lg py-6 h-auto"
                   onClick={handleCTA}
                 >
-                  Get Instant Access - ${isExpired ? '67' : '47'}
+                  Get Instant Access - $47
                 </Button>
                 
                 <p className="text-sm text-muted-foreground text-center">
@@ -445,40 +357,13 @@ const Index = () => {
             </p>
             
             <div className="bg-primary/10 p-8 rounded-lg border border-primary/20 mb-8">
-              {isExpired ? (
-                <div className="text-center">
-                  <div className="bg-destructive/10 border-2 border-destructive/30 rounded-lg p-4 text-destructive font-semibold mb-4 flex items-center justify-center gap-2">
-                    <Clock className="w-5 h-5" />
-                    Special Offer Has Ended
-                  </div>
-                  <Button 
-                    size="lg" 
-                    className="text-lg px-8 py-6 h-auto"
-                    onClick={handleCTA}
-                  >
-                    Get The Toolkit - $67
-                  </Button>
-                </div>
-              ) : (
-                <>
-                  <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-4 text-orange-700 font-semibold text-center mb-4">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <Clock className="w-5 h-5" />
-                      5-Day Special Ends Soon:
-                    </div>
-                    <div className="text-xl font-bold">
-                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                    </div>
-                  </div>
-                  <Button 
-                    size="lg" 
-                    className="text-lg px-8 py-6 h-auto"
-                    onClick={handleCTA}
-                  >
-                    Secure Your Family's Future - ${isExpired ? '67' : '47'}
-                  </Button>
-                </>
-              )}
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-6 h-auto"
+                onClick={handleCTA}
+              >
+                Secure Your Family's Future - $47
+              </Button>
             </div>
             
           </div>

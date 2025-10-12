@@ -54,12 +54,6 @@ useEffect(() => {
     <div className="w-full bg-accent/20 border-b border-border backdrop-blur supports-[backdrop-filter]:bg-accent/10">
       <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
         <div className="flex items-center gap-2">
-          <span className="font-medium">Limited-time offer</span>
-          {deadline ? (
-            <span className="text-muted-foreground">Ends in {formatTime(timeLeft)}</span>
-          ) : null}
-        </div>
-        <div className="flex items-center gap-2">
           <Button size="sm" variant="secondary" asChild>
             <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
           </Button>
