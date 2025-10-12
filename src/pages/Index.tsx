@@ -29,7 +29,7 @@ const Index = () => {
       answer: "The toolkit is designed to handle complex family dynamics with sections for multiple beneficiaries, step-families, and various relationship structures. It's fully customizable to your unique situation."
     },
     {
-      question: "Is this really worth $47 when I could just write this myself?",
+      question: "Is this really worth $67 when I could just write this myself?",
       answer: "While you could create something yourself, this template saves you 20+ hours of research and organization. It includes legal considerations, emotional support resources, and a proven framework that many families have successfully used."
     }
   ];
@@ -95,7 +95,7 @@ const Index = () => {
               className="text-lg px-8 py-6 h-auto"
               onClick={handleCTA}
             >
-              Get The Complete System Now - $47
+              Get The Complete System Now - $67
             </Button>
           </div>
         </div>
@@ -268,7 +268,7 @@ const Index = () => {
               
               <CardHeader className="text-center pb-4">
                 <div className="space-y-2">
-                  <p className="text-4xl font-bold text-primary">$47</p>
+                  <p className="text-4xl font-bold text-primary">$67</p>
                   <p className="text-muted-foreground">One-time payment • Lifetime access</p>
                 </div>
               </CardHeader>
@@ -303,7 +303,7 @@ const Index = () => {
                   className="w-full text-lg py-6 h-auto"
                   onClick={handleCTA}
                 >
-                  Get Instant Access - $47
+                  Get Instant Access - $67
                 </Button>
                 
                 <p className="text-sm text-muted-foreground text-center">
@@ -362,7 +362,7 @@ const Index = () => {
                 className="text-lg px-8 py-6 h-auto"
                 onClick={handleCTA}
               >
-                Secure Your Family's Future - $47
+                Secure Your Family's Future - $67
               </Button>
             </div>
             
