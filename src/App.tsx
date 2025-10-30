@@ -2,20 +2,19 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Index from "./pages/Index";
-import Checkout from "./pages/Checkout";
-import PaymentSuccess from "./pages/PaymentSuccess";
-import NotFound from "./pages/NotFound";
-import FamilyLyfeFix from "./pages/FamilyLyfeFix";
-import EstatePlanningChecklist from "./pages/EstatePlanningChecklist";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ComingSoon from "./pages/ComingSoon";
+// Temporarily disabled routes during migration
+// import Index from "./pages/Index";
+// import Checkout from "./pages/Checkout";
+// import PaymentSuccess from "./pages/PaymentSuccess";
+// import NotFound from "./pages/NotFound";
+// import FamilyLyfeFix from "./pages/FamilyLyfeFix";
+// import EstatePlanningChecklist from "./pages/EstatePlanningChecklist";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Debug: Log current route for debugging
-  console.log('App rendering - current pathname:', window.location.pathname);
-  
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -23,13 +22,8 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<FamilyLyfeFix />} />
-            <Route path="/familylyfefix" element={<Navigate to="/" replace />} />
-            <Route path="/toolkit" element={<Index />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checklist" element={<EstatePlanningChecklist />} />
-            <Route path="/payment-success" element={<PaymentSuccess />} />
-            <Route path="*" element={<NotFound />} />
+            {/* All routes show Coming Soon page during domain migration */}
+            <Route path="*" element={<ComingSoon />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
