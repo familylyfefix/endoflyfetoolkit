@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "next-themes";
 import ComingSoon from "./pages/ComingSoon";
 import WaitlistAdmin from "./pages/WaitlistAdmin";
 // Temporarily disabled routes during migration
@@ -17,16 +18,18 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ComingSoon />} />
-          <Route path="/admin/waitlist" element={<WaitlistAdmin />} />
-          {/* All other routes show Coming Soon page during domain migration */}
-          <Route path="*" element={<ComingSoon />} />
-        </Routes>
-      </BrowserRouter>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ComingSoon />} />
+            <Route path="/admin/waitlist" element={<WaitlistAdmin />} />
+            {/* All other routes show Coming Soon page during domain migration */}
+            <Route path="*" element={<ComingSoon />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
