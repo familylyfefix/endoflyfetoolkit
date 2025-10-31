@@ -89,9 +89,6 @@ const ComingSoon = () => {
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent">
               The End-Of-Lyfe Playbook
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
-              (SaaS / PWA Edition)
-            </p>
             <p className="text-2xl md:text-3xl font-semibold text-foreground mt-4">
               🥳 November 28 Is the Day to Get Ready for Peace of Mind
             </p>
