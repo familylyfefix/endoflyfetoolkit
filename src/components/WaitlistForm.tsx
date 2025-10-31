@@ -42,7 +42,14 @@ export const WaitlistForm = () => {
       } else {
         setIsSubmitted(true);
         toast.success("🎉 You're on the list!", {
-          description: "Check your email for confirmation.",
+          description: "We'll notify you when we launch!",
+        });
+        
+        // Send confirmation email (non-blocking)
+        supabase.functions.invoke('send-waitlist-confirmation', {
+          body: { email: data.email.toLowerCase().trim() }
+        }).catch(error => {
+          console.error('Failed to send confirmation email:', error);
         });
       }
     } catch (error) {

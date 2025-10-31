@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ComingSoon from "./pages/ComingSoon";
+import WaitlistAdmin from "./pages/WaitlistAdmin";
 // Temporarily disabled routes during migration
 // import Index from "./pages/Index";
 // import Checkout from "./pages/Checkout";
@@ -20,7 +21,9 @@ const App = () => {
       <Sonner />
       <BrowserRouter>
         <Routes>
-          {/* All routes show Coming Soon page during domain migration */}
+          <Route path="/" element={<ComingSoon />} />
+          <Route path="/admin/waitlist" element={<WaitlistAdmin />} />
+          {/* All other routes show Coming Soon page during domain migration */}
           <Route path="*" element={<ComingSoon />} />
         </Routes>
       </BrowserRouter>

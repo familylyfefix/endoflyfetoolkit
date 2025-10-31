@@ -173,3 +173,6 @@ verify_jwt = false
 
 [functions.secure-download]
 verify_jwt = false
+
+[functions.send-waitlist-confirmation]
+verify_jwt = false
