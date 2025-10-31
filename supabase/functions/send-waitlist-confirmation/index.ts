@@ -25,7 +25,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log('Sending confirmation email to:', email);
 
     const emailResponse = await resend.emails.send({
-      from: "Family Lyfe Toolkit <onboarding@resend.dev>",
+      from: "Family Lyfe Toolkit <noreply@familylyfefix.io>",
       to: [email],
       subject: "🎉 You're on the Family Lyfe Toolkit Waitlist!",
       html: `
