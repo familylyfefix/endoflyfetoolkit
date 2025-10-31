@@ -25,9 +25,9 @@ const handler = async (req: Request): Promise<Response> => {
     console.log('Sending confirmation email to:', email);
 
     const emailResponse = await resend.emails.send({
-      from: "Family Lyfe Toolkit <noreply@familylyfefix.io>",
+      from: "End-Of-Lyfe Playbook <noreply@familylyfefix.io>",
       to: [email],
-      subject: "🎉 You're on the Family Lyfe Toolkit Waitlist!",
+      subject: "🎉 You're on the End-Of-Lyfe Playbook Waitlist!",
       html: `
         <!DOCTYPE html>
         <html>
@@ -81,7 +81,7 @@ const handler = async (req: Request): Promise<Response> => {
             <div class="content">
               <p>Hi there,</p>
               
-              <p>Thank you for joining the <strong>Family Lyfe Toolkit</strong> waitlist! We're thrilled to have you on board.</p>
+              <p>Thank you for joining the <strong>End-Of-Lyfe Playbook</strong> waitlist! We're thrilled to have you on board.</p>
               
               <div class="highlight">
                 <strong>📅 Launch Date: November 28th</strong><br>
@@ -100,11 +100,11 @@ const handler = async (req: Request): Promise<Response> => {
               
               <p>Thank you for your patience and support!</p>
               
-              <p>Best regards,<br>
-              <strong>The Family Lyfe Toolkit Team</strong></p>
+              <p>Take care,<br>
+              <strong>Family Lyfe Fix 💛</strong></p>
             </div>
             <div class="footer">
-              <p>You received this email because you signed up for the Family Lyfe Toolkit waitlist.</p>
+              <p>You received this email because you signed up for the End-Of-Lyfe Playbook waitlist.</p>
             </div>
           </body>
         </html>
