@@ -75,7 +75,7 @@ const ComingSoon = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/10">
       {/* Hero Section with Countdown */}
-      <section className="min-h-screen flex items-center justify-center p-4">
+      <section className="py-20 flex items-center justify-center p-4">
         <div className="max-w-4xl w-full text-center space-y-8 animate-fade-in">
           {/* Coming Soon Badge */}
           <div className="inline-block">
