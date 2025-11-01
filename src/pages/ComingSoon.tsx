@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { WaitlistForm } from '@/components/WaitlistForm';
+import ExitIntentPopup from '@/components/ExitIntentPopup';
+import { Button } from '@/components/ui/button';
 import { 
   Shield, 
   FolderOpen, 
@@ -74,6 +76,7 @@ const ComingSoon = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/10">
+      <ExitIntentPopup />
       {/* Hero Section with Countdown */}
       <section className="py-20 flex items-center justify-center p-4">
         <div className="max-w-4xl w-full text-center space-y-8 animate-fade-in">
@@ -114,6 +117,20 @@ const ComingSoon = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Quiz and Waitlist CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+            <Button size="lg" asChild>
+              <a href="https://www.familylyfefix.io/quiz" target="_blank" rel="noopener noreferrer">
+                📋 Take the Free Quiz
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href="#waitlist">
+                ✉️ Join the Waitlist
+              </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -244,14 +261,23 @@ const ComingSoon = () => {
       </section>
 
       {/* Email Signup Section */}
-      <section className="py-20 px-4 bg-card/30">
+      <section id="waitlist" className="py-20 px-4 bg-card/30">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             ✉️ Be First to Access It
           </h2>
           
           <p className="text-lg text-muted-foreground mb-8">
-            Get early-bird access, behind-the-scenes updates, and a reminder the moment we go live.
+            Not sure where to start?{' '}
+            <a 
+              href="https://www.familylyfefix.io/quiz" 
+              className="text-primary hover:underline font-semibold" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Take our free quiz
+            </a>
+            {' '}to discover your family's gaps, or join the waitlist for early access when we launch.
           </p>
           
           <WaitlistForm />
