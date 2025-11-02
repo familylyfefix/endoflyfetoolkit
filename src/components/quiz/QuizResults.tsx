@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ResultsShare } from './ResultsShare';
 import { ArrowLeft, RefreshCw } from 'lucide-react';
 
 interface QuizResultsProps {
@@ -140,8 +139,6 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake 
             </Button>
           </div>
         </Card>
-
-        <ResultsShare score={score} tier={tier} />
       </div>
     </div>
   );
