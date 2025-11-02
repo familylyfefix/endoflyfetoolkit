@@ -174,7 +174,6 @@ const Quiz: React.FC = () => {
                   <li>✅ Your personalized readiness score</li>
                   <li>✅ Specific gaps in your planning</li>
                   <li>✅ FREE Conversation Starter Guide (PDF)</li>
-                  <li>✅ Actionable next steps for your family</li>
                 </ul>
               </div>
               
