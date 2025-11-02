@@ -122,7 +122,7 @@ const ComingSoon = () => {
           {/* Quiz and Waitlist CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button size="lg" asChild>
-              <a href="https://www.familylyfefix.io/quiz" target="_blank" rel="noopener noreferrer">
+              <a href="/quiz">
                 📋 Take the Free Quiz
               </a>
             </Button>
@@ -270,10 +270,8 @@ const ComingSoon = () => {
           <p className="text-lg text-muted-foreground mb-8">
             Not sure where to start?{' '}
             <a 
-              href="https://www.familylyfefix.io/quiz" 
-              className="text-primary hover:underline font-semibold" 
-              target="_blank" 
-              rel="noopener noreferrer"
+              href="/quiz" 
+              className="text-primary hover:underline font-semibold"
             >
               Take our free quiz
             </a>

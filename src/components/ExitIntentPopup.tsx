@@ -78,9 +78,7 @@ const ExitIntentPopup = () => {
           <div className="flex flex-col gap-3">
             <Button size="lg" asChild className="w-full">
               <a 
-                href="https://www.familylyfefix.io/quiz" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/quiz"
                 onClick={handleClose}
               >
                 📋 Take the Free Quiz →

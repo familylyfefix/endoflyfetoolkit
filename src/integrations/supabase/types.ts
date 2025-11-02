@@ -100,6 +100,36 @@ export type Database = {
         }
         Relationships: []
       }
+      quiz_submissions: {
+        Row: {
+          completed_at: string | null
+          email: string
+          id: string
+          retake_count: number | null
+          score: number
+          tier: number
+          updated_at: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          email: string
+          id?: string
+          retake_count?: number | null
+          score: number
+          tier: number
+          updated_at?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          email?: string
+          id?: string
+          retake_count?: number | null
+          score?: number
+          tier?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       waitlist: {
         Row: {
           created_at: string
