@@ -117,7 +117,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email with results
     const emailResponse = await resend.emails.send({
-      from: "Family Lyfe Fix <noreply@familylyfefix.com>",
+      from: "Family Lyfe Fix <noreply@familylyfefix.io>",
       to: [email],
       subject: `${content.title} - Your Quiz Results`,
       html: `
