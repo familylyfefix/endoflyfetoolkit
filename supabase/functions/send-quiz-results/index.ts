@@ -108,17 +108,9 @@ const handler = async (req: Request): Promise<Response> => {
       console.log('Added to waitlist or already exists');
     }
 
-    // Generate secure download link for PDF
-    const { data: urlData, error: urlError } = await supabase
-      .storage
-      .from('toolkit-downloads')
-      .createSignedUrl('guides/conversation-starter.pdf', 86400); // 24 hours
-
-    if (urlError) {
-      console.error('Error generating download URL:', urlError);
-    }
-
-    const downloadUrl = urlData?.signedUrl || '#';
+    // Direct public URL since bucket is public
+    const downloadUrl = `${supabaseUrl}/storage/v1/object/public/end-of-lyfe/End-of-Lyfe-Conversationstarterguide.pdf`;
+    console.log('Using public download URL:', downloadUrl);
 
     // Get tier-specific content
     const content = getTierContent(tier, score);
@@ -245,8 +237,7 @@ const handler = async (req: Request): Promise<Response> => {
               </div>
 
               <p style="color: #6b7280; font-size: 14px;">
-                <strong>Note:</strong> Your download link is valid for 24 hours. 
-                If you have any trouble accessing the guide, please reply to this email.
+                <strong>Note:</strong> If you have any trouble accessing the guide, please reply to this email.
               </p>
 
               <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-top: 30px;">
