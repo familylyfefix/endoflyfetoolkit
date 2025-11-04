@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { WaitlistForm } from '@/components/WaitlistForm';
 import { ArrowLeft, RefreshCw } from 'lucide-react';
 
 interface QuizResultsProps {
@@ -66,16 +69,17 @@ const getTierContent = (tier: number, score: number) => {
 
 export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake }) => {
   const content = getTierContent(tier, score);
+  const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/10 p-4 py-12">
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <Button variant="ghost" asChild>
-            <a href="/">
+            <Link to="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
-            </a>
+            </Link>
           </Button>
           
           <Button variant="outline" onClick={onRetake}>
@@ -132,14 +136,29 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake 
                 {content.ctaText}
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild className="flex-1">
-              <a href="/#waitlist">
-                {content.secondaryCtaText}
-              </a>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="flex-1"
+              onClick={() => setIsWaitlistDialogOpen(true)}
+            >
+              {content.secondaryCtaText}
             </Button>
           </div>
         </Card>
       </div>
+
+      <Dialog open={isWaitlistDialogOpen} onOpenChange={setIsWaitlistDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">Join the Waitlist</DialogTitle>
+            <DialogDescription>
+              Be the first to get access to the End-Of-Lyfe Playbook when it launches on November 28, 2025.
+            </DialogDescription>
+          </DialogHeader>
+          <WaitlistForm />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
