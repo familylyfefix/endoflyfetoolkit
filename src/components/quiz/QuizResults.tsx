@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { WaitlistForm } from '@/components/WaitlistForm';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { ArrowLeft, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 interface QuizResultsProps {
   score: number;
@@ -71,6 +72,39 @@ const getTierContent = (tier: number, score: number) => {
 export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake, email }) => {
   const content = getTierContent(tier, score);
   const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false);
+  const [isOnWaitlist, setIsOnWaitlist] = useState(false);
+  const [checkingWaitlist, setCheckingWaitlist] = useState(true);
+
+  useEffect(() => {
+    const checkWaitlistStatus = async () => {
+      try {
+        setCheckingWaitlist(true);
+        const { data, error } = await supabase
+          .from('waitlist')
+          .select('id')
+          .eq('email', email)
+          .maybeSingle();
+
+        if (error) {
+          console.error('Error checking waitlist status:', error);
+          setIsOnWaitlist(false);
+        } else {
+          setIsOnWaitlist(!!data);
+        }
+      } catch (error) {
+        console.error('Error checking waitlist status:', error);
+        setIsOnWaitlist(false);
+      } finally {
+        setCheckingWaitlist(false);
+      }
+    };
+
+    if (email) {
+      checkWaitlistStatus();
+    } else {
+      setCheckingWaitlist(false);
+    }
+  }, [email]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/10 p-4 py-12">
@@ -137,14 +171,31 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake,
                 {content.ctaText}
               </a>
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="flex-1"
-              onClick={() => setIsWaitlistDialogOpen(true)}
-            >
-              {content.secondaryCtaText}
-            </Button>
+            
+            {checkingWaitlist ? (
+              <Button size="lg" variant="outline" className="flex-1" disabled>
+                Checking status...
+              </Button>
+            ) : isOnWaitlist ? (
+              <Card className="flex-1 p-4 bg-primary/5 border-primary/20">
+                <div className="flex items-center justify-center gap-2 text-primary">
+                  <CheckCircle2 className="h-5 w-5" />
+                  <span className="font-semibold">You're on the waitlist!</span>
+                </div>
+                <p className="text-sm text-muted-foreground text-center mt-2">
+                  We'll notify you when the End-Of-Lyfe Playbook launches on November 28, 2025.
+                </p>
+              </Card>
+            ) : (
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="flex-1"
+                onClick={() => setIsWaitlistDialogOpen(true)}
+              >
+                {content.secondaryCtaText}
+              </Button>
+            )}
           </div>
         </Card>
       </div>
