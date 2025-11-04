@@ -19,7 +19,7 @@ type EmailFormData = z.infer<typeof emailSchema>;
 interface EmailCaptureProps {
   score: number;
   tier: number;
-  onSuccess: () => void;
+  onSuccess: (email: string) => void;
 }
 
 export const EmailCapture: React.FC<EmailCaptureProps> = ({ score, tier, onSuccess }) => {
@@ -53,7 +53,7 @@ export const EmailCapture: React.FC<EmailCaptureProps> = ({ score, tier, onSucce
         description: 'We\'ve sent your quiz results and FREE guide to your inbox.'
       });
 
-      onSuccess();
+      onSuccess(data.email);
     } catch (error: any) {
       console.error('Error submitting quiz results:', error);
       toast.error('Oops! Something went wrong.', {

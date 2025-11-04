@@ -108,6 +108,7 @@ const Quiz: React.FC = () => {
   const [score, setScore] = useState(0);
   const [tier, setTier] = useState(0);
   const [showIntro, setShowIntro] = useState(true);
+  const [userEmail, setUserEmail] = useState('');
 
   const handleAnswer = (points: number) => {
     const newAnswers = [...answers, { questionId: currentQuestion + 1, points }];
@@ -124,7 +125,8 @@ const Quiz: React.FC = () => {
     }
   };
 
-  const handleEmailSubmitted = () => {
+  const handleEmailSubmitted = (email: string) => {
+    setUserEmail(email);
     setShowEmailCapture(false);
     setShowResults(true);
   };
@@ -201,6 +203,7 @@ const Quiz: React.FC = () => {
         score={score} 
         tier={tier} 
         onRetake={handleRetake}
+        email={userEmail}
       />
     );
   }

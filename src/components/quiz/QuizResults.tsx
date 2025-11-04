@@ -10,6 +10,7 @@ interface QuizResultsProps {
   score: number;
   tier: number;
   onRetake: () => void;
+  email: string;
 }
 
 const getTierContent = (tier: number, score: number) => {
@@ -67,7 +68,7 @@ const getTierContent = (tier: number, score: number) => {
   }
 };
 
-export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake }) => {
+export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake, email }) => {
   const content = getTierContent(tier, score);
   const [isWaitlistDialogOpen, setIsWaitlistDialogOpen] = useState(false);
 
@@ -156,7 +157,7 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake 
               Be the first to get access to the End-Of-Lyfe Playbook when it launches on November 28, 2025.
             </DialogDescription>
           </DialogHeader>
-          <WaitlistForm />
+          <WaitlistForm defaultEmail={email} />
         </DialogContent>
       </Dialog>
     </div>

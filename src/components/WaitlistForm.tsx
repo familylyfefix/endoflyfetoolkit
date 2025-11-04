@@ -14,7 +14,11 @@ const emailSchema = z.object({
 
 type EmailFormData = z.infer<typeof emailSchema>;
 
-export const WaitlistForm = () => {
+interface WaitlistFormProps {
+  defaultEmail?: string;
+}
+
+export const WaitlistForm = ({ defaultEmail = '' }: WaitlistFormProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   
   const {
@@ -23,6 +27,9 @@ export const WaitlistForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<EmailFormData>({
     resolver: zodResolver(emailSchema),
+    defaultValues: {
+      email: defaultEmail,
+    },
   });
 
   const onSubmit = async (data: EmailFormData) => {
