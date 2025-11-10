@@ -230,22 +230,11 @@ const handler = async (req: Request): Promise<Response> => {
                 <a href="${downloadUrl}" class="button">
                   📥 Download Your FREE Conversation Starter Guide
                 </a>
-                <br>
-                <a href="https://familylyfefix.com" class="secondary-button">
-                  ✉️ Get the Full End-Of-Lyfe Playbook (Launching Nov 28)
-                </a>
               </div>
 
               <p style="color: #6b7280; font-size: 14px;">
                 <strong>Note:</strong> If you have any trouble accessing the guide, please reply to this email.
               </p>
-
-              <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-top: 30px;">
-                <p style="margin: 0; color: #92400e;">
-                  <strong>💡 Ready to take the next step?</strong><br>
-                  Join our waitlist to be the first to know when the complete End-Of-Lyfe Playbook launches on November 28th!
-                </p>
-              </div>
 
               <p style="margin-top: 30px;">
                 Thank you for taking the quiz and investing in your family's peace of mind.
