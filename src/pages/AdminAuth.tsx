@@ -69,19 +69,30 @@ const AdminAuth = () => {
         toast.success('Logged in successfully');
         navigate('/admin/waitlist');
       } else {
-        // Sign up
+        // Sign up - no email confirmation required
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
             emailRedirectTo: `${window.location.origin}/admin/waitlist`,
+            data: {
+              email_confirm: false
+            }
           },
         });
 
         if (error) throw error;
 
-        toast.success('Account created! Please check your email to verify.');
-        toast.info('Contact your administrator to grant admin access.');
+        // Auto sign in after signup
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (signInError) throw signInError;
+
+        toast.success('Account created and logged in!');
+        navigate('/admin/waitlist');
       }
     } catch (error: any) {
       console.error('Auth error:', error);
