@@ -39,7 +39,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }
               variant="outline"
               size="lg"
               onClick={() => onAnswer(option.points)}
-              className="w-full text-left justify-start h-auto py-6 px-6 text-base hover:bg-primary/5 hover:border-primary transition-all group"
+              className="w-full text-left justify-start h-auto py-6 px-6 text-base hover:bg-primary/10 hover:border-primary hover:shadow-md hover:scale-[1.02] transition-all duration-200 group"
             >
               <span className="flex-1">{option.text}</span>
               <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity">
