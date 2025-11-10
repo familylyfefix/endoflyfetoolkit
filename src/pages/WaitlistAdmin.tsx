@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { Loader2, BarChart3 } from 'lucide-react';
+import { Loader2, BarChart3, LogOut } from 'lucide-react';
 import { format } from 'date-fns';
 
 interface WaitlistEntry {
@@ -18,6 +18,7 @@ interface WaitlistEntry {
 const WaitlistAdmin = () => {
   const [entries, setEntries] = useState<WaitlistEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchWaitlistEntries();
@@ -42,6 +43,16 @@ const WaitlistAdmin = () => {
     }
   };
 
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast.error('Failed to logout');
+    } else {
+      toast.success('Logged out successfully');
+      navigate('/admin/login');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background p-8">
       <div className="max-w-6xl mx-auto space-y-6">
@@ -50,12 +61,18 @@ const WaitlistAdmin = () => {
             <h1 className="text-3xl font-bold">Waitlist Dashboard</h1>
             <p className="text-muted-foreground mt-1">Manage and view all waitlist signups</p>
           </div>
-          <Button asChild>
-            <Link to="/admin/analytics">
-              <BarChart3 className="mr-2 h-4 w-4" />
-              View Analytics
-            </Link>
-          </Button>
+          <div className="flex gap-2">
+            <Button asChild>
+              <Link to="/admin/analytics">
+                <BarChart3 className="mr-2 h-4 w-4" />
+                View Analytics
+              </Link>
+            </Button>
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </Button>
+          </div>
         </div>
         
         <Card>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { supabase } from '@/integrations/supabase/client';
-import { ArrowLeft, RefreshCw, Users, ClipboardCheck, TrendingUp, Percent } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Users, ClipboardCheck, TrendingUp, Percent, LogOut } from 'lucide-react';
 import { PieChart, Pie, Cell, BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { format } from 'date-fns';
 import { useToast } from '@/hooks/use-toast';
@@ -60,6 +60,7 @@ const AnalyticsAdmin = () => {
   const [conversionStats, setConversionStats] = useState<ConversionStats | null>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const fetchAnalytics = async () => {
     try {
@@ -215,6 +216,21 @@ const AnalyticsAdmin = () => {
     fetchAnalytics();
   }, []);
 
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: 'Failed to logout',
+        variant: 'destructive',
+      });
+    } else {
+      toast({
+        title: 'Logged out successfully',
+      });
+      navigate('/admin/login');
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/10 p-8">
@@ -241,10 +257,16 @@ const AnalyticsAdmin = () => {
             </Button>
             <h1 className="text-4xl font-bold text-foreground">Analytics Dashboard</h1>
           </div>
-          <Button onClick={fetchAnalytics} variant="outline">
-            <RefreshCw className="mr-2 h-4 w-4" />
-            Refresh
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={fetchAnalytics} variant="outline">
+              <RefreshCw className="mr-2 h-4 w-4" />
+              Refresh
+            </Button>
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </Button>
+          </div>
         </div>
 
         {/* Stats Cards */}

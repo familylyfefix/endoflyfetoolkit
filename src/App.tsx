@@ -6,7 +6,9 @@ import { ThemeProvider } from "next-themes";
 import ComingSoon from "./pages/ComingSoon";
 import WaitlistAdmin from "./pages/WaitlistAdmin";
 import AnalyticsAdmin from "./pages/AnalyticsAdmin";
+import AdminAuth from "./pages/AdminAuth";
 import Quiz from "./pages/Quiz";
+import AdminRoute from "./components/AdminRoute";
 // Temporarily disabled routes during migration
 // import Index from "./pages/Index";
 // import Checkout from "./pages/Checkout";
@@ -27,8 +29,17 @@ const App = () => {
           <Routes>
             <Route path="/" element={<ComingSoon />} />
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="/admin/waitlist" element={<WaitlistAdmin />} />
-            <Route path="/admin/analytics" element={<AnalyticsAdmin />} />
+            <Route path="/admin/login" element={<AdminAuth />} />
+            <Route path="/admin/waitlist" element={
+              <AdminRoute>
+                <WaitlistAdmin />
+              </AdminRoute>
+            } />
+            <Route path="/admin/analytics" element={
+              <AdminRoute>
+                <AnalyticsAdmin />
+              </AdminRoute>
+            } />
             {/* All other routes show Coming Soon page during domain migration */}
             <Route path="*" element={<ComingSoon />} />
           </Routes>

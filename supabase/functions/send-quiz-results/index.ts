@@ -77,13 +77,22 @@ const handler = async (req: Request): Promise<Response> => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Store or update quiz submission
+    // Check if this is a retake (existing submission)
+    const { data: existingSubmission } = await supabase
+      .from('quiz_submissions')
+      .select('retake_count')
+      .eq('email', email)
+      .maybeSingle();
+
+    // Store or update quiz submission with proper retake tracking
     const { error: upsertError } = await supabase
       .from('quiz_submissions')
       .upsert({
         email,
         score,
         tier,
+        completed_at: new Date().toISOString(), // Always update to current time
+        retake_count: existingSubmission ? (existingSubmission.retake_count + 1) : 1,
         updated_at: new Date().toISOString()
       }, {
         onConflict: 'email',
