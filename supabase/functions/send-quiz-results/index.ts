@@ -268,6 +268,36 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Quiz results email sent successfully:", emailResponse);
 
+    // Send admin notification (non-blocking)
+    try {
+      const tierNames = ["Caring Procrastinator", "Thoughtful Planner", "Prepared Leader"];
+      const tierName = tierNames[tier - 1];
+      
+      await resend.emails.send({
+        from: "Family Lyfe Fix Notifications <noreply@familylyfefix.io>",
+        to: ["hello@familylyfefix.com"],
+        subject: "🎯 New Quiz Completion",
+        html: `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+            </head>
+            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px;">
+              <h2 style="color: #333;">New Quiz Completion</h2>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Score:</strong> ${score}/24 points</p>
+              <p><strong>Tier:</strong> ${tier} - ${tierName}</p>
+              <p><strong>Completed:</strong> ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}</p>
+            </body>
+          </html>
+        `,
+      });
+      console.log("Admin notification sent successfully");
+    } catch (adminError) {
+      console.error("Failed to send admin notification (non-critical):", adminError);
+    }
+
     return new Response(JSON.stringify({ 
       success: true,
       downloadUrl: downloadUrl 

@@ -113,6 +113,31 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Email sent successfully:", emailResponse);
 
+    // Send admin notification (non-blocking)
+    try {
+      await resend.emails.send({
+        from: "Family Lyfe Fix Notifications <noreply@familylyfefix.io>",
+        to: ["hello@familylyfefix.com"],
+        subject: "🔔 New Waitlist Signup",
+        html: `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+            </head>
+            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px;">
+              <h2 style="color: #333;">New Waitlist Signup</h2>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Signed up:</strong> ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}</p>
+            </body>
+          </html>
+        `,
+      });
+      console.log("Admin notification sent successfully");
+    } catch (adminError) {
+      console.error("Failed to send admin notification (non-critical):", adminError);
+    }
+
     return new Response(JSON.stringify(emailResponse), {
       status: 200,
       headers: {
