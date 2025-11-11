@@ -29,7 +29,6 @@ const getTierContent = (tier: number, score: number) => {
         { icon: '⚠️', text: 'Your family may not know your wishes' }
       ],
       nextStep: "Start with ONE simple conversation this week using the FREE guide we just sent to your email.",
-      ctaText: "Download Your Conversation Starter Guide",
       secondaryCtaText: "Join Waitlist for Full End-Of-Lyfe Planner"
     };
   } else if (tier === 2) {
@@ -46,7 +45,6 @@ const getTierContent = (tier: number, score: number) => {
         { icon: '⚠️', text: 'There are still missing pieces' }
       ],
       nextStep: "Use the FREE guide in your email to identify and fill the remaining gaps.",
-      ctaText: "Download Your Gap-Filling Guide",
       secondaryCtaText: "Get Full End-Of-Lyfe Planner (Launching Nov 28)"
     };
   } else {
@@ -63,7 +61,6 @@ const getTierContent = (tier: number, score: number) => {
         { icon: '✅', text: "You're protecting your family's future" }
       ],
       nextStep: "Keep everything organized and updated with the comprehensive End-Of-Lyfe Planner.",
-      ctaText: "Download Your Advanced Planning Guide",
       secondaryCtaText: "Join Waitlist for Full Toolkit (Nov 28)"
     };
   }
@@ -166,18 +163,12 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake,
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" asChild className="flex-1">
-              <a href="mailto:?subject=Check your email for the guide">
-                {content.ctaText}
-              </a>
-            </Button>
-            
             {checkingWaitlist ? (
-              <Button size="lg" variant="outline" className="flex-1" disabled>
+              <Button size="lg" variant="outline" className="w-full" disabled>
                 Checking status...
               </Button>
             ) : isOnWaitlist ? (
-              <Card className="flex-1 p-4 bg-primary/5 border-primary/20">
+              <Card className="w-full p-4 bg-primary/5 border-primary/20">
                 <div className="flex items-center justify-center gap-2 text-primary">
                   <CheckCircle2 className="h-5 w-5" />
                   <span className="font-semibold">You're on the waitlist!</span>
@@ -189,8 +180,8 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake,
             ) : (
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="flex-1"
+                variant="default" 
+                className="w-full"
                 onClick={() => setIsWaitlistDialogOpen(true)}
               >
                 {content.secondaryCtaText}
