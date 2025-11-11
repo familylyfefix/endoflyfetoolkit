@@ -18,8 +18,7 @@ const ComingSoon = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
-    minutes: 0,
-    seconds: 0
+    minutes: 0
   });
 
   useEffect(() => {
@@ -31,14 +30,13 @@ const ComingSoon = () => {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
           hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
         });
       }
     };
 
     calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
+    const timer = setInterval(calculateTimeLeft, 60000);
 
     return () => clearInterval(timer);
   }, [launchDate]);
@@ -90,7 +88,7 @@ const ComingSoon = () => {
           {/* Main Heading */}
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent">
-              The End-Of-Lyfe Playbook
+              The End-Of-Lyfe Planner
             </h1>
             <p className="text-2xl md:text-3xl font-semibold text-foreground mt-4">
               🥳 November 28 Is the Day to Get Ready for Peace of Mind
@@ -98,12 +96,11 @@ const ComingSoon = () => {
           </div>
 
           {/* Countdown Timer */}
-          <div className="grid grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto pt-8">
+          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto pt-8">
             {[
               { value: timeLeft.days, label: 'Days' },
               { value: timeLeft.hours, label: 'Hours' },
-              { value: timeLeft.minutes, label: 'Minutes' },
-              { value: timeLeft.seconds, label: 'Seconds' },
+              { value: timeLeft.minutes, label: 'Minutes' }
             ].map((item, index) => (
               <div
                 key={index}
@@ -161,7 +158,7 @@ const ComingSoon = () => {
             </p>
             
             <p>
-              That's why I created End-Of-Lyfe Playbook — so every family can experience what mine did: clarity, confidence, and calm when it matters most.
+              That's why I created End-Of-Lyfe Planner — so every family can experience what mine did: clarity, confidence, and calm when it matters most.
             </p>
             
             <p className="text-xl font-semibold text-foreground pt-4">
@@ -199,7 +196,7 @@ const ComingSoon = () => {
       <section className="py-20 px-4 bg-card/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            🔎 What's Inside the End-Of-Lyfe Playbook
+            🔎 What's Inside the End-Of-Lyfe Planner
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">

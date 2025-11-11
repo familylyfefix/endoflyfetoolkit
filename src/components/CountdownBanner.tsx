@@ -10,12 +10,10 @@ function formatTime(ms: number) {
   const days = Math.floor(totalSeconds / (24 * 3600));
   const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
   const parts = [
     days > 0 ? `${days}d` : null,
     `${hours.toString().padStart(2, "0")}h`,
-    `${minutes.toString().padStart(2, "0")}m`,
-    `${seconds.toString().padStart(2, "0")}s`,
+    `${minutes.toString().padStart(2, "0")}m`
   ].filter(Boolean);
   return parts.join(" ");
 }
@@ -42,7 +40,7 @@ useEffect(() => {
 
 useEffect(() => {
   if (hidden || !deadline) return;
-  const id = setInterval(() => setNow(Date.now()), 1000);
+  const id = setInterval(() => setNow(Date.now()), 60000);
   return () => clearInterval(id);
 }, [hidden, deadline]);
 
@@ -55,7 +53,7 @@ useEffect(() => {
       <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
         <div className="flex items-center gap-2">
           <Button size="sm" variant="secondary" asChild>
-            <a href="https://familylyfefix.store/playbook">Get the Playbook</a>
+            <a href="https://familylyfefix.store/playbook">Get the Planner</a>
           </Button>
           <Button size="sm" asChild>
             <a href="/toolkit">Get the Toolkit</a>

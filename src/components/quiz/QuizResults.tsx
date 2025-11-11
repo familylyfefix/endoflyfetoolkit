@@ -30,7 +30,7 @@ const getTierContent = (tier: number, score: number) => {
       ],
       nextStep: "Start with ONE simple conversation this week using the FREE guide we just sent to your email.",
       ctaText: "Download Your Conversation Starter Guide",
-      secondaryCtaText: "Join Waitlist for Full End-Of-Lyfe Playbook"
+      secondaryCtaText: "Join Waitlist for Full End-Of-Lyfe Planner"
     };
   } else if (tier === 2) {
     return {
@@ -47,7 +47,7 @@ const getTierContent = (tier: number, score: number) => {
       ],
       nextStep: "Use the FREE guide in your email to identify and fill the remaining gaps.",
       ctaText: "Download Your Gap-Filling Guide",
-      secondaryCtaText: "Get Full End-Of-Lyfe Playbook (Launching Nov 28)"
+      secondaryCtaText: "Get Full End-Of-Lyfe Planner (Launching Nov 28)"
     };
   } else {
     return {
@@ -62,7 +62,7 @@ const getTierContent = (tier: number, score: number) => {
         { icon: '✅', text: 'Your family knows your wishes' },
         { icon: '✅', text: "You're protecting your family's future" }
       ],
-      nextStep: "Keep everything organized and updated with the comprehensive End-Of-Lyfe Playbook.",
+      nextStep: "Keep everything organized and updated with the comprehensive End-Of-Lyfe Planner.",
       ctaText: "Download Your Advanced Planning Guide",
       secondaryCtaText: "Join Waitlist for Full Toolkit (Nov 28)"
     };
@@ -183,7 +183,7 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake,
                   <span className="font-semibold">You're on the waitlist!</span>
                 </div>
                 <p className="text-sm text-muted-foreground text-center mt-2">
-                  We'll notify you when the End-Of-Lyfe Playbook launches on November 28, 2025.
+                  We'll notify you when the End-Of-Lyfe Planner launches on November 28, 2025.
                 </p>
               </Card>
             ) : (
@@ -205,7 +205,7 @@ export const QuizResults: React.FC<QuizResultsProps> = ({ score, tier, onRetake,
           <DialogHeader>
             <DialogTitle className="text-2xl">Join the Waitlist</DialogTitle>
             <DialogDescription>
-              Be the first to get access to the End-Of-Lyfe Playbook when it launches on November 28, 2025.
+              Be the first to get access to the End-Of-Lyfe Planner when it launches on November 28, 2025.
             </DialogDescription>
           </DialogHeader>
           <WaitlistForm defaultEmail={email} />

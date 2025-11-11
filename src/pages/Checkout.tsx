@@ -32,8 +32,7 @@ const Checkout = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
-    minutes: 0,
-    seconds: 0
+    minutes: 0
   });
   const [isExpired, setIsExpired] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -65,20 +64,19 @@ const Checkout = () => {
 
       if (remaining <= 0) {
         setIsExpired(true);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setTimeLeft({ days: 0, hours: 0, minutes: 0 });
         return;
       }
 
       const days = Math.floor(remaining / (24 * 60 * 60 * 1000));
       const hours = Math.floor((remaining % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
       const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
-      const seconds = Math.floor((remaining % (60 * 1000)) / 1000);
 
-      setTimeLeft({ days, hours, minutes, seconds });
+      setTimeLeft({ days, hours, minutes });
     };
 
     updateTimer();
-    const timer = setInterval(updateTimer, 1000);
+    const timer = setInterval(updateTimer, 60000);
 
     return () => clearInterval(timer);
   }, []);
@@ -653,10 +651,6 @@ const Checkout = () => {
                     <div className="text-center">
                       <div className="font-bold text-lg">{timeLeft.minutes}</div>
                       <div className="text-muted-foreground">Min</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-bold text-lg">{timeLeft.seconds}</div>
-                      <div className="text-muted-foreground">Sec</div>
                     </div>
                   </div>
                 </CardContent>

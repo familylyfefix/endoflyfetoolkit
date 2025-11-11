@@ -93,7 +93,7 @@ const ExitIntentPopup = () => {
               >
                 join the waitlist
               </button>
-              {' '}for the complete End-Of-Lyfe Playbook launching November 28th
+              {' '}for the complete End-Of-Lyfe Planner launching November 28th
             </p>
           </div>
         </div>

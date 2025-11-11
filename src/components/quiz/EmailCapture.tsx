@@ -87,7 +87,7 @@ export const EmailCapture: React.FC<EmailCaptureProps> = ({ score, tier, onSucce
               <li>📊 See your complete readiness score</li>
               <li>📥 Get your FREE PDF guide instantly</li>
               <li>💡 Receive personalized recommendations</li>
-              <li>🎯 Join the waitlist for our full playbook</li>
+              <li>🎯 Join the waitlist for our full planner</li>
             </ul>
           </div>
 
