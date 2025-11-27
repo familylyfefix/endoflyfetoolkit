@@ -116,9 +116,12 @@ export default {
 					'0%': { transform: 'translateX(0)' },
 					'100%': { transform: 'translateX(100%)' }
 				},
-				'confetti-fall': {
-					'0%': { transform: 'translateY(-10vh) rotate(0deg)', opacity: '1' },
-					'100%': { transform: 'translateY(100vh) rotate(720deg)', opacity: '0' }
+			'confetti-fall': {
+					'0%': { transform: 'translateY(-10vh) translateX(0) rotate(0deg)', opacity: '1' },
+					'25%': { transform: 'translateY(25vh) translateX(15px) rotate(180deg)', opacity: '1' },
+					'50%': { transform: 'translateY(50vh) translateX(-15px) rotate(360deg)', opacity: '0.9' },
+					'75%': { transform: 'translateY(75vh) translateX(10px) rotate(540deg)', opacity: '0.5' },
+					'100%': { transform: 'translateY(100vh) translateX(-5px) rotate(720deg)', opacity: '0' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
