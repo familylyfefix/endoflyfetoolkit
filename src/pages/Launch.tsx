@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Sparkles, FileText, Heart, Clock } from "lucide-react";
 
 // Celebration colors - vibrant and festive
 const celebrationColors = [
@@ -112,6 +112,31 @@ const Launch = () => {
               </div>
             </div>
           </Card>
+
+          {/* Feature Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+            <div className="flex flex-col items-center text-center space-y-2">
+              <div className="p-3 rounded-full bg-primary/10">
+                <FileText className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="font-semibold text-foreground">Step-by-Step Guidance</h3>
+              <p className="text-sm text-muted-foreground">Clear checklists and prompts to organize everything</p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-2">
+              <div className="p-3 rounded-full bg-primary/10">
+                <Heart className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="font-semibold text-foreground">Peace of Mind</h3>
+              <p className="text-sm text-muted-foreground">Know your family won't be left guessing</p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-2">
+              <div className="p-3 rounded-full bg-primary/10">
+                <Clock className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="font-semibold text-foreground">Save Hours of Stress</h3>
+              <p className="text-sm text-muted-foreground">Everything in one place, ready when needed</p>
+            </div>
+          </div>
 
           {/* Primary CTA */}
           <div className="space-y-4">
