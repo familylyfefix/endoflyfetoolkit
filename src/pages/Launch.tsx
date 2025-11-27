@@ -172,9 +172,86 @@ const Launch = () => {
             </Card>
           </div>
 
+          {/* Testimonials Section */}
+          <div className="pt-8 space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              Real People, Real Peace of Mind
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+              {/* Candace */}
+              <Card className="p-6 bg-card/60 backdrop-blur-sm border-border/50 text-left">
+                <div className="flex flex-col items-center text-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white text-2xl font-bold mb-3">
+                    C
+                  </div>
+                  <h3 className="font-bold text-lg text-foreground">Candace, 42</h3>
+                  <p className="text-muted-foreground text-sm">Mother of 3</p>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-primary font-semibold text-sm">Scenario:</p>
+                    <p className="text-muted-foreground text-sm">Organizing family information while raising kids</p>
+                  </div>
+                  <div>
+                    <p className="text-primary font-semibold text-sm">How They Use It:</p>
+                    <p className="text-muted-foreground text-sm italic">
+                      "Candace uses the planner to document all family medical information, insurance policies, and emergency contacts. She updates it monthly and shares view access with her husband. 'I finally have peace of mind knowing everything is in one place if something happens to me.'"
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* James */}
+              <Card className="p-6 bg-card/60 backdrop-blur-sm border-border/50 text-left">
+                <div className="flex flex-col items-center text-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white text-2xl font-bold mb-3">
+                    J
+                  </div>
+                  <h3 className="font-bold text-lg text-foreground">James, 65</h3>
+                  <p className="text-muted-foreground text-sm">Recent Retiree</p>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-primary font-semibold text-sm">Scenario:</p>
+                    <p className="text-muted-foreground text-sm">Ensuring smooth transition for spouse</p>
+                  </div>
+                  <div>
+                    <p className="text-primary font-semibold text-sm">How They Use It:</p>
+                    <p className="text-muted-foreground text-sm italic">
+                      "After retiring, James realized his wife didn't know where important financial documents were or how to access accounts. He used the planner to document everything, including his investment strategy and advisor contacts. 'This took a huge weight off both our shoulders.'"
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Linda */}
+              <Card className="p-6 bg-card/60 backdrop-blur-sm border-border/50 text-left">
+                <div className="flex flex-col items-center text-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white text-2xl font-bold mb-3">
+                    L
+                  </div>
+                  <h3 className="font-bold text-lg text-foreground">Linda, 38</h3>
+                  <p className="text-muted-foreground text-sm">Caring for Aging Parents</p>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-primary font-semibold text-sm">Scenario:</p>
+                    <p className="text-muted-foreground text-sm">Managing multi-generational planning</p>
+                  </div>
+                  <div>
+                    <p className="text-primary font-semibold text-sm">How They Use It:</p>
+                    <p className="text-muted-foreground text-sm italic">
+                      "Linda created planners for both her parents and herself. She helps them keep medical information current and has documented their wishes. 'When my dad had a medical emergency, we had all his information instantly available. It made a terrifying situation manageable.'"
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+
           {/* Primary CTA */}
           <div className="space-y-5 pt-6">
-            <Button 
+            <Button
               size="lg" 
               className="text-lg md:text-xl px-10 md:px-12 py-7 md:py-8 h-auto animate-pulse-glow shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300" 
               asChild
