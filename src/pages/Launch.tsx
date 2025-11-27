@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Sparkles, Lock, CreditCard } from "lucide-react";
 import fullLogo from "@/assets/full-logo.png";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 
@@ -151,6 +151,22 @@ const Launch = () => {
                 Take the free readiness quiz →
               </Link>
             </p>
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4 text-muted-foreground">
+              <div className="flex items-center gap-1.5 text-xs">
+                <Lock className="h-4 w-4" />
+                <span>Secure Checkout</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs">
+                <CreditCard className="h-4 w-4" />
+                <span>All Major Cards</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs">
+                <Shield className="h-4 w-4" />
+                <span>Money-Back Guarantee</span>
+              </div>
+            </div>
           </div>
         </div>
       </main>
