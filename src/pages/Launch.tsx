@@ -3,16 +3,28 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Shield, Sparkles } from "lucide-react";
 
+// Celebration colors - vibrant and festive
+const celebrationColors = [
+  'hsl(var(--primary))',      // Brand primary
+  'hsl(45, 93%, 58%)',        // Gold
+  'hsl(330, 80%, 60%)',       // Pink
+  'hsl(200, 85%, 55%)',       // Sky blue
+  'hsl(280, 70%, 60%)',       // Purple
+  'hsl(150, 70%, 50%)',       // Emerald
+  'hsl(15, 90%, 60%)',        // Coral/Orange
+  'hsl(180, 70%, 50%)',       // Teal
+];
+
 // Confetti configuration
-const confettiPieces = Array.from({ length: 25 }, (_, i) => ({
+const confettiPieces = Array.from({ length: 35 }, (_, i) => ({
   id: i,
   left: Math.random() * 100,
   delay: Math.random() * 8,
   duration: 6 + Math.random() * 6,
   size: 4 + Math.random() * 6,
-  color: ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', 'hsl(var(--muted))'][Math.floor(Math.random() * 4)],
+  color: celebrationColors[Math.floor(Math.random() * celebrationColors.length)],
   shape: Math.random() > 0.5 ? 'circle' : 'square',
-  opacity: 0.3 + Math.random() * 0.4
+  opacity: 0.5 + Math.random() * 0.4
 }));
 
 const floatingParticles = Array.from({ length: 8 }, (_, i) => ({
