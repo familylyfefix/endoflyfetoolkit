@@ -15,17 +15,22 @@ const celebrationColors = [
   'hsl(180, 70%, 50%)',       // Teal
 ];
 
-// Confetti configuration
-const confettiPieces = Array.from({ length: 35 }, (_, i) => ({
-  id: i,
-  left: Math.random() * 100,
-  delay: Math.random() * 8,
-  duration: 6 + Math.random() * 6,
-  size: 4 + Math.random() * 6,
-  color: celebrationColors[Math.floor(Math.random() * celebrationColors.length)],
-  shape: Math.random() > 0.5 ? 'circle' : 'square',
-  opacity: 0.5 + Math.random() * 0.4
-}));
+// Confetti configuration - more pieces, bigger, bolder!
+const confettiPieces = Array.from({ length: 60 }, (_, i) => {
+  const shapeRandom = Math.random();
+  const shape = shapeRandom > 0.7 ? 'streamer' : shapeRandom > 0.35 ? 'circle' : 'square';
+  return {
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 3, // Faster initial burst
+    duration: 4 + Math.random() * 4, // Faster fall (4-8s)
+    size: 6 + Math.random() * 8, // Bigger pieces (6-14px)
+    color: celebrationColors[Math.floor(Math.random() * celebrationColors.length)],
+    shape,
+    opacity: 0.7 + Math.random() * 0.3, // Bolder (0.7-1.0)
+    rotation: Math.random() * 360 // Initial rotation
+  };
+});
 
 const floatingParticles = Array.from({ length: 8 }, (_, i) => ({
   id: i,
@@ -46,10 +51,11 @@ const Confetti = () => (
           animationDelay: `${piece.delay}s`,
           animationDuration: `${piece.duration}s`,
           backgroundColor: piece.color,
-          width: `${piece.size}px`,
-          height: `${piece.size}px`,
+          width: piece.shape === 'streamer' ? `${piece.size * 0.4}px` : `${piece.size}px`,
+          height: piece.shape === 'streamer' ? `${piece.size * 2}px` : `${piece.size}px`,
           borderRadius: piece.shape === 'circle' ? '50%' : '2px',
-          opacity: piece.opacity
+          opacity: piece.opacity,
+          transform: `rotate(${piece.rotation}deg)`
         }}
       />
     ))}
