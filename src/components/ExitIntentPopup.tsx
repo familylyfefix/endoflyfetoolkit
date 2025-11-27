@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Gift } from 'lucide-react';
 
 const ExitIntentPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -56,37 +57,50 @@ const ExitIntentPopup = () => {
     <Dialog open={showPopup} onOpenChange={setShowPopup}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-2xl">Wait! Before You Go...</DialogTitle>
+          <DialogTitle className="text-2xl flex items-center gap-2">
+            <Gift className="h-6 w-6 text-primary" />
+            Wait! Special Launch Pricing
+          </DialogTitle>
           <DialogDescription className="text-base pt-2">
-            Not sure if this is right for you?
+            You're seeing our lowest price ever.
           </DialogDescription>
         </DialogHeader>
         
-        <div className="space-y-6 py-4">
-          <p className="text-muted-foreground">
-            Take our <strong>free 2-minute quiz</strong> to see where your family's gaps are. 
-            You'll get personalized insights instantly — no purchase required.
+        <div className="space-y-5 py-4">
+          {/* Discount highlight */}
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+            <p className="text-sm text-muted-foreground mb-1">Launch Special</p>
+            <div className="flex items-center justify-center gap-3">
+              <span className="text-2xl text-muted-foreground line-through">$197</span>
+              <span className="text-4xl font-bold text-primary">$147</span>
+            </div>
+            <p className="text-sm font-semibold text-primary mt-1">Save $50 today</p>
+          </div>
+
+          <p className="text-muted-foreground text-center">
+            This introductory price won't last forever. Lock in your savings now.
           </p>
 
           <div className="flex flex-col gap-3">
             <Button size="lg" asChild className="w-full" onClick={handleClose}>
-              <Link to="/quiz">
-                Take the Free Quiz →
-              </Link>
-            </Button>
-
-            <p className="text-sm text-center text-muted-foreground">
-              Or{' '}
               <a 
                 href="https://www.familylyfefix.io/product-overview"
                 target="_blank"
                 rel="noopener noreferrer"
+              >
+                Get the Planner for $147 →
+              </a>
+            </Button>
+
+            <p className="text-sm text-center text-muted-foreground">
+              Not ready?{' '}
+              <Link 
+                to="/quiz"
                 onClick={handleClose}
                 className="text-primary hover:underline font-semibold"
               >
-                see what's included
-              </a>
-              {' '}in the End-Of-Lyfe Planner
+                Take the free quiz first
+              </Link>
             </p>
           </div>
         </div>
