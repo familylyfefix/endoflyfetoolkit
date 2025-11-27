@@ -117,9 +117,14 @@ const Launch = () => {
           {/* Price Card */}
           <Card className="inline-block p-6 md:p-8 bg-card/90 backdrop-blur-md border border-primary/20 shadow-xl animate-scale-in">
             <div className="space-y-2">
-              <p className="text-4xl md:text-5xl font-bold text-foreground">$147</p>
-              <p className="text-muted-foreground">One-time payment</p>
-              <div className="flex items-center justify-center gap-2 text-sm text-primary font-medium pt-2">
+              <p className="text-sm font-medium text-primary">Launch Special</p>
+              <div className="flex items-center justify-center gap-3">
+                <span className="text-2xl text-muted-foreground line-through">$197</span>
+                <span className="text-4xl md:text-5xl font-bold text-foreground">$147</span>
+              </div>
+              <p className="text-sm font-semibold text-primary">Save $50 today</p>
+              <p className="text-muted-foreground text-sm">One-time payment</p>
+              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground pt-2">
                 <Shield className="h-4 w-4" />
                 <span>14-day money-back guarantee</span>
               </div>
