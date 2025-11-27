@@ -172,6 +172,80 @@ const Launch = () => {
             </Card>
           </div>
 
+          {/* What's Included Section */}
+          <div className="pt-12 space-y-8">
+            <div className="space-y-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                What's Included
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Everything you need to organize your legacy and protect your loved ones
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto text-left">
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-card/40 border border-border/30">
+                <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-primary font-bold text-sm">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Medical Information Hub</h4>
+                  <p className="text-sm text-muted-foreground">Doctors, medications, allergies, health history & insurance details</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-card/40 border border-border/30">
+                <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-primary font-bold text-sm">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Financial Asset Tracker</h4>
+                  <p className="text-sm text-muted-foreground">Bank accounts, investments, retirement funds & advisor contacts</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-card/40 border border-border/30">
+                <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-primary font-bold text-sm">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Important Documents Checklist</h4>
+                  <p className="text-sm text-muted-foreground">Wills, trusts, deeds, titles & where to find everything</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-card/40 border border-border/30">
+                <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-primary font-bold text-sm">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Digital Life Inventory</h4>
+                  <p className="text-sm text-muted-foreground">Online accounts, subscriptions, passwords & social media wishes</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-card/40 border border-border/30">
+                <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-primary font-bold text-sm">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Emergency Contacts & Instructions</h4>
+                  <p className="text-sm text-muted-foreground">Key people to call, pet care, home access & urgent priorities</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-card/40 border border-border/30">
+                <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-primary font-bold text-sm">✓</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Final Wishes & Legacy Notes</h4>
+                  <p className="text-sm text-muted-foreground">Personal messages, memorial preferences & what matters most</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Testimonials Section */}
           <div className="pt-8 space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
