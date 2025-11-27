@@ -123,7 +123,7 @@ const Launch = () => {
                 <span className="text-4xl md:text-5xl font-bold text-foreground">$147</span>
               </div>
               <p className="text-sm font-semibold text-primary">Save $50 today</p>
-              <p className="text-muted-foreground text-sm">One-time payment</p>
+              <p className="text-muted-foreground text-sm">One-time payment • Buy now, pay later available</p>
               <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground pt-2">
                 <Shield className="h-4 w-4" />
                 <span>14-day money-back guarantee</span>
