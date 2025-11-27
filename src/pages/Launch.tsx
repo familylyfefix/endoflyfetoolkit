@@ -129,7 +129,7 @@ const Launch = () => {
           <div className="space-y-4 pt-4">
             <Button
               size="lg" 
-              className="text-lg px-10 py-6 h-auto shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300" 
+              className="text-lg px-10 py-6 h-auto animate-pulse-glow hover:scale-105 transition-transform duration-300" 
               asChild
             >
               <a href="https://www.familylyfefix.io/product-overview" target="_blank" rel="noopener noreferrer">
