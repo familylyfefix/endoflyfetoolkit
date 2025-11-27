@@ -116,7 +116,7 @@ const Launch = () => {
           {/* Primary CTA */}
           <div className="space-y-4">
             <Button size="lg" className="text-lg px-8 py-6 h-auto animate-pulse-glow" asChild>
-              <a href="https://familylyfefix.io" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.familylyfefix.io/productoverview" target="_blank" rel="noopener noreferrer">
                 Get the Planner Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
