@@ -102,7 +102,7 @@ const Launch = () => {
           </p>
 
           {/* Price Card */}
-          <Card className="inline-block p-6 bg-card/80 backdrop-blur-sm border-primary/20">
+          <Card className="inline-block p-6 bg-card/80 backdrop-blur-sm border-primary/20 shadow-[0_0_30px_hsl(var(--primary-glow)/0.2),0_0_60px_hsl(var(--primary-glow)/0.1)]">
             <div className="space-y-2">
               <p className="text-4xl md:text-5xl font-bold text-foreground">$147</p>
               <p className="text-muted-foreground">One-time payment</p>
