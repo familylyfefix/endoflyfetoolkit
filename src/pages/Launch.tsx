@@ -3,16 +3,79 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Shield, Sparkles } from "lucide-react";
 
+// Confetti configuration
+const confettiPieces = Array.from({ length: 25 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  delay: Math.random() * 8,
+  duration: 6 + Math.random() * 6,
+  size: 4 + Math.random() * 6,
+  color: ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', 'hsl(var(--muted))'][Math.floor(Math.random() * 4)],
+  shape: Math.random() > 0.5 ? 'circle' : 'square',
+  opacity: 0.3 + Math.random() * 0.4
+}));
+
+const floatingParticles = Array.from({ length: 8 }, (_, i) => ({
+  id: i,
+  x: 10 + Math.random() * 80,
+  y: 10 + Math.random() * 80,
+  delay: Math.random() * 4,
+  size: 6 + Math.random() * 8
+}));
+
+const Confetti = () => (
+  <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    {confettiPieces.map((piece) => (
+      <div
+        key={piece.id}
+        className="absolute animate-confetti-fall"
+        style={{
+          left: `${piece.left}%`,
+          animationDelay: `${piece.delay}s`,
+          animationDuration: `${piece.duration}s`,
+          backgroundColor: piece.color,
+          width: `${piece.size}px`,
+          height: `${piece.size}px`,
+          borderRadius: piece.shape === 'circle' ? '50%' : '2px',
+          opacity: piece.opacity
+        }}
+      />
+    ))}
+  </div>
+);
+
+const FloatingParticles = () => (
+  <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    {floatingParticles.map((p) => (
+      <div
+        key={p.id}
+        className="absolute rounded-full bg-primary/10 animate-float"
+        style={{
+          left: `${p.x}%`,
+          top: `${p.y}%`,
+          width: `${p.size}px`,
+          height: `${p.size}px`,
+          animationDelay: `${p.delay}s`
+        }}
+      />
+    ))}
+  </div>
+);
+
 const Launch = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/10">
-      <main className="container mx-auto px-4 py-12 md:py-20">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/10 relative overflow-hidden">
+      {/* Background animations */}
+      <Confetti />
+      <FloatingParticles />
+      
+      <main className="container mx-auto px-4 py-12 md:py-20 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Celebration Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold animate-fade-in">
-            <Sparkles className="h-4 w-4" />
+            <Sparkles className="h-4 w-4 animate-sparkle" />
             IT'S LIVE!
-            <Sparkles className="h-4 w-4" />
+            <Sparkles className="h-4 w-4 animate-sparkle" style={{ animationDelay: '0.5s' }} />
           </div>
 
           {/* Main Headline */}
@@ -59,7 +122,7 @@ const Launch = () => {
       </main>
 
       {/* Simple Footer */}
-      <footer className="container mx-auto px-4 py-8 text-center">
+      <footer className="container mx-auto px-4 py-8 text-center relative z-10">
         <p className="text-sm text-muted-foreground">
           Your information stays private. We never share your data.
         </p>
