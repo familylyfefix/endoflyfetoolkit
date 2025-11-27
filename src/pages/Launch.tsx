@@ -55,11 +55,27 @@ const Confetti = () => (
 
 const Launch = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-accent/20 relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'linear-gradient(-45deg, hsl(var(--primary) / 0.15), hsl(var(--background)), hsl(var(--accent) / 0.2), hsl(var(--primary) / 0.1))',
+          backgroundSize: '400% 400%',
+          animation: 'gradientShift 15s ease infinite'
+        }}
+      />
+      
       {/* Decorative gradient shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary/15 to-transparent rounded-full blur-3xl" />
-        <div className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-tr from-accent/20 to-transparent rounded-full blur-3xl" />
+        <div 
+          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary/15 to-transparent rounded-full blur-3xl"
+          style={{ animation: 'float 20s ease-in-out infinite' }}
+        />
+        <div 
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-tr from-accent/20 to-transparent rounded-full blur-3xl"
+          style={{ animation: 'float 25s ease-in-out infinite reverse' }}
+        />
       </div>
       
       {/* Subtle confetti */}
