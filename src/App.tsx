@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-import ComingSoon from "./pages/ComingSoon";
+import Launch from "./pages/Launch";
 import WaitlistAdmin from "./pages/WaitlistAdmin";
 import AnalyticsAdmin from "./pages/AnalyticsAdmin";
 import AdminAuth from "./pages/AdminAuth";
@@ -27,7 +27,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<ComingSoon />} />
+            <Route path="/" element={<Launch />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/admin/login" element={<AdminAuth />} />
             <Route path="/admin/waitlist" element={
@@ -41,7 +41,7 @@ const App = () => {
               </AdminRoute>
             } />
             {/* All other routes show Coming Soon page during domain migration */}
-            <Route path="*" element={<ComingSoon />} />
+            <Route path="*" element={<Launch />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
