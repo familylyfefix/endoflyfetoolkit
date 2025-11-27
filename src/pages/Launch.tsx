@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Shield, Sparkles } from "lucide-react";
 import fullLogo from "@/assets/full-logo.png";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 // Celebration colors - vibrant and festive
 const celebrationColors = [
@@ -155,6 +156,9 @@ const Launch = () => {
           Your information stays private. Always.
         </p>
       </footer>
+
+      {/* Exit Intent Popup */}
+      <ExitIntentPopup />
     </div>
   );
 };
