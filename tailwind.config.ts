@@ -127,6 +127,10 @@ export default {
 				'sparkle': {
 					'0%, 100%': { opacity: '0.4', transform: 'scale(0.8)' },
 					'50%': { opacity: '1', transform: 'scale(1.2)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 0 0 hsl(var(--primary) / 0.4)' },
+					'50%': { boxShadow: '0 0 20px 8px hsl(var(--primary) / 0.2)' }
 				}
 			},
 				animation: {
@@ -142,7 +146,8 @@ export default {
 					'exit': 'fade-out 0.3s ease-out, scale-out 0.2s ease-out',
 					'confetti-fall': 'confetti-fall 8s linear infinite',
 					'float': 'float 4s ease-in-out infinite',
-					'sparkle': 'sparkle 2s ease-in-out infinite'
+					'sparkle': 'sparkle 2s ease-in-out infinite',
+					'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
 				}
 		}
 	},
